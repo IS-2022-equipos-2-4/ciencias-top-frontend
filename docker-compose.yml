@@ -1,14 +1,13 @@
 version: "3.9"
 services:
   ui:
-    image: node:19-alpine
-    user: "1000:1000"
+    build:
+      context: .
     ports:
       - "4200:4200"
     working_dir: /home/app
     command: >
-      sh -c "npm install -g @angular/cli && 
-      npm install && 
+      sh -c " npm install && 
       /home/app/node_modules/.bin/ng serve --host 0.0.0.0 "
     volumes:
-      - ./front:/home/app
+      - ./angular:/home/app

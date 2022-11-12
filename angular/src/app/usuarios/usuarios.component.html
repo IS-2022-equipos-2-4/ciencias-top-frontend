@@ -25,45 +25,31 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th scope="col">Day</th>
-                <th scope="col">Article Name</th>
-                <th scope="col">Author</th>
-                <th scope="col">Shares</th>
-                <th scope="col">Actions</th>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Número Institucional</th>
+                <th scope="col">Carrera</th>
+                <th scope="col">Activo</th>
+                <th scope="col">Proveedor</th>
+                <th scope="col">Admin</th>
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td>Bootstrap 4 CDN and Starter Template</td>
-                <td>Cristina</td>
-                <td>2.846</td>
+                <td>Juan Escutia</td>
+                <td>juan@correo.com</td>
+                <td>123456789</td>
+                <td>Ciencias de la Computación</td>
+                <td><fa-icon [icon]="faCheck"></fa-icon></td>
+                <td><fa-icon [icon]="faCheck"></fa-icon></td>
+                <td><fa-icon [icon]="faCheck"></fa-icon></td>
                 <td>
-                  <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-                  <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Bootstrap Grid 4 Tutorial and Examples</td>
-                <td>Cristina</td>
-                <td>3.417</td>
-                <td>
-                  <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-                  <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Bootstrap Flexbox Tutorial and Examples</td>
-                <td>Cristina</td>
-                <td>1.234</td>
-                <td>
-                  <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-                  <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                  <button type="button" class="btn-space btn btn-primary btn-space"><fa-icon [icon]="faEye"></fa-icon></button>
+                  <button type="button" class="btn btn-success btn-space"><fa-icon [icon]="faEdit"></fa-icon></button>
+                  <button type="button" class="btn btn-danger"><fa-icon [icon]="faTrashAlt"></fa-icon></button>
                 </td>
               </tr>
             </tbody>

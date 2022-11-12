@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  faCheck,
+  faEdit,
+  faEye,
+  faSquare,
+  faTrashAlt,
+  faXmark,
+} from '@fortawesome/free-solid-svg-icons';
 
-import { faEye, faEdit, faTrashAlt, faCheck,  } from '@fortawesome/free-solid-svg-icons';
+import { Usuario } from './usuario';
+import { UsuarioService } from './usuario.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -8,13 +17,20 @@ import { faEye, faEdit, faTrashAlt, faCheck,  } from '@fortawesome/free-solid-sv
   styleUrls: ['./usuarios.component.css'],
 })
 export class UsuariosComponent implements OnInit {
+  usuarios: Usuario[];
+
   faEye = faEye;
   faEdit = faEdit;
   faTrashAlt = faTrashAlt;
   faCheck = faCheck;
-  //faCross = faCross;
+  faXMark = faXmark;
+  faSquare = faSquare;
 
-  constructor() {}
+  constructor(private usuarioService: UsuarioService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.usuarioService
+      .getUsuarios()
+      .subscribe((usuarios) => (this.usuarios = usuarios));
+  }
 }

@@ -37,15 +37,32 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Juan Escutia</td>
-                <td>juan@correo.com</td>
-                <td>123456789</td>
-                <td>Ciencias de la Computación</td>
-                <td><fa-icon [icon]="faCheck"></fa-icon></td>
-                <td><fa-icon [icon]="faCheck"></fa-icon></td>
-                <td><fa-icon [icon]="faCheck"></fa-icon></td>
+              <tr *ngFor="let usuario of usuarios">
+                <th scope="row">{{usuario.id}}</th>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.correo}}</td>
+                <td>{{usuario.numInstitucional}}</td>
+                <td>{{usuario.carrera}}</td>
+                <ng-template [ngIf]="usuario.activo" [ngIfElse]="elseBlock">
+                  <td><fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon></td>      
+                </ng-template>
+                <ng-template #elseBlock>
+                  <td><fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon></td>
+                </ng-template>
+
+                <ng-template [ngIf]="usuario.esProveedor" [ngIfElse]="elseBlock">
+                  <td><fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon></td>      
+                </ng-template>
+                <ng-template #elseBlock>
+                  <td><fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon></td>
+                </ng-template> 
+                
+                <ng-template [ngIf]="usuario.esAdmin" [ngIfElse]="elseBlock">
+                  <td><fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon></td>      
+                </ng-template>
+                <ng-template #elseBlock>
+                  <td><fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon></td>
+                </ng-template>  
                 <td>
                   <button type="button" class="btn-space btn btn-primary btn-space"><fa-icon [icon]="faEye"></fa-icon></button>
                   <button type="button" class="btn btn-success btn-space"><fa-icon [icon]="faEdit"></fa-icon></button>

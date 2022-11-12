@@ -9,3 +9,13 @@ h4 {
 .btn-space {
   margin-right: 5px;
 }
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+th {
+  text-align: center;
+  vertical-align: middle;
+}

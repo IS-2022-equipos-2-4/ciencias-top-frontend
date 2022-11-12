@@ -8,18 +8,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ProductosComponent } from './productos/productos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
-import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
-import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
-import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.component';
-
-
 
 const routes: Routes = [
   { path: '', redirectTo: '/usuarios', pathMatch: 'full' },
   { path: 'usuarios', component: UsuariosComponent },
-  { path: 'usuarios/crear', component: CrearUsuarioComponent },
-  { path: 'usuarios/editar/:id', component: EditarUsuarioComponent },
-  { path: 'usuarios/sumar-pumapuntos/:id', component: SumarPumaPuntosComponent },
+  { path: 'usuarios/crear', component: UsuariosComponent },
+  { path: 'usuarios/actualizar/:id', component: UsuariosComponent },
+  { path: 'usuarios/actualizar/pumapuntos/:id', component: UsuariosComponent },
   { path: 'productos', component: ProductosComponent },
 ];
 

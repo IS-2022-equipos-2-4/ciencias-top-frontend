@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
   faCheck,
+  faDollar,
   faEdit,
-  faEye,
   faSquare,
   faTrashAlt,
   faXmark,
@@ -19,7 +19,7 @@ import { UsuarioService } from './usuario.service';
 export class UsuariosComponent implements OnInit {
   usuarios: Usuario[];
 
-  faEye = faEye;
+  faDollar = faDollar;
   faEdit = faEdit;
   faTrashAlt = faTrashAlt;
   faCheck = faCheck;

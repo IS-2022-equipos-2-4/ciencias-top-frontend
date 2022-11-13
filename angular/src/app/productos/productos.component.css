@@ -1,0 +1,26 @@
+.container {
+  padding: 2rem 0rem;
+}
+
+h4 {
+  margin: 2rem 0rem 1rem;
+}
+
+.btn-space {
+  margin-right: 5px;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#descripcion {
+  text-align: left;
+  padding: 0 1%
+}

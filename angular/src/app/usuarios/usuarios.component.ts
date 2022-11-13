@@ -26,7 +26,7 @@ export class UsuariosComponent implements OnInit {
   faXMark = faXmark;
   faSquare = faSquare;
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private readonly usuarioService: UsuarioService) {}
 
   ngOnInit(): void {
     this.usuarioService

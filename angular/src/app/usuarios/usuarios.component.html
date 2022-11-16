@@ -1,25 +1,35 @@
 <div class="p-3 mb-2 bg-light rounded-3">
-    <div class="container-fluid py-4 text-center">
-      <h1 class="display-7 fw-bold ">Usuarios</h1>
-    </div>
+  <div class="container-fluid py-4 text-center">
+    <h1 class="display-7 fw-bold ">Usuarios</h1>
   </div>
-  
-  <div class="album py-5">
-    <div class="container mb-4 mt-0">
-      <div class="input">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <select class="form-select-sm me-2">
-            <option selected>Método de búsqueda</option>
-            <option value="1">Por código</option>
-            <option value="2">Por nombre</option>
-          </select>
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
+</div>
+
+<div class="album py-5">
+  <div class="container mb-4 mt-0">
+    <div class="input">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <select class="form-select-sm me-2">
+          <option selected>Método de búsqueda</option>
+          <option value="1">Por código</option>
+          <option value="2">Por nombre</option>
+        </select>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
 
-    <div class="container">
+    <div class="container" style="padding-top: 20px">
+      <div style="float:left">
+        <h4>Detalles Usuarios:</h4>
+      </div>
+      <div style="float:right">
+        <button class="btn btn-rounded btn-primary" type="btn" [routerLink]="['/usuarios/crear']">Crear
+          Producto</button>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+
+    <div class="container" style="padding-top: 10px">
       <div class="row">
         <div class="col-12">
           <table class="table table-bordered">
@@ -44,29 +54,47 @@
                 <td>{{usuario.numInstitucional}}</td>
                 <td>{{usuario.carrera}}</td>
                 <ng-template [ngIf]="usuario.activo" [ngIfElse]="elseBlock">
-                  <td><fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon></td>      
+                  <td>
+                    <fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon>
+                  </td>
                 </ng-template>
                 <ng-template #elseBlock>
-                  <td><fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon></td>
+                  <td>
+                    <fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon>
+                  </td>
                 </ng-template>
 
                 <ng-template [ngIf]="usuario.esProveedor" [ngIfElse]="elseBlock">
-                  <td><fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon></td>      
+                  <td>
+                    <fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon>
+                  </td>
                 </ng-template>
                 <ng-template #elseBlock>
-                  <td><fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon></td>
-                </ng-template> 
-                
+                  <td>
+                    <fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon>
+                  </td>
+                </ng-template>
+
                 <ng-template [ngIf]="usuario.esAdmin" [ngIfElse]="elseBlock">
-                  <td><fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon></td>      
+                  <td>
+                    <fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon>
+                  </td>
                 </ng-template>
                 <ng-template #elseBlock>
-                  <td><fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon></td>
-                </ng-template>  
+                  <td>
+                    <fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon>
+                  </td>
+                </ng-template>
                 <td>
-                  <button type="button" class="btn btn-primary btn-space"><fa-icon [icon]="faDollar"></fa-icon></button>
-                  <button type="button" class="btn btn-success btn-space"><fa-icon [icon]="faEdit"></fa-icon></button>
-                  <button type="button" class="btn-space btn btn-danger btn-space"><fa-icon [icon]="faTrashAlt"></fa-icon></button>
+                  <button type="button" class="btn btn-primary btn-space" [routerLink]="['/usuarios/sumar-pumapuntos', usuario.id]">
+                    <fa-icon [icon]="faDollar"></fa-icon>
+                  </button>
+                  <button type="button" class="btn btn-success btn-space" [routerLink]="['/usuarios/editar', usuario.id]">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                  </button>
+                  <button type="button" class="btn-space btn btn-danger btn-space">
+                    <fa-icon [icon]="faTrashAlt"></fa-icon>
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -75,3 +103,4 @@
       </div>
     </div>
   </div>
+</div>

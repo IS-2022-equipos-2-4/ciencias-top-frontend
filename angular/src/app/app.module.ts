@@ -32,6 +32,10 @@ const routes: Routes = [
     HeaderComponent,
     ProductosComponent,
     UsuariosComponent,
+    CrearUsuarioComponent,
+    EditarUsuarioComponent,
+    CrearProductosComponent,
+    SumarPumaPuntosComponent
   ],
   imports: [
     BrowserModule,

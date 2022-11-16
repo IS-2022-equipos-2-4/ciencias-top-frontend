@@ -22,7 +22,8 @@ export class CrearProductosComponent implements OnInit {
 
   public crearProducto():void{
     this.productoService.crearProducto(this.producto).subscribe(
-      Response => this.router.navigate(['/productos'])
+      Response => this.router.navigate(["/productos"]) 
+      
     );
   }
 }

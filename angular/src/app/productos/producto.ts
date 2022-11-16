@@ -7,6 +7,6 @@ export class Producto {
   descripcion: string;
   costo: number;
   stock: number;
-  dias_renta: number;
+  limitePrestamo: number;
   proveedor: Usuario;
 }

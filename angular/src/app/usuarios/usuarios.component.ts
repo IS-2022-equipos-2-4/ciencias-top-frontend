@@ -37,11 +37,17 @@ export class UsuariosComponent implements OnInit {
   }
 
   buscar(): void {
+    if(!this.seleccion || this.seleccion=="undefined"){
+      alert("No escogiste ningun parametro de busqueda. Te mostrare todos los Usuarios")
+    }
+    if(!this.busqueda){
+      alert("No escribiste ninguna cadena para busqueda. Te mostrare todos los Usuarios")
+    }
     if (this.seleccion && this.busqueda) {
       this.usuarioService
         .buscar(this.seleccion, this.busqueda)
         .subscribe((usuarios) => (this.usuarios = usuarios));
-    } else if (! this.busqueda) {
+    } else {
       this.usuarioService
         .getUsuarios()
         .subscribe((usuarios) => (this.usuarios = usuarios));

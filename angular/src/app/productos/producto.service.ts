@@ -21,4 +21,16 @@ export class ProductoService {
   public buscarPorNombre(): Observable<Producto[]>{
     return this.httpClient.get<Producto[]>(this.urlEndpoint + "/");
   }
+
+  public buscar_id(busqueda: string): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.urlEndpoint + '/' + busqueda);
+  }
+
+  public buscar_nombre(busqueda: string): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.urlEndpoint + "/nombre/" + busqueda);
+  }
+
+  public buscar_codigo(busqueda: string): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.urlEndpoint + "/codigo/" + busqueda);
+  }
 }

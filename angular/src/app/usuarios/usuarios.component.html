@@ -10,7 +10,8 @@
       <form class="d-flex" role="search" (ngSubmit)="buscar()">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="busqueda" name="busqueda" value="">
         <select class="form-select-sm me-2" [(ngModel)]="seleccion" name="seleccion">
-          <option selected value="nombre">Por nombre</option>
+          <option value="undefined" selected>Método de búsqueda</option>
+          <option value="nombre">Por nombre</option>
           <option value="correo">Por correo</option>
           <option value="institucional">Por no. de cuenta/trabajador</option>
         </select>

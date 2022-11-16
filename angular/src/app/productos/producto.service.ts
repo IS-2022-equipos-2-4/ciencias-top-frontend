@@ -17,4 +17,8 @@ export class ProductoService {
   public getProductos(): Observable<Producto[]> {
     return this.httpClient.get<Producto[]>(this.urlEndpoint);
   }
+
+  public crearProducto(producto: Producto): Observable<Producto>{
+    return this.httpClient.post<Producto>(this.urlEndpoint,producto,{headers: this.httpHeaders});
+  }
 }

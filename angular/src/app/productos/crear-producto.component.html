@@ -1,1 +1,87 @@
-Crear producto
+<div class="card bg-dark text-white" >
+    <div class="card-header">Agregar Producto</div>
+    <!--esta linea en teoria tiene a la variable titulo de crear-producto componente pero por alguna razon aunque la detecta sigue poniendo de texto solo titulo 
+        <div class="card-header">{{titulo}}</div> -->
+    <div class="card-body">
+
+        <form (ngSubmit)="crearProducto()">
+            <!-- Campos para llenar-->
+            <div class="form-group row">
+                <label for="" class="col-form-label col-sm-2">Nombre </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.nombre" name="nombre">
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="codigo" class="col-form-label col-sm-2">Codigo </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="codigo" aria-describedby="codigoHelp" [(ngModel)]="producto.codigo" name="codigo" >
+                    <span id="codigoHelp" class="form-text">
+                      El codigo debe ser de exactamente 12 caracteres
+                    </span>
+                  </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="col-form-label col-sm-2">Costo </label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" [(ngModel)]="producto.costo" name="costo">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="col-form-label col-sm-2">Stocks </label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" [(ngModel)]="producto.stock" name="stocks">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="dias_renta" class="col-form-label col-sm-2">Cantidad de dias para rentar </label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" id="dias_renta" aria-describedby="diasHelp" [(ngModel)]="producto.dias_renta" name="dias_renta">
+                    <span id="diasHelp" class="form-text">
+                        Los dias para rentar deben de ser de 3 a 7 dias
+                    </span>
+                </div>
+                
+            </div>
+
+            <div class="form-group row">
+                <label for="" class="col-form-label col-sm-2">Descripcion </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.descripcion" name="descripcion">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col.sm-6">
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </div>
+                
+            </div>
+            
+
+        </form>
+         <!--
+            Ejemplo de boostrap
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        -->
+    </div>
+  </div>

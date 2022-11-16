@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -32,12 +33,14 @@ const routes: Routes = [
     HeaderComponent,
     ProductosComponent,
     UsuariosComponent,
+    CrearProductosComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     FontAwesomeModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

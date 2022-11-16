@@ -37,8 +37,14 @@ export class UsuariosComponent implements OnInit {
   }
 
   buscar(): void {
-    this.usuarioService
-      .buscar(this.seleccion,this.busqueda)
-      .subscribe((usuarios) => (this.usuarios = usuarios));
+    if (this.seleccion && this.busqueda) {
+      this.usuarioService
+        .buscar(this.seleccion, this.busqueda)
+        .subscribe((usuarios) => (this.usuarios = usuarios));
+    } else if (! this.busqueda) {
+      this.usuarioService
+        .getUsuarios()
+        .subscribe((usuarios) => (this.usuarios = usuarios));
+    }
   }
 }

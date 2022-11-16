@@ -18,6 +18,8 @@ import { UsuarioService } from './usuario.service';
 })
 export class UsuariosComponent implements OnInit {
   usuarios: Usuario[];
+  seleccion: string;
+  busqueda: string;
 
   faDollar = faDollar;
   faEdit = faEdit;
@@ -31,6 +33,12 @@ export class UsuariosComponent implements OnInit {
   ngOnInit(): void {
     this.usuarioService
       .getUsuarios()
+      .subscribe((usuarios) => (this.usuarios = usuarios));
+  }
+
+  buscar(): void {
+    this.usuarioService
+      .buscar(this.seleccion,this.busqueda)
       .subscribe((usuarios) => (this.usuarios = usuarios));
   }
 }

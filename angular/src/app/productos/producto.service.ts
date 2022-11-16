@@ -17,4 +17,8 @@ export class ProductoService {
   public getProductos(): Observable<Producto[]> {
     return this.httpClient.get<Producto[]>(this.urlEndpoint);
   }
+
+  public buscarPorNombre(): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.urlEndpoint + "/");
+  }
 }

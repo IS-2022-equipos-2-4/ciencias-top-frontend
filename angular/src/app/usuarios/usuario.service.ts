@@ -17,4 +17,8 @@ export class UsuarioService {
   public getUsuarios(): Observable<Usuario[]> {
     return this.httpClient.get<Usuario[]>(this.urlEndpoint);
   }
+
+  public buscar(seleccion: string,busqueda: string): Observable<Usuario[]>{
+    return this.httpClient.get<Usuario[]>(this.urlEndpoint + "/" + seleccion + "/" + busqueda);
+  }
 }

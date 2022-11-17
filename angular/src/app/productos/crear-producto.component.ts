@@ -3,9 +3,11 @@ import { Producto } from './producto';
 
 import { ProductoService } from './producto.service';
 import { Router } from '@angular/router';
+import swal from 'sweetalert2';
+
 
 @Component({
-  selector: 'app-usuarios',
+  selector: 'app-productos',
   templateUrl: './crear-producto.component.html',
   styleUrls: ['./crear-producto.component.css'],
 })
@@ -21,9 +23,10 @@ export class CrearProductosComponent implements OnInit {
   ngOnInit(): void {}
 
   public crearProducto():void{
-    this.productoService.crearProducto(this.producto).subscribe(
-      Response => this.router.navigate(["/productos"]) 
-      
-    );
+    this.productoService.crearProducto(this.producto).subscribe(producto =>
+     {Response => this.router.navigate(['/productos']) 
+      swal.fire('Producto agregado',`Producto ${this.producto.nombre} creado con exito`,'success');
+    }
+    )
   }
 }

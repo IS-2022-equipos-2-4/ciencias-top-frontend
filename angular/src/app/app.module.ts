@@ -13,7 +13,6 @@ import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.component';
 import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -44,8 +43,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule,
-    NgbModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

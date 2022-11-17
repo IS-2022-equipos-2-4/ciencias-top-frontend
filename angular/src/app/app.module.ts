@@ -14,6 +14,8 @@ import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalComponent as ModalComponent } from './modal/modal.component';
 
 
 
@@ -37,7 +39,8 @@ const routes: Routes = [
     CrearUsuarioComponent,
     EditarUsuarioComponent,
     CrearProductosComponent,
-    SumarPumaPuntosComponent
+    SumarPumaPuntosComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

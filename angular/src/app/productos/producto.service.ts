@@ -10,7 +10,7 @@ import { catchError,throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductoService {
-  private readonly urlEndpoint = 'http://localhost:8080/api/productos/1';
+  private readonly urlEndpoint = 'http://localhost:8080/api/productos/';
   private readonly httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
   });
@@ -22,7 +22,7 @@ export class ProductoService {
   }
 
   public crearProducto(producto: Producto): Observable<Producto>{
-    return this.httpClient.post<Producto>(this.urlEndpoint,producto,{headers: this.httpHeaders})
+    return this.httpClient.post<Producto>(this.urlEndpoint+"/1",producto,{headers: this.httpHeaders})
     /*return this.httpClient.post<Producto>(this.urlEndpoint,producto,{headers: this.httpHeaders}).pipe(
       catchError(e => {
         swal.fire('Error al agregar producto',e.error.mensaje,'error');

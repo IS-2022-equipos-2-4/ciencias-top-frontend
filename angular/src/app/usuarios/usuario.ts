@@ -2,7 +2,7 @@ export class Usuario {
   id: number;
   nombre: string;
   correo: string;
-  contraseña?: string;
+  contrasena?: string;
   numInstitucional?: string;
   carrera?: string;
   telefono: string;

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Usuario } from './usuario';
+import { UsuarioDto } from './usuario.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -16,5 +17,15 @@ export class UsuarioService {
 
   public getUsuarios(): Observable<Usuario[]> {
     return this.httpClient.get<Usuario[]>(this.urlEndpoint);
+  }
+
+  public getUsuario(id: string): Observable<Usuario> {
+    const usuario = this.httpClient.get<Usuario>(`${this.urlEndpoint}/${id}`);
+
+    return usuario;
+  }
+
+  public editarUsuario(usuario: UsuarioDto): any {//Observable<Usuario> {
+    // hacer la llamada al endpoint para editar usuario con patch
   }
 }

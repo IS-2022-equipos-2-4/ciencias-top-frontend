@@ -18,9 +18,7 @@ import { UsuarioService } from './usuario.service';
   styleUrls: ['./usuarios.component.css'],
 })
 export class UsuariosComponent implements OnInit {
-  usuarios: Usuario[] = [
-    { id: 1, nombre: "bruh", correo: "aaaaa@gmail.com", contraseña: "psswd", numInstitucional: "321321321", carrera: "carrerita", telefono: "55880000000", activo: true, esProveedor: false, esAdmin: false }
-  ]
+  usuarios: Usuario[];
   
 
   faDollar = faDollar;

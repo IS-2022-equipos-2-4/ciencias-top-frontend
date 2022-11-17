@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Usuario } from './usuario';
+import { UsuarioDto } from './usuario.dto';
 
 import { UsuarioService } from './usuario.service';
 
@@ -8,7 +11,34 @@ import { UsuarioService } from './usuario.service';
   styleUrls: ['./editar-usuario.component.css'],
 })
 export class EditarUsuarioComponent implements OnInit {
-  constructor(private usuarioService: UsuarioService) {}
+  usuario: Usuario = new Usuario();
 
-  ngOnInit(): void {}
+  constructor(
+    private usuarioService: UsuarioService,
+    private router: Router,
+    private activateRoute: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.cargarUsuario();
+  }
+
+  public cargarUsuario(): void {
+    this.activateRoute.params.subscribe((params) => {
+      let id = params['id'];
+      if (id) {
+        this.usuarioService
+          .getUsuario(id)
+          .subscribe((usuario) => (this.usuario = usuario));
+      }
+    });
+  }
+
+  public editar(): void {
+    const usuarioDto = new UsuarioDto();
+    usuarioDto.nombre = this.usuario.nombre;
+    // el resto de las propiedades
+
+    this.usuarioService.editarUsuario(usuarioDto);
+  }
 }

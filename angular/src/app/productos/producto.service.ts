@@ -10,7 +10,7 @@ import { catchError,throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductoService {
-  private readonly urlEndpoint = 'http://localhost:8080/api/productos';
+  private readonly urlEndpoint = 'http://localhost:8080/api/productos/1';
   private readonly httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
   });

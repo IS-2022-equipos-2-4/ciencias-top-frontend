@@ -12,19 +12,23 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.component';
+import { LoginComponent } from './auth/login.component';
 import { FormsModule } from '@angular/forms';
 
-
-
 const routes: Routes = [
-  { path: '', redirectTo: '/usuarios', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'usuarios', component: UsuariosComponent },
   { path: 'usuarios/crear', component: CrearUsuarioComponent },
   { path: 'usuarios/editar/:id', component: EditarUsuarioComponent },
-  { path: 'usuarios/sumar-pumapuntos/:id', component: SumarPumaPuntosComponent },
+  {
+    path: 'usuarios/sumar-pumapuntos/:id',
+    component: SumarPumaPuntosComponent,
+  },
 
   { path: 'productos', component: ProductosComponent },
   { path: 'productos/crear', component: CrearProductosComponent },
+
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
@@ -36,14 +40,15 @@ const routes: Routes = [
     CrearUsuarioComponent,
     EditarUsuarioComponent,
     CrearProductosComponent,
-    SumarPumaPuntosComponent
+    SumarPumaPuntosComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

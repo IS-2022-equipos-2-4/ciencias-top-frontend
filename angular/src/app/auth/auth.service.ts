@@ -90,11 +90,11 @@ export class AuthService {
   }
 
   esAdmin(): boolean {
-    return this._usuario.esAdmin ? this._usuario.esAdmin: false;
+    return this._usuario?.esAdmin ? this._usuario.esAdmin: false;
   }
 
   esProveedor(): boolean {
-    return this._usuario.esProveedor ? this._usuario.esAdmin: false;
+    return this._usuario?.esProveedor ? this._usuario.esAdmin: false;
   }
 
   logout(): void {

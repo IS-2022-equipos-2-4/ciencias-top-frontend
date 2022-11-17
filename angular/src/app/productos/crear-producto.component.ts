@@ -3,7 +3,7 @@ import { Producto } from './producto';
 
 import { ProductoService } from './producto.service';
 import { Router } from '@angular/router';
-import swal from 'sweetalert2';
+//import swal from 'sweetalert2';
 
 
 @Component({
@@ -24,9 +24,10 @@ export class CrearProductosComponent implements OnInit {
 
   public crearProducto():void{
     this.productoService.crearProducto(this.producto).subscribe(producto =>
-     {Response => this.router.navigate(['/productos']) 
-      swal.fire('Producto agregado',`Producto ${this.producto.nombre} creado con exito`,'success');
-    }
+     //{
+      Response => this.router.navigate(['/productos']) 
+      //swal.fire('Producto agregado',`Producto ${this.producto.nombre} creado con exito`,'success');
+    //}
     )
   }
 }

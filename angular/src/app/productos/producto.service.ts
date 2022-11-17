@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { of } from 'rxjs';
 import { Producto } from './producto';
 import { catchError,throwError } from 'rxjs';
-import swal from 'sweetalert2';
+//import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -22,12 +22,13 @@ export class ProductoService {
   }
 
   public crearProducto(producto: Producto): Observable<Producto>{
-    return this.httpClient.post<Producto>(this.urlEndpoint,producto,{headers: this.httpHeaders}).pipe(
+    return this.httpClient.post<Producto>(this.urlEndpoint,producto,{headers: this.httpHeaders})
+    /*return this.httpClient.post<Producto>(this.urlEndpoint,producto,{headers: this.httpHeaders}).pipe(
       catchError(e => {
         swal.fire('Error al agregar producto',e.error.mensaje,'error');
         return throwError(()=>e);
       })
-    );
+    );*/
 
   }
 }

@@ -45,14 +45,6 @@ export class ProductosComponent implements OnInit {
     }
     if (this.seleccion && this.busqueda) {
       switch(this.seleccion) { 
-        case "id":
-          alert("En proceso jeje")
-          /*
-           *this.productoService
-           *.buscar_id(this.busqueda)
-           *.subscribe((productos) => (this.productos = productos));
-          */
-          break;
         case "nombre":
           this.productoService
           .buscar_nombre(this.busqueda)

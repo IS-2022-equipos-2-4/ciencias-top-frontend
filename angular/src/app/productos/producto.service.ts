@@ -23,6 +23,12 @@ export class ProductoService {
   }
 
   public buscar_id(busqueda: string): Observable<Producto[]>{
+    if( this.httpClient.get<Producto[]>(this.urlEndpoint + '/' + busqueda) ){
+      alert("vacio")
+    }
+    console.log(typeof(this.httpClient.get<Producto[]>(this.urlEndpoint + '/' + busqueda)))
+    let list: Array<object> = [ this.httpClient.get<Producto[]>(this.urlEndpoint + '/' + busqueda)];
+    
     return this.httpClient.get<Producto[]>(this.urlEndpoint + '/' + busqueda);
   }
 

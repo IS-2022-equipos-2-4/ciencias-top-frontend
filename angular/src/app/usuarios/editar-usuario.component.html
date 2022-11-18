@@ -25,24 +25,20 @@
               </div>
           </div>
 
-
-          <div class="form-group">
-              <label for="" class="col-form-label col-sm-2">Es Proveedor</label>
-              <div class="col-sm-6">
-                  <input type = "text" class="form-control" [(ngModel)]="usuario.esProveedor" name="esProveedor">
-              </div>
+          <div class="form group">
+            <input class="form-check-input" type="checkbox"
+              id="esProveedor" name="esProveedor" [(ngModel)]="usuario.esProveedor">
+            <label class="form-check-label" for="esProveedor">Proveedor</label>
           </div>
 
-
-          <div class="form-group">
-              <label for="" class="col-form-label col-sm-2">Es Admin</label>
-              <div class="col-sm-6">
-                  <input type = "text" class="form-control" [(ngModel)]="usuario.esAdmin" name="esAdmin">
-              </div>
+          <div class="form group">
+            <input class="form-check-input" type="checkbox"
+              id="esAdmin" name="esAdmin" [(ngModel)]="usuario.esAdmin">
+            <label class="form-check-label" for="esAdmin">Administrador</label>
           </div>
 
           <div class="form-group row">
-                <button type="button" class="btn btn-secondary btn-lg" [routerLink]="['/usuarios/editar/']">Realizar cambios</button>
+                <button type="button" class="btn btn-secondary btn-lg" [routerLink]="['/usuarios/editar/']">Aplicar</button>
           <div>
     </div>
 </div>

@@ -12,6 +12,9 @@ export class ProductoService {
   private readonly httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
   });
+  private authorizationHeaders = new HttpHeaders({
+    Authorization: `Bearer ${this.authService.token}`,
+  });
 
   constructor(
     private httpClient: HttpClient,
@@ -22,12 +25,22 @@ export class ProductoService {
     return this.httpClient.get<Producto[]>(this.urlEndpoint);
   }
 
-  public buscar_nombre(busqueda: string): Observable<Producto[]>{
-    return this.httpClient.get<Producto[]>(this.urlEndpoint + "/nombre/" + busqueda);
+  public buscar_nombre(busqueda: string): Observable<Producto[]> {
+    return this.httpClient.get<Producto[]>(
+      `${this.urlEndpoint}/nombre/${busqueda}`,
+      {
+        headers: this.authorizationHeaders,
+      }
+    );
   }
 
-  public buscar_codigo(busqueda: string): Observable<Producto[]>{
-    return this.httpClient.get<Producto[]>(this.urlEndpoint + "/codigo/" + busqueda);
+  public buscar_codigo(busqueda: string): Observable<Producto[]> {
+    return this.httpClient.get<Producto[]>(
+      `${this.urlEndpoint}/codigo/${busqueda}`,
+      {
+        headers: this.authorizationHeaders,
+      }
+    );
   }
 
   public tieneAcceso(producto: Producto): boolean {

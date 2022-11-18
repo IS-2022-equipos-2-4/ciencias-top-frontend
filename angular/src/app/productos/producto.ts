@@ -7,5 +7,6 @@ export class Producto {
   descripcion: string;
   costo: number;
   stock: number;
+  limitePrestamo: number;
   proveedor: Usuario;
 }

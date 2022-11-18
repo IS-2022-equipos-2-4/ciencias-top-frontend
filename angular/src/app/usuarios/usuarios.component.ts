@@ -3,6 +3,7 @@ import {
   faCheck,
   faDollar,
   faEdit,
+  faL,
   faSquare,
   faTrashAlt,
   faXmark,
@@ -45,7 +46,7 @@ export class UsuariosComponent implements OnInit {
         this.usuarioService
           .buscar(this.criterio, this.busquedaEnCriterio)
           .subscribe((usuarios) => (this.usuarios = usuarios));
-      } else if (!this.busquedaEnCriterio) { 
+      } else if (!this.busquedaEnCriterio) {
         this.usuarioService
           .getUsuarios()
           .subscribe((usuarios) => (this.usuarios = usuarios));

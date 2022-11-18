@@ -85,6 +85,7 @@ const routes: Routes = [
     LoginComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     FontAwesomeModule,

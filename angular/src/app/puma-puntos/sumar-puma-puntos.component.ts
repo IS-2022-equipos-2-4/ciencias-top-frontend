@@ -20,17 +20,17 @@ export class SumarPumaPuntosComponent implements OnInit {
   ngOnInit(): void {}
 
 
-  public update(): void {
-    this.usuarioService.update(this.pumapuntos).subscribe(
-      Response => this.router.navigate(['/api/pumapuntos'])
+  public update(tmp): void {
+    this.usuarioService.update(tmp).subscribe(
+      Response => this.router.navigate(['/usuarios'])
     )
   }
 
   public sumar(): void {
-    console.log(this.pumapuntos);
+    this.update(this.pumapuntos);
   }
 
   public restar(): void {
-    console.log(this.pumapuntos);
+    this.update(-1 * this.pumapuntos);
   }
 }

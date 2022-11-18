@@ -45,8 +45,8 @@ export class EditarUsuarioComponent implements OnInit {
 
     console.log(usuarioDto);
 
-    this.usuarioService.editarUsuario(usuarioDto).subscribe(
-      response => this.router.navigate['/usuarios']
-      )
+    this.usuarioService
+      .editarUsuario(this.usuario.id, usuarioDto)
+      .subscribe((response) => this.router.navigate['/usuarios']);
   }
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import swal from 'sweetalert2';
+
 import { Usuario } from './usuario';
 import { UsuarioDto } from './usuario.dto';
-
 import { UsuarioService } from './usuario.service';
 
 @Component({
@@ -45,8 +46,16 @@ export class EditarUsuarioComponent implements OnInit {
 
     console.log(usuarioDto);
 
-    this.usuarioService
-      .editarUsuario(this.usuario.id, usuarioDto)
-      .subscribe((response) => this.router.navigate['/usuarios']);
+    this.usuarioService.editarUsuario(this.usuario.id, usuarioDto).subscribe(
+      (response) => {
+        this.router.navigate(['/usuarios']);
+        swal.fire(
+          'Usuario editado',
+          `Usuario ${this.usuario.numInstitucional} editado con éxito`,
+          'success'
+        );
+      },
+      (err) => swal.fire(`Error ${err.status}`, err.message, 'error')
+    );
   }
 }

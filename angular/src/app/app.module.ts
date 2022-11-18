@@ -39,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'usuarios/editar/:id',
-    component: UsuariosComponent,
+    component: EditarUsuarioComponent,
     canActivate: [AuthGuard],
     data: {
       allowedRoles: ['admin'],

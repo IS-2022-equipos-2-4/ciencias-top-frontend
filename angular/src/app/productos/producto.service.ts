@@ -53,4 +53,8 @@ export class ProductoService {
   public puedeCrear(): boolean {
     return this.authService.esAdmin() || this.authService.esProveedor();
   }
+
+  public estaAutenticado(): boolean {
+    return this.authService.isAuthenticated();
+  }
 }

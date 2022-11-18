@@ -43,7 +43,7 @@
                 <th scope="col">Costo</th>
                 <th scope="col">Stock</th>
                 <th scope="col">Limite</th>
-                <th scope="col">Acción</th>
+                <th *ngIf="estaAutenticado()" scope="col">Acción</th>
               </tr>
             </thead>
             <tbody>
@@ -56,8 +56,8 @@
                 <td>{{producto.costo}}</td>
                 <td>{{producto.stock}}</td>
                 <td>{{producto.limitePrestamo}}</td>
-                <td>
-                  <button type="button" class="btn btn-primary btn-space">
+                <td *ngIf="estaAutenticado()">
+                  <button  type="button" class="btn btn-primary btn-space">
                     <fa-icon [icon]="faShoppingCart"></fa-icon>
                   </button>
                   <button *ngIf="tieneAcceso(producto)" type="button" class="btn btn-success btn-space">

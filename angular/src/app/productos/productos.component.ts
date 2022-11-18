@@ -41,23 +41,27 @@ export class ProductosComponent implements OnInit {
   }
 
   buscar(): void {
-    if(!this.seleccion || this.seleccion=="undefined"){
-      alert("No escogiste ningun parametro de busqueda. Te mostrare todos los Productos")
+    if (!this.seleccion || this.seleccion == 'undefined') {
+      alert(
+        'No escogiste ningun parametro de busqueda. Te mostrare todos los Productos'
+      );
     }
-    if(!this.busqueda){
-      alert("No escribiste ninguna cadena para busqueda. Te mostrare todos los Productos")
+    if (!this.busqueda) {
+      alert(
+        'No escribiste ninguna cadena para busqueda. Te mostrare todos los Productos'
+      );
     }
     if (this.seleccion && this.busqueda) {
-      switch(this.seleccion) { 
-        case "nombre":
+      switch (this.seleccion) {
+        case 'nombre':
           this.productoService
-          .buscar_nombre(this.busqueda)
-          .subscribe((productos) => (this.productos = productos));
+            .buscar_nombre(this.busqueda)
+            .subscribe((productos) => (this.productos = productos));
           break;
-        case "codigo":
+        case 'codigo':
           this.productoService
-          .buscar_codigo(this.busqueda)
-          .subscribe((productos) => (this.productos = productos));
+            .buscar_codigo(this.busqueda)
+            .subscribe((productos) => (this.productos = productos));
           break;
       }
     } else {
@@ -73,5 +77,9 @@ export class ProductosComponent implements OnInit {
 
   puedeCrear(): boolean {
     return this.productoService.puedeCrear();
+  }
+
+  estaAutenticado(): boolean {
+    return this.productoService.estaAutenticado();
   }
 }

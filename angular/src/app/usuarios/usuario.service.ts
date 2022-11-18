@@ -27,6 +27,19 @@ export class UsuarioService {
 
   public editarUsuario(usuario: UsuarioDto): Observable<Usuario> {
     // hacer la llamada al endpoint para editar usuario con patch
-    return this.httpClient.patch<Usuario>(this.urlEndpoint, this.httpHeaders);// httpHeaders used to be user
+    return this.httpClient.patch<Usuario>(this.urlEndpoint, this.httpHeaders);
+  }
+
+
+  /**
+   * Metodo que busca usuarios en la base de datos por medio de un criterio y algo que buscar.
+   * @param criterio por que vamos a buscar (correo, nombre, numero, etc.)
+   * @param busquedaEnCriterio el texto que queremos verificar con el criterio dado
+   * @returns la lista de usuarios que cumplan con la busqueda con un criterio dado.
+   */
+  public buscar(criterio: string, busquedaEnCriterio: string): Observable<Usuario[]> {
+    return this.httpClient.get<Usuario[]>(
+      this.urlEndpoint + '/' + criterio + '/' + busquedaEnCriterio
+    );
   }
 }

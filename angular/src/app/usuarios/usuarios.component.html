@@ -8,12 +8,11 @@
   <div class="container mb-4 mt-0">
     <div class="input">
       <form class="d-flex" role="search" (ngSubmit)="buscar()">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="busqueda" name="busqueda" value="">
-        <select class="form-select-sm me-2" [(ngModel)]="seleccion" name="seleccion">
-          <option value="undefined" selected>Método de búsqueda</option>
-          <option value="nombre">Por nombre</option>
-          <option value="correo">Por correo</option>
-          <option value="institucional">Por no. de cuenta/trabajador</option>
+        <input class="form-control me-2" type="search" placeholder="Ingrese texto aqui" aria-label="Search" [(ngModel)]="busquedaEnCriterio" name="busquedaEnCriterio" value=""> 
+        <select class="form-select-sm me-2" [(ngModel)]="criterio" name="criterio">
+          <option value="nombre" selected>Buscar por nombre de usuario</option>
+          <option value="correo">Buscar por correo registrado</option>
+          <option value="institucional">Buscar por numero institucional</option>
         </select>
         <button class="btn btn-outline-success" type="submit" role="button">Buscar</button>
       </form>
@@ -25,7 +24,7 @@
       </div>
       <div style="float:right">
         <button class="btn btn-rounded btn-primary" type="btn" [routerLink]="['/usuarios/crear']">Crear
-          Producto</button>
+          Usuario</button>
       </div>
       <div style="clear: both;"></div>
     </div>

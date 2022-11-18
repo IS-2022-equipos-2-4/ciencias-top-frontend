@@ -18,9 +18,15 @@ export class UsuarioService {
     return this.httpClient.get<Usuario[]>(this.urlEndpoint);
   }
 
-  public buscar(seleccion: string, busqueda: string): Observable<Usuario[]> {
+  /**
+   * Metodo que busca usuarios en la base de datos por medio de un criterio y algo que buscar.
+   * @param criterio por que vamos a buscar (correo, nombre, numero, etc.)
+   * @param busquedaEnCriterio el texto que queremos verificar con el criterio dado
+   * @returns la lista de usuarios que cumplan con la busqueda con un criterio dado.
+   */
+  public buscar(criterio: string, busquedaEnCriterio: string): Observable<Usuario[]> {
     return this.httpClient.get<Usuario[]>(
-      this.urlEndpoint + '/' + seleccion + '/' + busqueda
+      this.urlEndpoint + '/' + criterio + '/' + busquedaEnCriterio
     );
   }
 }

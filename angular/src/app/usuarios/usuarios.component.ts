@@ -18,9 +18,9 @@ import { UsuarioService } from './usuario.service';
 })
 export class UsuariosComponent implements OnInit {
   usuarios: Usuario[];
-  seleccion: string;
-  busqueda: string;
+  busquedaEnCriterio: string
 
+  criterio = "nombre"
   faDollar = faDollar;
   faEdit = faEdit;
   faTrashAlt = faTrashAlt;
@@ -36,21 +36,19 @@ export class UsuariosComponent implements OnInit {
       .subscribe((usuarios) => (this.usuarios = usuarios));
   }
 
+  /**
+   * Hace una busqueda en la base de datos para desplegar a los usuarios que correspondan a un criterio, incluso si no hay nadie que lo cumpla.
+   * En caso de que uno o ambos valores de busqueda esten vacios, regresa la lista de todos los usuarios.
+   */
   buscar(): void {
-    if(!this.seleccion || this.seleccion=="undefined"){
-      alert("No escogiste ningun parametro de busqueda. Te mostrare todos los Usuarios")
+      if (this.busquedaEnCriterio && this.criterio) {
+        this.usuarioService
+          .buscar(this.criterio, this.busquedaEnCriterio)
+          .subscribe((usuarios) => (this.usuarios = usuarios));
+      } else if (!this.busquedaEnCriterio) { 
+        this.usuarioService
+          .getUsuarios()
+          .subscribe((usuarios) => (this.usuarios = usuarios));
+      }
     }
-    if(!this.busqueda){
-      alert("No escribiste ninguna cadena para busqueda. Te mostrare todos los Usuarios")
-    }
-    if (this.seleccion && this.busqueda) {
-      this.usuarioService
-        .buscar(this.seleccion, this.busqueda)
-        .subscribe((usuarios) => (this.usuarios = usuarios));
-    } else {
-      this.usuarioService
-        .getUsuarios()
-        .subscribe((usuarios) => (this.usuarios = usuarios));
-    }
-  }
 }

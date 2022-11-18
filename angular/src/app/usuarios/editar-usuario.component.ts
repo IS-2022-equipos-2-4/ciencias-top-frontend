@@ -43,6 +43,8 @@ export class EditarUsuarioComponent implements OnInit {
     usuarioDto.esProveedor = this.usuario.esProveedor;
     usuarioDto.esAdmin = this.usuario.esAdmin;
 
+    console.log(usuarioDto);
+
     this.usuarioService.editarUsuario(usuarioDto).subscribe(
       response => this.router.navigate['/usuarios']
       )

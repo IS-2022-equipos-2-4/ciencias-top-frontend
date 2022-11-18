@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'usuarios/crear',
-    component: UsuariosComponent,
+    component: CrearUsuarioComponent,
     canActivate: [AuthGuard],
     data: {
       allowedRoles: ['admin'],

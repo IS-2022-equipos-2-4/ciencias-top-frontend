@@ -9,12 +9,6 @@ import { Usuario } from './usuario';
 })
 export class UsuarioService {
   private readonly urlEndpoint = 'http://localhost:8080/api/usuarios';
-  private readonly httpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json',
-  });
-  private authorizationHeaders = new HttpHeaders({
-    Authorization: `Bearer ${this.authService.token}`,
-  });
 
   constructor(
     private httpClient: HttpClient,
@@ -22,8 +16,12 @@ export class UsuarioService {
   ) {}
 
   public getUsuarios(): Observable<Usuario[]> {
+    const httpHeaders = new HttpHeaders({
+      'Authorization':  `Bearer ${this.authService.token}`
+    });
+
     return this.httpClient.get<Usuario[]>(this.urlEndpoint, {
-      headers: this.authorizationHeaders,
+      headers: httpHeaders,
     });
   }
 
@@ -37,17 +35,27 @@ export class UsuarioService {
     criterio: string,
     busquedaEnCriterio: string
   ): Observable<Usuario[]> {
+    const httpHeaders = new HttpHeaders({
+      'Authorization':  `Bearer ${this.authService.token}`
+    });
+
     return this.httpClient.get<Usuario[]>(
       `${this.urlEndpoint}/${criterio}/${busquedaEnCriterio}`,
       {
-        headers: this.authorizationHeaders,
+        headers: httpHeaders,
       }
     );
   }
 
   public crear(usuario: Usuario): Observable<Usuario> {
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization':  `Bearer ${this.authService.token}`
+    });
+
+    console.log(httpHeaders)
     return this.httpClient
-      .post<Usuario>(this.urlEndpoint, usuario, { headers: this.httpHeaders })
+      .post<Usuario>(this.urlEndpoint, usuario, { headers: httpHeaders })
       .pipe(
         catchError((e) => {
           Swal.fire('Error al crear el usuario', e.error.mensaje, 'error');

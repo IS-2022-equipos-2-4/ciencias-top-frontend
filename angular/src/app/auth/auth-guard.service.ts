@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 import { AuthService } from './auth.service';
 
@@ -13,12 +14,13 @@ export class AuthGuard implements CanActivate {
 
     const isAllowed =
       (allowedRoles.includes('admin') !== undefined && this.authService.esAdmin()) ||
-      (allowedRoles.includes('provider') !== undefined &&
+      (allowedRoles.includes('provider') !== false &&
         this.authService.esProveedor()) ||
-      (allowedRoles.includes('user') !== undefined &&
+      (allowedRoles.includes('user') !== false &&
         this.authService.isAuthenticated());
 
     if (!isAllowed) {
+      Swal.fire('Error', `Acceso denegado`, 'error');
       this.router.navigate([redirectionRoute]);
     }
 

@@ -1,23 +1,20 @@
-Sumar Puma Puntos
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-    Launch demo modal
+<h1 style="text-align: center">&nbsp;</h1>
+<h1 style="text-align: center">
+  <strong>Escribe la cantidad de Puma Puntos</strong>
+</h1>
+<form (ngSubmit)="update()">
+<p style="text-align: center">&nbsp;</p>
+<p style="text-align: center">
+  <input id="cantidad" max="100" min="1" type="number" name="cantidad" [(ngModel)]="pumapuntos" />
+</p>
+<p style="text-align: center">&nbsp;</p>
+<p style="text-align: center">
+  <button href="#" name="RestarBtn" class="RestarButton" type="submit" (ngSubmit)="restar()">
+    Restar
   </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">...</div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+  <button href="#" name="SumarBtn" class="SumarButton" type="submit" (ngSubmit)="sumar()">
+    Sumar
+  </button>
+</p>
+</form>

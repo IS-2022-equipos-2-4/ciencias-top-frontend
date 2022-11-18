@@ -23,7 +23,7 @@
         <h4>Detalles Productos:</h4>
       </div>
       <div style="float:right">
-        <button class="btn btn-rounded btn-primary" type="btn" [routerLink]="['/productos/crear']">Crear
+        <button *ngIf="puedeCrear()" class="btn btn-rounded btn-primary" type="btn" [routerLink]="['/productos/crear']">Crear
           Producto</button>
       </div>
       <div style="clear: both;"></div>
@@ -60,10 +60,10 @@
                   <button type="button" class="btn btn-primary btn-space">
                     <fa-icon [icon]="faShoppingCart"></fa-icon>
                   </button>
-                  <button type="button" class="btn btn-success btn-space">
+                  <button *ngIf="tieneAcceso(producto)" type="button" class="btn btn-success btn-space">
                     <fa-icon [icon]="faEdit"></fa-icon>
                   </button>
-                  <button type="button" class="btn-space btn btn-danger btn-space">
+                  <button *ngIf="tieneAcceso(producto)" type="button" class="btn-space btn btn-danger btn-space">
                     <fa-icon [icon]="faTrashAlt"></fa-icon>
                   </button>
                 </td>

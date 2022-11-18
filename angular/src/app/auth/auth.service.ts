@@ -50,8 +50,6 @@ export class AuthService {
     params.set('username', usuario.numInstitucional);
     params.set('password', usuario.contrasena);
 
-    console.log(params.toString());
-
     return this.http.post<any>(urlEndPoint, params.toString(), {
       headers: httpHeaders,
     });
@@ -66,7 +64,7 @@ export class AuthService {
     this._usuario.numInstitucional = payload.numInstitucional;
     this._usuario.esAdmin = payload.esAdmin;
     this._usuario.esProveedor = payload.esProveedor;
-    sessionStorage.setItem('username', JSON.stringify(this._usuario));
+    sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
   }
 
   guardarToken(accessToken: string): void {
@@ -90,11 +88,11 @@ export class AuthService {
   }
 
   esAdmin(): boolean {
-    return this._usuario?.esAdmin ? this._usuario.esAdmin: false;
+    return this.usuario?.esAdmin ? this.usuario.esAdmin : false;
   }
 
   esProveedor(): boolean {
-    return this._usuario?.esProveedor ? this._usuario.esAdmin: false;
+    return this.usuario?.esProveedor ? this.usuario.esProveedor : false;
   }
 
   logout(): void {
@@ -103,5 +101,9 @@ export class AuthService {
     sessionStorage.clear();
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('usuario');
+  }
+
+  getId(): number {
+    return this.usuario.id;
   }
 }

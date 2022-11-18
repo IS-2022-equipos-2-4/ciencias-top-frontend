@@ -7,6 +7,7 @@ import {
   faTrashAlt,
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from '../auth/auth.service';
 
 import { Producto } from './producto';
 import { ProductoService } from './producto.service';
@@ -26,11 +27,22 @@ export class ProductosComponent implements OnInit {
   faXMark = faXmark;
   faSquare = faSquare;
 
-  constructor(private readonly productoService: ProductoService) {}
+  constructor(
+    private readonly productoService: ProductoService,
+    public authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.productoService
       .getProductos()
       .subscribe((productos) => (this.productos = productos));
+  }
+
+  tieneAcceso(producto: Producto): boolean {
+    return this.productoService.tieneAcceso(producto);
+  }
+
+  puedeCrear(): boolean {
+    return this.productoService.puedeCrear();
   }
 }

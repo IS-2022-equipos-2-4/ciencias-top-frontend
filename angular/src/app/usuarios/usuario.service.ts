@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { Usuario } from './usuario';
 
 @Injectable({
@@ -12,10 +13,15 @@ export class UsuarioService {
     'Content-Type': 'application/json',
   });
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    public authService: AuthService
+  ) {}
 
   public getUsuarios(): Observable<Usuario[]> {
-    return this.httpClient.get<Usuario[]>(this.urlEndpoint);
+    return this.httpClient.get<Usuario[]>(this.urlEndpoint, {
+      headers: { authorization: `Bearer ${this.authService.token}` },
+    });
   }
 
   /**
@@ -24,7 +30,10 @@ export class UsuarioService {
    * @param busquedaEnCriterio el texto que queremos verificar con el criterio dado
    * @returns la lista de usuarios que cumplan con la busqueda con un criterio dado.
    */
-  public buscar(criterio: string, busquedaEnCriterio: string): Observable<Usuario[]> {
+  public buscar(
+    criterio: string,
+    busquedaEnCriterio: string
+  ): Observable<Usuario[]> {
     return this.httpClient.get<Usuario[]>(
       this.urlEndpoint + '/' + criterio + '/' + busquedaEnCriterio
     );

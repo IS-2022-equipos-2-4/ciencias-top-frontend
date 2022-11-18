@@ -12,6 +12,9 @@ export class UsuarioService {
   private readonly httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
   });
+  private authorizationHeaders = new HttpHeaders({
+    Authorization: `Bearer ${this.authService.token}`,
+  });
 
   constructor(
     private httpClient: HttpClient,
@@ -20,7 +23,7 @@ export class UsuarioService {
 
   public getUsuarios(): Observable<Usuario[]> {
     return this.httpClient.get<Usuario[]>(this.urlEndpoint, {
-      headers: { authorization: `Bearer ${this.authService.token}` },
+      headers: this.authorizationHeaders,
     });
   }
 
@@ -35,7 +38,10 @@ export class UsuarioService {
     busquedaEnCriterio: string
   ): Observable<Usuario[]> {
     return this.httpClient.get<Usuario[]>(
-      this.urlEndpoint + '/' + criterio + '/' + busquedaEnCriterio
+      `${this.urlEndpoint}/${criterio}/${busquedaEnCriterio}`,
+      {
+        headers: this.authorizationHeaders,
+      }
     );
   }
 }

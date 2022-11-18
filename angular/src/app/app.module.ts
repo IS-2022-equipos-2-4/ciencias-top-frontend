@@ -7,11 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ProductosComponent } from './productos/productos.component';
 import { CrearProductosComponent } from './productos/crear-producto.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
+import { ProductosComponent } from './productos/productos.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.component';
 
 
@@ -20,7 +20,10 @@ const routes: Routes = [
   { path: 'usuarios', component: UsuariosComponent },
   { path: 'usuarios/crear', component: CrearUsuarioComponent },
   { path: 'usuarios/editar/:id', component: EditarUsuarioComponent },
-  { path: 'usuarios/sumar-pumapuntos/:id', component: SumarPumaPuntosComponent },
+  {
+    path: 'usuarios/sumar-pumapuntos/:id',
+    component: SumarPumaPuntosComponent,
+  },
 
   { path: 'productos', component: ProductosComponent },
   { path: 'productos/crear', component: CrearProductosComponent },
@@ -38,6 +41,7 @@ const routes: Routes = [
     SumarPumaPuntosComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     FontAwesomeModule,

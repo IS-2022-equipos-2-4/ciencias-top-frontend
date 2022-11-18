@@ -17,4 +17,8 @@ export class UsuarioService {
   public getUsuarios(): Observable<Usuario[]> {
     return this.httpClient.get<Usuario[]>(this.urlEndpoint);
   }
+
+  public crear(usuario: Usuario):Observable<Usuario>{
+    return this.httpClient.post<Usuario>(this.urlEndpoint, usuario,{headers: this.httpHeaders})
+  }
 }

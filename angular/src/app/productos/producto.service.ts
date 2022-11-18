@@ -18,20 +18,6 @@ export class ProductoService {
     return this.httpClient.get<Producto[]>(this.urlEndpoint);
   }
 
-  public buscarPorNombre(): Observable<Producto[]>{
-    return this.httpClient.get<Producto[]>(this.urlEndpoint + "/");
-  }
-
-  public buscar_id(busqueda: string): Observable<Producto[]>{
-    if( this.httpClient.get<Producto[]>(this.urlEndpoint + '/' + busqueda) ){
-      alert("vacio")
-    }
-    console.log(typeof(this.httpClient.get<Producto[]>(this.urlEndpoint + '/' + busqueda)))
-    let list: Array<object> = [ this.httpClient.get<Producto[]>(this.urlEndpoint + '/' + busqueda)];
-    
-    return this.httpClient.get<Producto[]>(this.urlEndpoint + '/' + busqueda);
-  }
-
   public buscar_nombre(busqueda: string): Observable<Producto[]>{
     return this.httpClient.get<Producto[]>(this.urlEndpoint + "/nombre/" + busqueda);
   }

@@ -59,7 +59,7 @@ export class ProductosComponent implements OnInit {
     } else {
       this.productoService
         .getProductos()
-        .subscribe((productos) => (this.productos = this.productos));
+        .subscribe((productos) => (this.productos = productos));
     }
   }
 }

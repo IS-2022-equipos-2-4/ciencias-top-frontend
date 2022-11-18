@@ -22,14 +22,22 @@ export class ProductoService {
     return this.httpClient.get<Producto[]>(this.urlEndpoint);
   }
 
-  tieneAcceso(producto: Producto): boolean {
+  public buscar_nombre(busqueda: string): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.urlEndpoint + "/nombre/" + busqueda);
+  }
+
+  public buscar_codigo(busqueda: string): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.urlEndpoint + "/codigo/" + busqueda);
+  }
+
+  public tieneAcceso(producto: Producto): boolean {
     return (
       this.authService.esAdmin() ||
       this.authService.usuario.id == producto.proveedor.id
     );
   }
 
-  puedeCrear(): boolean {
+  public puedeCrear(): boolean {
     return this.authService.esAdmin() || this.authService.esProveedor();
   }
 }

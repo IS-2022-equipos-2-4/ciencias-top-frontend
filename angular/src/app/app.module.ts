@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './auth/auth-guard.service';
+import { AuthService } from './auth/auth.service';
 import { LoginComponent } from './auth/login.component';
 import { HeaderComponent } from './header/header.component';
 import { CrearProductosComponent } from './productos/crear-producto.component';
@@ -14,8 +16,6 @@ import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.compon
 import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
-import { AuthGuard } from './auth/auth-guard.service';
-import { AuthService } from './auth/auth.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },

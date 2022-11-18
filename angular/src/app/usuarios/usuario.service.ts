@@ -90,7 +90,7 @@ export class UsuarioService {
       .post<Usuario>(this.urlEndpoint, usuario, { headers: httpHeaders })
       .pipe(
         catchError((e) => {
-          Swal.fire('Error al crear el usuario', e.error.mensaje, 'error');
+          Swal.fire('Error al crear el usuario', e.error.message, 'error');
           return throwError(() => e);
         })
       );

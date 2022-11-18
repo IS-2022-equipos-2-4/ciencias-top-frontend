@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 import { Usuario } from '../usuarios/usuario';
 
 @Injectable({
@@ -101,6 +102,7 @@ export class AuthService {
     sessionStorage.clear();
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('usuario');
+    Swal.fire('Sesión cerrada', 'Se ha cerrado sesión con éxito, nos vemos! :)', 'info');
   }
 
   getId(): number {

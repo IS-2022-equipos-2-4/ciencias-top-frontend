@@ -34,7 +34,7 @@ export class ProductoService {
  */
     return this.httpClient.post<Producto>(this.urlEndpoint+"/1",producto,{headers: this.httpHeaders}).pipe(
       catchError(e => {
-        swal.fire('Error al agregar producto',e.error.mensaje,'error');
+        swal.fire(e.error.mensaje,e.error.error,'error');
         return throwError(()=>e);
       })
     );

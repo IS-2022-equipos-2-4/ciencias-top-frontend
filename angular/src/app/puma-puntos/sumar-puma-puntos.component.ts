@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { UsuarioService } from './puma-puntos.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Producto } from '../productos/producto';
+import { PumapuntosService} from './puma-puntos.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usuarios',
@@ -11,26 +12,52 @@ import { UsuarioService } from './puma-puntos.service';
 export class SumarPumaPuntosComponent implements OnInit {
 
   pumapuntos = 0;
+  idUsuario: number;
 
   constructor(
-    private usuarioService: UsuarioService,     
-    private router: Router
+    private pumaService: PumapuntosService,     
+    private router: Router,
+    private activateRoute: ActivatedRoute
     ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getId();
+  }
 
 
-  public update(tmp): void {
-    this.usuarioService.update(tmp).subscribe(
-      Response => this.router.navigate(['/usuarios'])
-    )
+  public getId(): void {
+    this.activateRoute.params.subscribe((params) => {
+      this.idUsuario = params['id'];
+    });
   }
 
   public sumar(): void {
-    this.update(this.pumapuntos);
+    this.pumaService.update(this.pumapuntos,this.idUsuario).subscribe(
+      (response) => {
+        this.router.navigate(['/usuarios']);
+        swal.fire(
+          'Pumapuntos sumados!',
+          `Se le han sumado ${this.pumapuntos} pumapuntos al usuario con ID ${this.idUsuario}!`,
+          'success'
+        );
+      },
+      (err) => swal.fire(`Error ${err.status}`, err.error.message, 'error')
+    )
   }
 
   public restar(): void {
-    this.update(-1 * this.pumapuntos);
+    this.pumaService.update(this.pumapuntos * -1,this.idUsuario).subscribe(
+      (response) => {
+        this.router.navigate(['/usuarios']);
+        swal.fire(
+          'Pumapuntos restados!',
+          `Se le han restado ${this.pumapuntos} pumapuntos al usuario con id ${this.idUsuario}!`,
+          'success'
+        );
+        
+      },
+      (err) => {
+        swal.fire(`Error ${err.status}`, err.error.message, 'error')}
+    )
   }
 }

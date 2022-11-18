@@ -1,23 +1,33 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UsuarioService {
-  private readonly urlEndpoint:string = 'http://localhost:8080/api/pumapuntos/1/sumar/';
+export class PumapuntosService {
+  private readonly urlEndpoint:string = 'http://localhost:8080/api/pumapuntos';
   private readonly httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
   });
+  private authorizationHeaders = new HttpHeaders({
+    Authorization: `Bearer ${this.authService.token}`,
+  });
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    public authService: AuthService) {}
 
-  getPumapuntos():Observable<number>{
-    return this.httpClient.get<number>(this.urlEndpoint);
+  getPumapuntos(idUsuario: number):Observable<number>{
+    return this.httpClient.get<number>(this.urlEndpoint + '/' + idUsuario);
   }
 
-  update(pumapuntos): Observable<number>{
-    return this.httpClient.post<number>(this.urlEndpoint + pumapuntos,{headers: this.httpHeaders})
+  update(pumapuntos: number, idUsuario: number): Observable<number>{
+    return this.httpClient.post<number>(
+      this.urlEndpoint + '/' + idUsuario + '/sumar/' + pumapuntos, {},
+      {
+        headers: this.authorizationHeaders
+      });
   }
 }

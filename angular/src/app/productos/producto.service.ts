@@ -17,4 +17,12 @@ export class ProductoService {
   public getProductos(): Observable<Producto[]> {
     return this.httpClient.get<Producto[]>(this.urlEndpoint);
   }
+
+  public buscar_nombre(busqueda: string): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.urlEndpoint + "/nombre/" + busqueda);
+  }
+
+  public buscar_codigo(busqueda: string): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.urlEndpoint + "/codigo/" + busqueda);
+  }
 }

@@ -7,14 +7,14 @@
 <div class="album py-5">
   <div class="container mb-4 mt-0">
     <div class="input">
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <select class="form-select-sm me-2">
-          <option selected>Método de búsqueda</option>
-          <option value="1">Por código</option>
-          <option value="2">Por nombre</option>
+      <form class="d-flex" role="search" (ngSubmit)="buscar()">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="busqueda" name="busqueda" value="">
+        <select class="form-select-sm me-2" [(ngModel)]="seleccion" name="seleccion">
+          <option value="undefined" selected>Método de búsqueda</option>
+          <option value="nombre">Por nombre</option>
+          <option value="codigo">Por código</option>
         </select>
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-success" type="submit" role="button">Buscar</button>
       </form>
     </div>
 
@@ -51,7 +51,7 @@
                 <th scope="row">{{producto.id}}</th>
                 <td>{{producto.codigo}}</td>
                 <td>{{producto.nombre}}</td>
-                <td width="40%" id="descripcion">{{producto.descripcion}}</td>
+                <td width="32%" id="descripcion">{{producto.descripcion}}</td>
                 <td>{{producto.proveedor.nombre}}</td>
                 <td>{{producto.costo}}</td>
                 <td>{{producto.stock}}</td>

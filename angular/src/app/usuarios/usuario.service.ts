@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 import { AuthService } from '../auth/auth.service';
 import { Usuario } from './usuario';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -43,5 +43,16 @@ export class UsuarioService {
         headers: this.authorizationHeaders,
       }
     );
+  }
+
+  public crear(usuario: Usuario): Observable<Usuario> {
+    return this.httpClient
+      .post<Usuario>(this.urlEndpoint, usuario, { headers: this.httpHeaders })
+      .pipe(
+        catchError((e) => {
+          Swal.fire('Error al crear el usuario', e.error.mensaje, 'error');
+          return throwError(() => e);
+        })
+      );
   }
 }

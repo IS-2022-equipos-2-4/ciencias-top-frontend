@@ -2,6 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+
+import { catchError, throwError } from 'rxjs';
+import swal from 'sweetalert2';
 import { Producto } from './producto';
 
 @Injectable({
@@ -22,7 +25,9 @@ export class ProductoService {
   ) {}
 
   public getProductos(): Observable<Producto[]> {
-    return this.httpClient.get<Producto[]>(this.urlEndpoint);
+    return this.httpClient.get<Producto[]>(this.urlEndpoint, {
+      headers: this.authorizationHeaders,
+    });
   }
 
   public buscar_nombre(busqueda: string): Observable<Producto[]> {
@@ -41,6 +46,26 @@ export class ProductoService {
         headers: this.authorizationHeaders,
       }
     );
+  }
+
+  public crearProducto(producto: Producto): Observable<Producto> {
+    return this.httpClient
+      .post<Producto>(
+        `${this.urlEndpoint}/${this.authService.getId()}`,
+        producto,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${this.authService.token}`,
+          },
+        }
+      )
+      .pipe(
+        catchError((e) => {
+          swal.fire(e.error.mensaje, e.error.error, 'error');
+          return throwError(() => e);
+        })
+      );
   }
 
   public tieneAcceso(producto: Producto): boolean {

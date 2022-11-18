@@ -22,10 +22,16 @@
       <div style="float:left">
         <h4>Detalles Productos:</h4>
       </div>
+      <!-- 
+      <div class="my-2 text-right">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/productos/crear']">Agregar
+          Producto</button> 
+      </div>-->
       <div style="float:right">
         <button *ngIf="puedeCrear()" class="btn btn-rounded btn-primary" type="btn" [routerLink]="['/productos/crear']">Crear
           Producto</button>
       </div>
+
       <div style="clear: both;"></div>
     </div>
 

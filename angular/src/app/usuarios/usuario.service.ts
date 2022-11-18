@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { Usuario } from './usuario';
-import { UsuarioDto } from './usuario.dto';
 
 import { catchError } from 'rxjs';
 import Swal from 'sweetalert2';
 import { AuthService } from '../auth/auth.service';
+import { Usuario } from './usuario';
+import { UsuarioDto } from './usuario.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -21,13 +21,12 @@ export class UsuarioService {
 
   public getUsuarios(): Observable<Usuario[]> {
     const httpHeaders = new HttpHeaders({
-      'Authorization':  `Bearer ${this.authService.token}`
+      Authorization: `Bearer ${this.authService.token}`,
     });
 
     return this.httpClient.get<Usuario[]>(this.urlEndpoint, {
       headers: httpHeaders,
     });
-
   }
 
   public getUsuario(id: string): Observable<Usuario> {
@@ -45,7 +44,7 @@ export class UsuarioService {
     usuario: UsuarioDto
   ): Observable<Usuario> {
     // hacer la llamada al endpoint para editar usuario con patch
-    console.log(usuario)
+    console.log(usuario);
     return this.httpClient.post<Usuario>(
       `${this.urlEndpoint}/${usuario_id}`,
       usuario,
@@ -69,7 +68,7 @@ export class UsuarioService {
     busquedaEnCriterio: string
   ): Observable<Usuario[]> {
     const httpHeaders = new HttpHeaders({
-      'Authorization':  `Bearer ${this.authService.token}`
+      Authorization: `Bearer ${this.authService.token}`,
     });
 
     return this.httpClient.get<Usuario[]>(
@@ -83,10 +82,10 @@ export class UsuarioService {
   public crear(usuario: Usuario): Observable<Usuario> {
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization':  `Bearer ${this.authService.token}`
+      Authorization: `Bearer ${this.authService.token}`,
     });
 
-    console.log(httpHeaders)
+    console.log(httpHeaders);
     return this.httpClient
       .post<Usuario>(this.urlEndpoint, usuario, { headers: httpHeaders })
       .pipe(

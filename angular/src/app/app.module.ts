@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './auth/auth-guard.service';
@@ -25,7 +25,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {
       allowedRoles: ['admin'],
-      redirectionRoute: '/productos',
+      redirectionRoute: '/login',
     },
   },
   {
@@ -34,7 +34,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {
       allowedRoles: ['admin'],
-      redirectionRoute: '/productos',
+      redirectionRoute: '/login',
     },
   },
   {
@@ -43,7 +43,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {
       allowedRoles: ['admin'],
-      redirectionRoute: '/productos',
+      redirectionRoute: '/login',
     },
   },
   {
@@ -52,12 +52,17 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {
       allowedRoles: ['admin'],
-      redirectionRoute: '/productos',
+      redirectionRoute: '/login',
     },
   },
   {
     path: 'productos',
     component: ProductosComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin', 'provider', 'user'],
+      redirectionRoute: '/login',
+    },
   },
   {
     path: 'productos/crear',
@@ -65,7 +70,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {
       allowedRoles: ['admin', 'provider'],
-      redirectionRoute: '/productos',
+      redirectionRoute: '/login',
     },
   },
 
@@ -78,11 +83,11 @@ const routes: Routes = [
     HeaderComponent,
     ProductosComponent,
     UsuariosComponent,
-    CrearUsuarioComponent,
-    EditarUsuarioComponent,
     CrearProductosComponent,
     SumarPumaPuntosComponent,
     LoginComponent,
+    EditarUsuarioComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     FormsModule,

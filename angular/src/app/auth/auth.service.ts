@@ -47,7 +47,7 @@ export class AuthService {
 
     let params = new URLSearchParams();
     params.set('grant_type', 'password');
-    params.set('usuario', usuario.numInstitucional);
+    params.set('username', usuario.numInstitucional);
     params.set('password', usuario.contrasena);
 
     console.log(params.toString());
@@ -66,7 +66,7 @@ export class AuthService {
     this._usuario.numInstitucional = payload.numInstitucional;
     this._usuario.esAdmin = payload.esAdmin;
     this._usuario.esProveedor = payload.esProveedor;
-    sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
+    sessionStorage.setItem('username', JSON.stringify(this._usuario));
   }
 
   guardarToken(accessToken: string): void {

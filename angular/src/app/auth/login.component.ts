@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from './../usuarios/usuario';
-//import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
@@ -20,14 +20,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.authService.isAuthenticated()){
-//      Swal.fire('Login', `Hola ${this.authService.usuario.username} ya estás autenticado!`, 'info');
+      Swal.fire('Login', `Hola ${this.authService.usuario.nombre} ya estás autenticado!`, 'info');
       this.router.navigate(['/productos']);
     }
   }
 
   login(){
       if(this.usuario.numInstitucional == null || this.usuario.contrasena == null){
-//        Swal.fire('Error Login', 'Username o password vacías!', 'error');
+        Swal.fire('Error Login', 'No. institucional o password vacías!', 'error');
         return;
       }
       
@@ -41,15 +41,17 @@ export class LoginComponent implements OnInit {
         let usuario = this.authService.usuario;
 
         this.router.navigate(['/productos']);
-//        Swal.fire('Login', `Hola ${usuario.username}, has iniciado sesión correctamente`, 'success');
+        Swal.fire('Login', `Hola ${usuario.nombre}, has iniciado sesión correctamente`, 'success');
       },
       err => {
         if(err.status == 400){
-//          Swal.fire('Error Login', 'Usuario o clave incorrectas!', 'error');
+          Swal.fire('Error Login', 'No. institcuional o clave incorrectas!', 'error');
         }
       }
       );
   }
-  
 
+  logout(){
+    this.authService.logout();
+  }
 }

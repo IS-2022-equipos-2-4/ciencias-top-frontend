@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,7 +14,6 @@ import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.component';
-
 
 const routes: Routes = [
   { path: '', redirectTo: '/usuarios', pathMatch: 'full' },
@@ -35,10 +35,7 @@ const routes: Routes = [
     HeaderComponent,
     ProductosComponent,
     UsuariosComponent,
-    CrearUsuarioComponent,
-    EditarUsuarioComponent,
     CrearProductosComponent,
-    SumarPumaPuntosComponent
   ],
   imports: [
     FormsModule,
@@ -46,7 +43,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

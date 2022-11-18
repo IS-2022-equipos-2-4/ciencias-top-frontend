@@ -38,6 +38,13 @@ export class ProductoService {
         return throwError(()=>e);
       })
     );
+  }
 
+  public buscar_nombre(busqueda: string): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.urlEndpoint + "/nombre/" + busqueda);
+  }
+
+  public buscar_codigo(busqueda: string): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.urlEndpoint + "/codigo/" + busqueda);
   }
 }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { faLadderWater } from '@fortawesome/free-solid-svg-icons';
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usuarios',
@@ -18,8 +19,11 @@ export class CrearUsuarioComponent implements OnInit {
   
 
   public crear():void{
-    this.usuarioService.crear(this.usuario).subscribe(
-    Response => this.router.navigate(['/usuarios'])
+    this.usuarioService.crear(this.usuario).subscribe(usurio =>
+      {
+        this.router.navigate(['/usuarios'])
+        swal.fire('Nuevo Usuario', `Usuario ${this.usuario.numInstitucional} creado con éxito`, 'success')
+      }
     )
   }
 }

@@ -29,4 +29,8 @@ export class UsuarioService {
       this.urlEndpoint + '/' + criterio + '/' + busquedaEnCriterio
     );
   }
+  
+  public crear(usuario: Usuario):Observable<Usuario>{
+    return this.httpClient.post<Usuario>(this.urlEndpoint, usuario,{headers: this.httpHeaders})
+  }
 }

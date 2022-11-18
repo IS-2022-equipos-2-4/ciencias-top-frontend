@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { faLadderWater } from '@fortawesome/free-solid-svg-icons';
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
 
@@ -10,12 +12,14 @@ import { UsuarioService } from './usuario.service';
 export class CrearUsuarioComponent implements OnInit {
   titulo: string = "Añadir usuario";
   usuario: Usuario = new Usuario();
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private usuarioService: UsuarioService, private router: Router) {}
 
   ngOnInit(): void {}
   
-  nombre : String = "juan";
+
   public crear():void{
-    console.log(this.usuario);
+    this.usuarioService.crear(this.usuario).subscribe(
+    Response => this.router.navigate(['/usuarios'])
+    )
   }
 }

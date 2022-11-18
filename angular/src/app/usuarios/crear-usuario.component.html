@@ -1,11 +1,11 @@
 <div class="card bg-dark text-white">
     <div class="card-header">{{titulo}}</div>
     <div class="card-body">
-        <form (ngSubmit) = "crear()">
+        <form (ngSubmit)="crear()">
             <div class="form-group">
                 <label for="" class="col-form-label col-sm-2">Nombre</label>
                 <div class="col-sm-6">
-                    <input type = "text" class="form-control">
+                    <input type = "text" class="form-control"[(ngModel)]="usuario.nombre" name="nombre">
                 </div>
             </div>
 
@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label for="" class="col-form-label col-sm-2">Correo</label>
                 <div class="col-sm-6">
-                    <input type = "text" class="form-control" >
+                    <input type = "text" class="form-control" [(ngModel)]="usuario.correo" name="correo">
                 </div>
             </div>
 
@@ -21,7 +21,7 @@
             <div class="form-group">
                 <label for="" class="col-form-label col-sm-2">Contraseña</label>
                 <div class="col-sm-6">
-                    <input type = "text" class="form-control" >
+                    <input type = "text" class="form-control" [(ngModel)]="usuario.contrasena" name="contrasena">
                 </div>
             </div>
 
@@ -29,7 +29,7 @@
             <div class="form-group">
                 <label for="" class="col-form-label col-sm-2">Número Institucional</label>
                 <div class="col-sm-6">
-                    <input type = "text" class="form-control" >
+                    <input type = "text" class="form-control" [(ngModel)]="usuario.numInstitucional" name="número institucional">
                 </div>
             </div>
 
@@ -37,7 +37,7 @@
             <div class="form-group">
                 <label for="" class="col-form-label col-sm-2">Carrera</label>
                 <div class="col-sm-6">
-                    <input type = "text" class="form-control" >
+                    <input type = "text" class="form-control" [(ngModel)]="usuario.carrera" name="carrera" >
                 </div>
             </div>
 
@@ -45,33 +45,35 @@
             <div class="form-group">
                 <label for="" class="col-form-label col-sm-2">Telefono</label>
                 <div class="col-sm-6">
-                    <input type = "text" class="form-control" >
+                    <input type = "text" class="form-control" [(ngModel)]="usuario.telefono" name="telefono">
                 </div>
             </div>
 
 
-            <div class="form-group">
-                <label for="" class="col-form-label col-sm-2">Activo</label>
+            <div class="form-check form group">
+                <input class="form-check-input" type="checkbox"
+                id="esProveedor" name="esProveedor" [(ngModel)]="usuario.esProveedor">
+                <label class="form-check-label" for="esProveedor">Es proveedor</label>
+            </div>
+
+
+            <div class="form-check form group">
+                <input class="form-check-input" type="checkbox"
+                id="esAdmin" name="esAdmin" [(ngModel)]="usuario.esAdmin">
+                <label class="form-check-label" for="esAdmin">Es administrador</label>
+            </div>
+
+            
+            <div class="form-group ">
                 <div class="col-sm-6">
-                    <input type = "text" class="form-control" >
+                    <button class="btn btn-primary" role="button">Añadir</button>
+
+
+
                 </div>
             </div>
 
 
-            <div class="form-group">
-                <label for="" class="col-form-label col-sm-2">Es Proveedor</label>
-                <div class="col-sm-6">
-                    <input type = "text" class="form-control" >
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <label for="" class="col-form-label col-sm-2">Es Admin</label>
-                <div class="col-sm-6">
-                    <input type = "text" class="form-control" >
-                </div>
-            </div>
         </form>    
 
     </div>

@@ -13,7 +13,6 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.component';
-import { FormsModule } from '@angular/forms';
 
 
 

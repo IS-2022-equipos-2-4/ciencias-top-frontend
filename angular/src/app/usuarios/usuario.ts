@@ -7,6 +7,6 @@ export class Usuario {
   carrera?: string;
   telefono: string;
   activo?: boolean;
-  esProveedor: boolean;
-  esAdmin: boolean;
+  esProveedor: boolean =false;
+  esAdmin: boolean = false;
 }

@@ -15,7 +15,6 @@ import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.component';
 
 
-
 const routes: Routes = [
   { path: '', redirectTo: '/usuarios', pathMatch: 'full' },
   { path: 'usuarios', component: UsuariosComponent },

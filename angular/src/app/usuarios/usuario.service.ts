@@ -25,7 +25,8 @@ export class UsuarioService {
     return usuario;
   }
 
-  public editarUsuario(usuario: UsuarioDto): any {//Observable<Usuario> {
+  public editarUsuario(usuario: UsuarioDto): Observable<Usuario> {
     // hacer la llamada al endpoint para editar usuario con patch
+    return this.httpClient.patch<Usuario>(this.urlEndpoint, this.httpHeaders);// httpHeaders used to be user
   }
 }

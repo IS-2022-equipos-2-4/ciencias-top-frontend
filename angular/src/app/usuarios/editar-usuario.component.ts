@@ -36,9 +36,15 @@ export class EditarUsuarioComponent implements OnInit {
 
   public editar(): void {
     const usuarioDto = new UsuarioDto();
-    usuarioDto.nombre = this.usuario.nombre;
-    // el resto de las propiedades
 
-    this.usuarioService.editarUsuario(usuarioDto);
+    usuarioDto.nombre = this.usuario.nombre;
+    usuarioDto.correo = this.usuario.correo;
+    usuarioDto.telefono = this.usuario.telefono;
+    usuarioDto.esProveedor = this.usuario.esProveedor;
+    usuarioDto.esAdmin = this.usuario.esAdmin;
+
+    this.usuarioService.editarUsuario(usuarioDto).subscribe(
+      response => this.router.navigate['/usuarios']
+      )
   }
 }

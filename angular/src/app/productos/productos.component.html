@@ -28,8 +28,8 @@
           Producto</button> 
       </div>-->
       <div style="float:right">
-        <button class="btn btn-rounded btn-primary" type="btn" [routerLink]="['/productos/crear']">Agregar
-          Producto</button> 
+        <button *ngIf="puedeCrear()" class="btn btn-rounded btn-primary" type="btn" [routerLink]="['/productos/crear']">Crear
+          Producto</button>
       </div>
 
       <div style="clear: both;"></div>
@@ -49,7 +49,7 @@
                 <th scope="col">Costo</th>
                 <th scope="col">Stock</th>
                 <th scope="col">Limite</th>
-                <th scope="col">Acción</th>
+                <th *ngIf="estaAutenticado()" scope="col">Acción</th>
               </tr>
             </thead>
             <tbody>
@@ -62,14 +62,14 @@
                 <td>{{producto.costo}}</td>
                 <td>{{producto.stock}}</td>
                 <td>{{producto.limitePrestamo}}</td>
-                <td>
-                  <button type="button" class="btn btn-primary btn-space">
+                <td *ngIf="estaAutenticado()">
+                  <button  type="button" class="btn btn-primary btn-space">
                     <fa-icon [icon]="faShoppingCart"></fa-icon>
                   </button>
-                  <button type="button" class="btn btn-success btn-space">
+                  <button *ngIf="tieneAcceso(producto)" type="button" class="btn btn-success btn-space">
                     <fa-icon [icon]="faEdit"></fa-icon>
                   </button>
-                  <button type="button" class="btn-space btn btn-danger btn-space">
+                  <button *ngIf="tieneAcceso(producto)" type="button" class="btn-space btn btn-danger btn-space">
                     <fa-icon [icon]="faTrashAlt"></fa-icon>
                   </button>
                 </td>

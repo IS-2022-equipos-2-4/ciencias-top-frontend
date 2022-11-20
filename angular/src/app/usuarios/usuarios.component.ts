@@ -3,7 +3,6 @@ import {
   faCheck,
   faDollar,
   faEdit,
-  faL,
   faSquare,
   faTrashAlt,
   faXmark,
@@ -19,9 +18,9 @@ import { UsuarioService } from './usuario.service';
 })
 export class UsuariosComponent implements OnInit {
   usuarios: Usuario[];
-  busquedaEnCriterio: string
+  busquedaEnCriterio: string;
 
-  criterio = "nombre"
+  criterio = 'nombre';
   faDollar = faDollar;
   faEdit = faEdit;
   faTrashAlt = faTrashAlt;
@@ -42,14 +41,14 @@ export class UsuariosComponent implements OnInit {
    * En caso de que uno o ambos valores de busqueda esten vacios, regresa la lista de todos los usuarios.
    */
   buscar(): void {
-      if (this.busquedaEnCriterio && this.criterio) {
-        this.usuarioService
-          .buscar(this.criterio, this.busquedaEnCriterio)
-          .subscribe((usuarios) => (this.usuarios = usuarios));
-      } else if (!this.busquedaEnCriterio) {
-        this.usuarioService
-          .getUsuarios()
-          .subscribe((usuarios) => (this.usuarios = usuarios));
-      }
+    if (this.busquedaEnCriterio && this.criterio) {
+      this.usuarioService
+        .buscar(this.criterio, this.busquedaEnCriterio)
+        .subscribe((usuarios) => (this.usuarios = usuarios));
+    } else if (!this.busquedaEnCriterio) {
+      this.usuarioService
+        .getUsuarios()
+        .subscribe((usuarios) => (this.usuarios = usuarios));
     }
+  }
 }

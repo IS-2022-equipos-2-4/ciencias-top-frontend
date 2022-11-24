@@ -1,0 +1,83 @@
+<div class="p-3 mb-2 bg-light rounded-3">
+  <div class="container-fluid py-4 text-center">
+    <h1 class="display-7 fw-bold ">Productos</h1>
+  </div>
+</div>
+
+<div class="album py-5">
+  <div class="container mb-4 mt-0">
+    <div class="input">
+      <form class="d-flex" role="search" (ngSubmit)="buscar()">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="busqueda" name="busqueda" value="">
+        <select class="form-select-sm me-2" [(ngModel)]="seleccion" name="seleccion">
+          <option value="undefined" selected>Método de búsqueda</option>
+          <option value="nombre">Por nombre</option>
+          <option value="codigo">Por código</option>
+        </select>
+        <button class="btn btn-outline-success" type="submit" role="button">Buscar</button>
+      </form>
+    </div>
+
+    <div class="container" style="padding-top: 20px">
+      <div style="float:left">
+        <h4>Detalles Productos:</h4>
+      </div>
+      <!-- 
+      <div class="my-2 text-right">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/productos/crear']">Agregar
+          Producto</button> 
+      </div>-->
+      <div style="float:right">
+        <button *ngIf="puedeCrear()" class="btn btn-rounded btn-primary" type="btn" [routerLink]="['/productos/crear']">Crear
+          Producto</button>
+      </div>
+
+      <div style="clear: both;"></div>
+    </div>
+
+    <div class="container" style="padding-top: 10px">
+      <div class="row">
+        <div class="col-12">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Proveedor</th>
+                <th scope="col">Costo</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Limite</th>
+                <th *ngIf="estaAutenticado()" scope="col">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of productos">
+                <th scope="row">{{producto.id}}</th>
+                <td>{{producto.codigo}}</td>
+                <td>{{producto.nombre}}</td>
+                <td width="32%" id="descripcion">{{producto.descripcion}}</td>
+                <td>{{producto.proveedor.nombre}}</td>
+                <td>{{producto.costo}}</td>
+                <td>{{producto.stock}}</td>
+                <td>{{producto.limitePrestamo}}</td>
+                <td *ngIf="estaAutenticado()">
+                  <button  type="button" class="btn btn-primary btn-space">
+                    <fa-icon [icon]="faShoppingCart"></fa-icon>
+                  </button>
+                  <button *ngIf="tieneAcceso(producto)" type="button" class="btn btn-success btn-space">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                  </button>
+                  <button *ngIf="tieneAcceso(producto)" type="button" class="btn-space btn btn-danger btn-space">
+                    <fa-icon [icon]="faTrashAlt"></fa-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

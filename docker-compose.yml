@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  ui:
+    build:
+      context: .
+    ports:
+      - "4200:4200"
+    working_dir: /home/app
+    command: >
+      sh -c "npm install &&
+      /home/app/node_modules/.bin/ng serve --host 0.0.0.0 "
+    volumes:
+      - ./angular:/home/app

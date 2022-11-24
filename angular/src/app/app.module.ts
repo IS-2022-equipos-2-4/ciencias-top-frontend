@@ -1,0 +1,103 @@
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+
+import { HttpClientModule } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AppComponent } from './app.component';
+import { AuthGuard } from './auth/auth-guard.service';
+import { AuthService } from './auth/auth.service';
+import { LoginComponent } from './auth/login.component';
+import { HeaderComponent } from './header/header.component';
+import { CrearProductosComponent } from './productos/crear-producto.component';
+import { ProductosComponent } from './productos/productos.component';
+import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.component';
+import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
+import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {
+    path: 'usuarios',
+    component: UsuariosComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin'],
+      redirectionRoute: '/login',
+    },
+  },
+  {
+    path: 'usuarios/crear',
+    component: CrearUsuarioComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin'],
+      redirectionRoute: '/login',
+    },
+  },
+  {
+    path: 'usuarios/editar/:id',
+    component: EditarUsuarioComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin'],
+      redirectionRoute: '/login',
+    },
+  },
+  {
+    path: 'usuarios/sumar-pumapuntos/:id',
+    component: SumarPumaPuntosComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin'],
+      redirectionRoute: '/login',
+    },
+  },
+  {
+    path: 'productos',
+    component: ProductosComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin', 'provider', 'user'],
+      redirectionRoute: '/login',
+    },
+  },
+  {
+    path: 'productos/crear',
+    component: CrearProductosComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin', 'provider'],
+      redirectionRoute: '/login',
+    },
+  },
+
+  { path: 'login', component: LoginComponent },
+];
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    ProductosComponent,
+    UsuariosComponent,
+    CrearProductosComponent,
+    SumarPumaPuntosComponent,
+    LoginComponent,
+    EditarUsuarioComponent,
+    CrearUsuarioComponent
+  ],
+  imports: [
+    FormsModule,
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    FontAwesomeModule,
+    HttpClientModule,
+    FormsModule,
+  ],
+  providers: [AuthGuard, AuthService],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}

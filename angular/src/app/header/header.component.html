@@ -18,7 +18,7 @@
         type="submit" routerLink="/login">
         Cerrar sesión
       </button>
-        <button *ngIf="(!authService.isAuthenticated())" class="btn btn-outline-success" type="submit" routerLink="/login">
+        <button *ngIf="(!authService.isAuthenticated())" (click)="authService.login()" class="btn btn-outline-success" type="submit" routerLink="/login">
           Iniciar sesión
         </button>
       </form>

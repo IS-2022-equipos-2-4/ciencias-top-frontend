@@ -55,7 +55,7 @@ export class EditarUsuarioComponent implements OnInit {
           'success'
         );
       },
-      (err) => swal.fire(`Error ${err.status}`, err.message, 'error')
+      (err) => swal.fire(`Error ${err.error.status}`, err.error.message, 'error')
     );
   }
 }

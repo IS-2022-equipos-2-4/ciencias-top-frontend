@@ -40,6 +40,7 @@
                 <th scope="col">Correo</th>
                 <th scope="col">Número Institucional</th>
                 <th scope="col">Carrera</th>
+                <th scope="col">Saldo</th>
                 <th scope="col">Activo</th>
                 <th scope="col">Proveedor</th>
                 <th scope="col">Admin</th>
@@ -53,6 +54,7 @@
                 <td>{{usuario.correo}}</td>
                 <td>{{usuario.numInstitucional}}</td>
                 <td>{{usuario.carrera}}</td>
+                <td>{{usuario.pumapuntos}}</td>
                 <ng-template [ngIf]="usuario.activo" [ngIfElse]="elseBlock">
                   <td>
                     <fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon>
@@ -86,13 +88,22 @@
                   </td>
                 </ng-template>
                 <td>
-                  <button type="button" class="btn btn-primary btn-space" [routerLink]="['/usuarios/sumar-pumapuntos', usuario.id]">
+                  <button type="button" class="btn btn-primary btn-space" [routerLink]="['/usuarios/sumar-pumapuntos', usuario.id]" 
+                      data-bs-toggle="tooltip" 
+                      data-bs-placement="top" 
+                      title="Sumar pumapuntos">
                     <fa-icon [icon]="faDollar"></fa-icon>
                   </button>
-                  <button type="button" class="btn btn-success btn-space" [routerLink]="['/usuarios/editar', usuario.id]">
+                  <button type="button" class="btn btn-success btn-space" [routerLink]="['/usuarios/editar', usuario.id]"
+                      data-bs-toggle="tooltip" 
+                      data-bs-placement="top" 
+                      title="Editar">
                     <fa-icon [icon]="faEdit"></fa-icon>
                   </button>
-                  <button type="button" class="btn-space btn btn-danger btn-space">
+                  <button type="button" class="btn-space btn btn-danger btn-space"
+                      data-bs-toggle="tooltip" 
+                      data-bs-placement="top" 
+                      title="Eliminar">
                     <fa-icon [icon]="faTrashAlt"></fa-icon>
                   </button>
                 </td>

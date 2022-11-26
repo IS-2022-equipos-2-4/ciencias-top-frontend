@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  titulo:string = 'Por favor Sing In!';
   usuario: Usuario;
 
   constructor(public authService: AuthService, private router: Router) { 
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   login(){
       if(this.usuario.numInstitucional == null || this.usuario.contrasena == null){
-        Swal.fire('Error Login', 'No. institucional o password vacías!', 'error');
+        Swal.fire('Error Login', 'No. institucional o password vacías', 'error');
         return;
       }
       
@@ -43,7 +42,7 @@ export class LoginComponent implements OnInit {
       },
       err => {
         if(err.status == 400){
-          Swal.fire('Error Login', 'No. institcuional o clave incorrectas!', 'error');
+          Swal.fire('Error Login', 'No. institcuional o clave incorrectas', 'error');
         }
       }
       );

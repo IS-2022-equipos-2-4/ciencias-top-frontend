@@ -63,13 +63,22 @@
                 <td>{{producto.stock}}</td>
                 <td>{{producto.limitePrestamo}}</td>
                 <td *ngIf="estaAutenticado()">
-                  <button  type="button" class="btn btn-primary btn-space">
+                  <button  type="button" class="btn btn-primary btn-space"
+                      data-bs-toggle="tooltip" 
+                      data-bs-placement="top" 
+                      title="Rentar">
                     <fa-icon [icon]="faShoppingCart"></fa-icon>
                   </button>
-                  <button *ngIf="tieneAcceso(producto)" type="button" class="btn btn-success btn-space">
+                  <button *ngIf="tieneAcceso(producto)" type="button" class="btn btn-success btn-space"
+                      data-bs-toggle="tooltip" 
+                      data-bs-placement="top" 
+                      title="Editar">
                     <fa-icon [icon]="faEdit"></fa-icon>
                   </button>
-                  <button *ngIf="tieneAcceso(producto)" type="button" class="btn-space btn btn-danger btn-space">
+                  <button *ngIf="tieneAcceso(producto)" type="button" class="btn-space btn btn-danger btn-space"
+                      data-bs-toggle="tooltip" 
+                      data-bs-placement="top" 
+                      title="Eliminar">
                     <fa-icon [icon]="faTrashAlt"></fa-icon>
                   </button>
                 </td>

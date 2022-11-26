@@ -20,7 +20,10 @@ export class PumapuntosService {
     public authService: AuthService) {}
 
   getPumapuntos(idUsuario: number):Observable<number>{
-    return this.httpClient.get<number>(this.urlEndpoint + '/' + idUsuario);
+    return this.httpClient.get<number>(this.urlEndpoint + '/' + idUsuario,
+    {
+      headers: this.authorizationHeaders
+    });
   }
 
   update(pumapuntos: number, idUsuario: number): Observable<number>{

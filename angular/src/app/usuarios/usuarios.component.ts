@@ -10,6 +10,7 @@ import {
 
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
+import { PumapuntosService } from '../puma-puntos/puma-puntos.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -19,6 +20,7 @@ import { UsuarioService } from './usuario.service';
 export class UsuariosComponent implements OnInit {
   usuarios: Usuario[];
   busquedaEnCriterio: string;
+  pumapuntos: number;
 
   criterio = 'nombre';
   faDollar = faDollar;
@@ -28,12 +30,21 @@ export class UsuariosComponent implements OnInit {
   faXMark = faXmark;
   faSquare = faSquare;
 
-  constructor(private readonly usuarioService: UsuarioService) {}
+  constructor(private readonly usuarioService: UsuarioService, 
+    private readonly pumaService: PumapuntosService) {}
 
   ngOnInit(): void {
     this.usuarioService
       .getUsuarios()
-      .subscribe((usuarios) => (this.usuarios = usuarios));
+      .subscribe((usuarios) => {
+        this.usuarios = usuarios;
+
+        this.usuarios.forEach(u => {
+          this.pumaService
+            .getPumapuntos(u.id)
+            .subscribe((pumapuntos) => (u.pumapuntos = pumapuntos))
+        });
+      })
   }
 
   /**

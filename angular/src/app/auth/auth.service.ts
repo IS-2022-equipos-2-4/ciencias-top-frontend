@@ -102,7 +102,7 @@ export class AuthService {
     sessionStorage.clear();
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('usuario');
-    Swal.fire('Sesión cerrada', 'Se ha cerrado sesión con éxito, nos vemos! :)', 'info');
+    Swal.fire('Sesión cerrada', 'Se ha cerrado sesión con éxito, nos vemos :)', 'info');
   }
 
   getId(): number {

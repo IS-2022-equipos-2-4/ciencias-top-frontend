@@ -6,6 +6,7 @@ import { AuthService } from '../auth/auth.service';
 import { catchError, throwError } from 'rxjs';
 import swal from 'sweetalert2';
 import { Producto } from './producto';
+import { ProductoDto } from './producto.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,16 @@ export class ProductoService {
     return this.httpClient.get<Producto[]>(this.urlEndpoint, {
       headers: this.authorizationHeaders,
     });
+  }
+
+  public getProducto(id: string): Observable<Producto> {
+    const producto = this.httpClient.get<Producto>(`${this.urlEndpoint}/${id}`, {
+      headers: {
+        Authorization: `Bearer ${this.authService.token}`,
+      },
+    });
+
+    return producto;
   }
 
   public buscar_nombre(busqueda: string): Observable<Producto[]> {
@@ -66,6 +77,23 @@ export class ProductoService {
           return throwError(() => e);
         })
       );
+  }
+
+  public editarProducto(
+    producto_id: number,
+    producto: ProductoDto
+  ): Observable<Producto> {
+    console.log(producto);
+    return this.httpClient.post<Producto>(
+      `${this.urlEndpoint}/${producto_id}`,
+      producto,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.authService.token}`,
+        },
+      }
+    );
   }
 
   public tieneAcceso(producto: Producto): boolean {

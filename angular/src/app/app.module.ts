@@ -16,6 +16,7 @@ import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.compon
 import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { EditarProductoComponent } from './productos/editar-producto.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -73,6 +74,15 @@ const routes: Routes = [
       redirectionRoute: '/login',
     },
   },
+  {
+    path: 'productos/editar',
+    component: EditarProductoComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin', 'provider'],
+      redirectionRoute: '/login',
+    },
+  },
 
   { path: 'login', component: LoginComponent },
 ];
@@ -87,7 +97,8 @@ const routes: Routes = [
     SumarPumaPuntosComponent,
     LoginComponent,
     EditarUsuarioComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+    EditarProductoComponent
   ],
   imports: [
     FormsModule,

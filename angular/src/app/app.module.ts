@@ -75,7 +75,7 @@ const routes: Routes = [
     },
   },
   {
-    path: 'productos/editar',
+    path: 'productos/editar/:id',
     component: EditarProductoComponent,
     canActivate: [AuthGuard],
     data: {

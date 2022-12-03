@@ -85,7 +85,7 @@ export class ProductoService {
   ): Observable<Producto> {
     console.log(producto);
     return this.httpClient.post<Producto>(
-      `${this.urlEndpoint}/${producto_id}`,
+      `${this.urlEndpoint}/editar/${producto_id}`,
       producto,
       {
         headers: {

@@ -6,15 +6,14 @@ import { AuthService } from '../auth/auth.service';
 import { catchError, throwError } from 'rxjs';
 import swal from 'sweetalert2';
 import { Producto } from './producto';
+import { Ejemplar } from './ejemplar';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductoService {
   private readonly urlEndpoint = 'http://localhost:8080/api/productos';
-  private readonly httpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json',
-  });
+
   private authorizationHeaders = new HttpHeaders({
     Authorization: `Bearer ${this.authService.token}`,
   });
@@ -81,5 +80,19 @@ export class ProductoService {
 
   public estaAutenticado(): boolean {
     return this.authService.isAuthenticated();
+  }
+
+  public rentar(producto: Producto): Observable<Ejemplar> {
+    return this.httpClient
+      .post<Ejemplar>(`${this.urlEndpoint}/${producto.id}/rentar`, undefined, {
+        headers: this.authorizationHeaders,
+      })
+      .pipe(
+        catchError((e) => {
+          e = e.error?.status && e.error?.message ? e.error : e;
+          swal.fire(String(e.status), e.message, 'error');
+          return throwError(() => e);
+        })
+      );
   }
 }

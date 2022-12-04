@@ -23,4 +23,8 @@ export class HistoProdRentComponent implements OnInit {
     );
   }
 
+  tieneAcceso(historial: Historial): boolean {
+    return true;
+  } 
+
 }

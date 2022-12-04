@@ -1,10 +1,11 @@
+import { ItemProducto } from "../item-producto/item-producto";
 import { Usuario } from "../usuarios/usuario";
 
 export class Historial {
     idRenta: number;
-    //usuario : Usuario;
-    //EjemplarProducto itemProducto;
-    //LocalDate fecha_renta;
-    //LocalDate fecha_devolucion;
+    usuario : Usuario;
+    itemProducto: ItemProducto;
+    fechaRenta: string;
+    fechaDevolucion: string;
     devuelto: boolean;
 }

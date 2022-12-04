@@ -1,6 +1,39 @@
-<p>histo-prod-rent works!</p>
+<div class="p-3 mb-2 bg-light rounded-3">
+    <div class="container-fluid py-4 text-center">
+      <h1 class="display-7 fw-bold ">Productos Rentados</h1>
+    </div>
+  </div>
+
 <div *ngFor = "let h of historial">
-    {{h.idRenta}}
-    {{h.devuelto}}
+    id: {{h.idRenta}},---
+    devuelto: {{h.devuelto}},---  
+    nombre Usuario: {{h.usuario.nombre}},---
+    fecha devolucion:  {{h.fechaDevolucion}},---
+    nombre Producto: {{h.itemProducto.producto.nombre}}--
 </div>
-<div>constante</div>
+
+
+
+
+<div class="container" style="padding-top: 10px">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre del Producto</th>
+                        <th scope="col">Fecha En Que Se Rentó</th>
+                        <th scope="col">Fecha Limite de Devolucion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let h of historial">
+                        <td>{{h.itemProducto.producto.nombre}}</td>
+                        <td>{{h.fechaRenta}}</td>
+                        <td>{{h.fechaDevolucion}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

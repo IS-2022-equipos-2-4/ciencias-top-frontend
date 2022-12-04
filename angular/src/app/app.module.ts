@@ -74,6 +74,15 @@ const routes: Routes = [
       redirectionRoute: '/login',
     },
   },
+  {
+    path: 'perfil/historial-rentas',
+    component: HistoProdRentComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin', 'provider', 'user'],
+      redirectionRoute: '/login',
+    },
+  },
 
   { path: 'login', component: LoginComponent },
 ];

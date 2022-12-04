@@ -21,7 +21,11 @@
                         <td>{{h.itemProducto.producto.nombre}}</td>
                         <td>{{h.fechaRenta}}</td>
                         <td>{{h.fechaDevolucion}}</td>
-                        <td id="estado">
+
+                        <td id="devueltoTrue" *ngIf="devueltoFalse(h)" style="color:rgb(231, 69, 24)">
+                            {{tieneAcceso(h)}}
+                        </td>
+                        <td id="devueltoFalse" *ngIf="devueltoTrue(h)" style="color:rgb(47, 168, 31)">
                             {{tieneAcceso(h)}}
                         </td>
 

@@ -25,13 +25,18 @@ export class HistoProdRentComponent implements OnInit {
   }
 
   tieneAcceso(h: Historial): string {
-    if(h.devuelto != true){ 
-      var element = document.getElementById("estado");
-      element.style.color = "	#FF0000";
+    if(h.devuelto != true){
       return "Aun no se ha devuelto";
     } else {
       return "Devuelto";
     }
-  } 
+  }
 
+  devueltoTrue(h: Historial): boolean {
+    return h.devuelto;
+  }
+  
+  devueltoFalse(h: Historial): boolean {
+    return !h.devuelto;
+  }
 }

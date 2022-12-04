@@ -44,7 +44,6 @@ export class UsuarioService {
     usuario: UsuarioDto
   ): Observable<Usuario> {
     // hacer la llamada al endpoint para editar usuario con patch
-    console.log(usuario);
     return this.httpClient.post<Usuario>(
       `${this.urlEndpoint}/${usuario_id}`,
       usuario,
@@ -85,7 +84,6 @@ export class UsuarioService {
       Authorization: `Bearer ${this.authService.token}`,
     });
 
-    console.log(httpHeaders);
     return this.httpClient
       .post<Usuario>(this.urlEndpoint, usuario, { headers: httpHeaders })
       .pipe(

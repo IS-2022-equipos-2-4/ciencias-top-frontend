@@ -7,6 +7,7 @@ import { catchError, throwError } from 'rxjs';
 import swal from 'sweetalert2';
 import { Producto } from './producto';
 import { Ejemplar } from './ejemplar';
+import { EjemplarDto } from './ejemplar.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -87,6 +88,38 @@ export class ProductoService {
       .post<Ejemplar>(`${this.urlEndpoint}/${producto.id}/rentar`, undefined, {
         headers: this.authorizationHeaders,
       })
+      .pipe(
+        catchError((e) => {
+          e = e.error?.status && e.error?.message ? e.error : e;
+          swal.fire(String(e.status), e.message, 'error');
+          return throwError(() => e);
+        })
+      );
+  }
+
+  public getEjemplares(idProducto: number): Observable<EjemplarDto[]> {
+    return this.httpClient
+      .get<EjemplarDto[]>(`${this.urlEndpoint}/${idProducto}/ejemplares`, {
+        headers: this.authorizationHeaders,
+      })
+      .pipe(
+        catchError((e) => {
+          e = e.error?.status && e.error?.message ? e.error : e;
+          swal.fire(String(e.status), e.message, 'error');
+          return throwError(() => e);
+        })
+      );
+  }
+
+  public devolverEjemplar(idEjemplar: number): Observable<any> {
+    return this.httpClient
+      .post<EjemplarDto[]>(
+        `${this.urlEndpoint}/ejemplares/${idEjemplar}/devolver`,
+        undefined,
+        {
+          headers: this.authorizationHeaders,
+        }
+      )
       .pipe(
         catchError((e) => {
           e = e.error?.status && e.error?.message ? e.error : e;

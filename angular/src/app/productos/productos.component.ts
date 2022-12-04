@@ -88,7 +88,7 @@ export class ProductosComponent implements OnInit {
     this.productoService.rentar(producto).subscribe((ejemplar) => {
       this.ngOnInit();
       swal.fire(
-        'Ejemplar rentado',
+        'Producto rentado',
         `Has rentado el ejemplar ${ejemplar.idEjemplar}`,
         'success'
       );

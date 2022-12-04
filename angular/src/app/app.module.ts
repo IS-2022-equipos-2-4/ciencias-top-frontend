@@ -16,6 +16,7 @@ import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.compon
 import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HistoProdRentComponent } from './histo-prod-rent/histo-prod-rent.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -87,7 +88,8 @@ const routes: Routes = [
     SumarPumaPuntosComponent,
     LoginComponent,
     EditarUsuarioComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+    HistoProdRentComponent
   ],
   imports: [
     FormsModule,

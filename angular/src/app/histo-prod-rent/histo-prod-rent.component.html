@@ -2,18 +2,7 @@
     <div class="container-fluid py-4 text-center">
       <h1 class="display-7 fw-bold ">Productos Rentados</h1>
     </div>
-  </div>
-
-<div *ngFor = "let h of historial">
-    id: {{h.idRenta}},---
-    devuelto: {{h.devuelto}},---  
-    nombre Usuario: {{h.usuario.nombre}},---
-    fecha devolucion:  {{h.fechaDevolucion}},---
-    nombre Producto: {{h.itemProducto.producto.nombre}}--
 </div>
-
-
-
 
 <div class="container" style="padding-top: 10px">
     <div class="row">
@@ -24,6 +13,7 @@
                         <th scope="col">Nombre del Producto</th>
                         <th scope="col">Fecha En Que Se Rentó</th>
                         <th scope="col">Fecha Limite de Devolucion</th>
+                        <th scope="col">Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +21,10 @@
                         <td>{{h.itemProducto.producto.nombre}}</td>
                         <td>{{h.fechaRenta}}</td>
                         <td>{{h.fechaDevolucion}}</td>
+                        <td id="estado">
+                            {{tieneAcceso(h)}}
+                        </td>
+
                     </tr>
                 </tbody>
             </table>

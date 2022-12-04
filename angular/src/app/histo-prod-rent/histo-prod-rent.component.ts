@@ -11,6 +11,7 @@ import { HistorialService } from './historial.service';
 export class HistoProdRentComponent implements OnInit {
 
   historial: Historial[];
+  estado: string;
 
   constructor(
     private histoSvc: HistorialService,
@@ -23,8 +24,14 @@ export class HistoProdRentComponent implements OnInit {
     );
   }
 
-  tieneAcceso(historial: Historial): boolean {
-    return true;
+  tieneAcceso(h: Historial): string {
+    if(h.devuelto != true){ 
+      var element = document.getElementById("estado");
+      element.style.color = "	#FF0000";
+      return "Aun no se ha devuelto";
+    } else {
+      return "Devuelto";
+    }
   } 
 
 }

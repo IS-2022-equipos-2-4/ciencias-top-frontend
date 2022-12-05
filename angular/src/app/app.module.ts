@@ -16,6 +16,7 @@ import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.compon
 import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { EliminarUsuarioComponent } from './eliminar-usuario/eliminar-usuario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -44,6 +45,15 @@ const routes: Routes = [
     data: {
       allowedRoles: ['admin'],
       redirectionRoute: '/login',
+    },
+  },
+  {
+    path: 'usuarios/eliminar/:id',
+    component: EliminarUsuarioComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin'],
+      redirectionRoute: '/usuarios',
     },
   },
   {
@@ -87,7 +97,8 @@ const routes: Routes = [
     SumarPumaPuntosComponent,
     LoginComponent,
     EditarUsuarioComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+    EliminarUsuarioComponent
   ],
   imports: [
     FormsModule,

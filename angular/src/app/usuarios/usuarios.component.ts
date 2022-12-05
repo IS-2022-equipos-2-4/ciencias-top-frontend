@@ -11,6 +11,9 @@ import {
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
 import { PumapuntosService } from '../puma-puntos/puma-puntos.service';
+import { EliminarUsuarioService } from '../eliminar-usuario/eliminar-usuario.service';
+import { EliminarUsuarioComponent } from '../eliminar-usuario/eliminar-usuario.component';
+import swal, { SweetAlertOptions } from 'sweetalert2';
 
 @Component({
   selector: 'app-usuarios',
@@ -30,8 +33,10 @@ export class UsuariosComponent implements OnInit {
   faXMark = faXmark;
   faSquare = faSquare;
 
-  constructor(private readonly usuarioService: UsuarioService, 
-    private readonly pumaService: PumapuntosService) {}
+  constructor(
+    private readonly usuarioService: UsuarioService, 
+    private readonly pumaService: PumapuntosService, 
+    private readonly eliminarUsuarioSVC: EliminarUsuarioService) {}
 
   ngOnInit(): void {
     this.usuarioService
@@ -61,5 +66,26 @@ export class UsuariosComponent implements OnInit {
         .getUsuarios()
         .subscribe((usuarios) => (this.usuarios = usuarios));
     }
+  }
+
+  public eliminar(id:number):void{
+    swal.fire({
+      toast:true,
+      title: "¿Deseas eliminar al usuario?",
+      icon: "warning",      
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      confirmButtonColor: "#ff0055",
+      cancelButtonColor: "#999999",
+      reverseButtons: true,
+      focusConfirm: false,
+      focusCancel: true,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', swal.stopTimer)
+        toast.addEventListener('mouseleave', swal.resumeTimer)
+      }
+    });
   }
 }

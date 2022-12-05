@@ -36,7 +36,7 @@ export class SumarPumaPuntosComponent implements OnInit {
       (response) => {
         this.router.navigate(['/usuarios']);
         swal.fire(
-          'Pumapuntos sumados!',
+          '¡Pumapuntos sumados!',
           `Se le han sumado ${this.pumapuntos} pumapuntos al usuario con ID ${this.idUsuario}!`,
           'success'
         );
@@ -50,7 +50,7 @@ export class SumarPumaPuntosComponent implements OnInit {
       (response) => {
         this.router.navigate(['/usuarios']);
         swal.fire(
-          'Pumapuntos restados!',
+          '¡Pumapuntos restados!',
           `Se le han restado ${this.pumapuntos} pumapuntos al usuario con id ${this.idUsuario}!`,
           'success'
         );

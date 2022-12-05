@@ -39,7 +39,7 @@ export class EditarProductoComponent implements OnInit {
 
     productoDto.codigo = this.producto.codigo;
     productoDto.nombre = this.producto.nombre;
-    productoDto.decripcion = this.producto.descripcion;
+    productoDto.descripcion = this.producto.descripcion;
     productoDto.costo = this.producto.costo;
     productoDto.stock = this.producto.stock;
     productoDto.limitePrestamo = this.producto.limitePrestamo;

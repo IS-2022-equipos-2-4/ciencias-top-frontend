@@ -77,7 +77,12 @@ export class UsuariosComponent implements OnInit {
    * Contador de 5 segundos 
    * @param id ID usuario a eliminar
    */
-   public eliminar(id:number):void{    
+   public eliminar(id:number):void{   
+    
+    let usrString = sessionStorage.getItem('usuario');
+    let usrObj = JSON.parse(usrString);
+    let requester_ID = usrObj.id;
+        
     let time_wait = 5000;
     swal.fire({
       toast:true,
@@ -98,7 +103,7 @@ export class UsuariosComponent implements OnInit {
       }
     }).then((result) => {
       if (result.isConfirmed){        
-        this.eliminarUsuario(id);
+        this.eliminarUsuario(id,requester_ID);
       } 
     });
   }
@@ -108,13 +113,8 @@ export class UsuariosComponent implements OnInit {
    * el mismo en ejecución o el 999999999 muestra un error.
    * @param idUsuario ID del usuario a eliminar
    */
-  private eliminarUsuario(idUsuario:number): void {
-    if(idUsuario == 999999999){
-      swal.fire("Usuario no modificable","No puedes editar al usuario 999999999", "error");
-      return;
-    }
-    //toDo: revisar si es el usuario en ejecución
-    this.eliminarUsuarioSVC.deactivateUser(idUsuario).subscribe(
+  private eliminarUsuario(idUsuario:number, requester_ID:number): void {    
+    this.eliminarUsuarioSVC.deactivateUser(idUsuario,requester_ID).subscribe(
       (response) => {
         this.router.navigate(['/usuarios']);
         swal.fire(

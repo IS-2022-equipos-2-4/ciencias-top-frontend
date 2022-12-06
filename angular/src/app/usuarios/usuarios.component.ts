@@ -71,9 +71,53 @@ export class UsuariosComponent implements OnInit {
     }
   }
 
-  public sumarPP(id:number, pp:number):void{
+  /**
+   * Muestra una ventana emergente para seleccionar los pumapuntos a sumar/restar
+   * @param id ID del usuario a editar
+   */
+  public sumarPP(id:number):void{
+    let inputValue = 0;
+    const inputStep = 1;
+    swal.fire({      
+      title: "Editar Puma Puntos",
+      icon: "question",
+      text: "Escribe cuántos Puma Puntos quieres editar",
+      showCancelButton: true,      
+      input: 'range',
+      inputValue,
+      reverseButtons: true,
+      focusConfirm: false,
+      focusCancel: false,
+      focusDeny: false,
+      confirmButtonText: 'Sumar',
+      denyButtonText: 'Restar',
+      confirmButtonColor: "#ff0055",
+      denyButtonColor: "#999999",
+      showDenyButton: true,      
+      inputOptions: {
+        min: -100,
+        max: 100,
+        step: inputStep
+      },
+      customClass:{
+        input: 'customSwal',
 
+      }     
+    }).then((result) => {
+      if (result.isConfirmed){        
+        this.editarPumaPuntos(id, result.value);
+      } else if(result.isDenied){
+        let resta = result.value * -1;        
+        this.editarPumaPuntos(id, resta);
+      }
+    });
   }
+
+  private editarPumaPuntos(idUsuario:number, puntos:number){
+    console.log("Result: " + puntos);
+  }
+
+
 
   /**
    * Muestra en pantalla una ventana de confirmación al querer eliminar un usuario.

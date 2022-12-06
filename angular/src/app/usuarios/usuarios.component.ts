@@ -72,7 +72,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   /**
-   * Muestra una ventana emergente para seleccionar los pumapuntos a sumar/restar
+   * Muestra una ventana emergente para seleccionar los puma puntos a sumar/restar
    * @param id ID del usuario a editar
    */
   public sumarPP(id:number):void{
@@ -91,6 +91,7 @@ export class UsuariosComponent implements OnInit {
       focusDeny: false,
       confirmButtonText: 'Sumar',
       denyButtonText: 'Restar',
+      returnInputValueOnDeny:true,
       confirmButtonColor: "#ff0055",
       denyButtonColor: "#999999",
       showDenyButton: true,      
@@ -113,11 +114,29 @@ export class UsuariosComponent implements OnInit {
     });
   }
 
+  /**
+   * 
+   * @param idUsuario ID del usuario a modificar
+   * @param puntos Positivo para suma, Negativo para resta
+   */
   private editarPumaPuntos(idUsuario:number, puntos:number){
     console.log("Result: " + puntos);
+    this.pumaService.update(puntos, idUsuario).subscribe(
+      (response) => {
+        this.router.navigate(['/usuarios']);
+        swal.fire(
+          '¡Puma Puntos editados!',
+          `El usuario con ID ${idUsuario} ha recibido ${puntos} Puma Puntos`,
+          'success' 
+        ).then(() => {
+          window.location.reload();
+        });
+      },
+      (err) => {
+        swal.fire(`Error ${err.status}`, err.error.message, 'error')
+      }
+    )
   }
-
-
 
   /**
    * Muestra en pantalla una ventana de confirmación al querer eliminar un usuario.
@@ -167,18 +186,16 @@ export class UsuariosComponent implements OnInit {
           '¡Usuario Eliminado!',
           `El usuario con ID ${idUsuario} se ha eliminado`,
           'success' 
-        );
-        setTimeout(function(){
+        ).then(() => {
           window.location.reload();
-        }, 1500);
+        });
+        
       },
       (err) => {
         swal.fire(`Error ${err.status}`, err.error.message, 'error')
       }
     )
-  }
-
-  
+  }  
 }
 
 

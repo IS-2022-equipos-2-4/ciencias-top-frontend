@@ -71,18 +71,17 @@ export class UsuariosComponent implements OnInit {
     }
   }
 
+  public sumarPP(id:number, pp:number):void{
+
+  }
+
   /**
    * Muestra en pantalla una ventana de confirmación al querer eliminar un usuario.
    * Opción seleccionada por defecto para cancelar.
    * Contador de 5 segundos 
    * @param id ID usuario a eliminar
    */
-   public eliminar(id:number):void{   
-    
-    let usrString = sessionStorage.getItem('usuario');
-    let usrObj = JSON.parse(usrString);
-    let requester_ID = usrObj.id;
-        
+   public eliminar(id:number):void{       
     let time_wait = 5000;
     swal.fire({
       toast:true,
@@ -103,17 +102,20 @@ export class UsuariosComponent implements OnInit {
       }
     }).then((result) => {
       if (result.isConfirmed){        
-        this.eliminarUsuario(id,requester_ID);
+        this.eliminarUsuario(id);
       } 
     });
   }
 
   /**
-   * Recibe un ID de un usuario para eliminarlo. Si el usuario a eliminar es 
-   * el mismo en ejecución o el 999999999 muestra un error.
+   * Recibe un ID de un usuario para eliminarlo. 
+   * Envía el ID del solicitante de la transacción.
    * @param idUsuario ID del usuario a eliminar
    */
-  private eliminarUsuario(idUsuario:number, requester_ID:number): void {    
+  private eliminarUsuario(idUsuario:number): void { 
+    let usrString = sessionStorage.getItem('usuario');
+    let usrObj = JSON.parse(usrString);
+    let requester_ID = usrObj.id;   
     this.eliminarUsuarioSVC.deactivateUser(idUsuario,requester_ID).subscribe(
       (response) => {
         this.router.navigate(['/usuarios']);

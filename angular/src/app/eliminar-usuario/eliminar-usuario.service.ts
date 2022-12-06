@@ -7,7 +7,7 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'root',
 })
 export class EliminarUsuarioService {
-  private readonly urlEndpoint:string = 'http://localhost:8080/api/usuarios/eliminar/';
+  private readonly urlEndpoint:string = 'http://localhost:8080/api/usuarios/eliminar';
   private readonly httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
   });

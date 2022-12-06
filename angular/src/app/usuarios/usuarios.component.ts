@@ -12,8 +12,8 @@ import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
 import { PumapuntosService } from '../puma-puntos/puma-puntos.service';
 import { EliminarUsuarioService } from '../eliminar-usuario/eliminar-usuario.service';
-import { EliminarUsuarioComponent } from '../eliminar-usuario/eliminar-usuario.component';
 import swal, { SweetAlertOptions } from 'sweetalert2';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuarios',
@@ -34,11 +34,14 @@ export class UsuariosComponent implements OnInit {
   faSquare = faSquare;
 
   constructor(
+    private router: Router,
+    private activateRoute: ActivatedRoute,
+    private readonly usr: Usuario,
     private readonly usuarioService: UsuarioService, 
     private readonly pumaService: PumapuntosService, 
     private readonly eliminarUsuarioSVC: EliminarUsuarioService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.usuarioService
       .getUsuarios()
       .subscribe((usuarios) => {
@@ -53,8 +56,9 @@ export class UsuariosComponent implements OnInit {
   }
 
   /**
-   * Hace una busqueda en la base de datos para desplegar a los usuarios que correspondan a un criterio, incluso si no hay nadie que lo cumpla.
-   * En caso de que uno o ambos valores de busqueda esten vacios, regresa la lista de todos los usuarios.
+   * Hace una búsqueda en la base de datos para desplegar a los usuarios que correspondan a un criterio, 
+   * incluso si no hay nadie que lo cumpla.
+   * En caso de que uno o ambos valores de búsqueda estén vacíos, regresa la lista de todos los usuarios.
    */
   buscar(): void {
     if (this.busquedaEnCriterio && this.criterio) {
@@ -68,7 +72,14 @@ export class UsuariosComponent implements OnInit {
     }
   }
 
-  public eliminar(id:number):void{
+  /**
+   * Muestra en pantalla una ventana de confirmación al querer eliminar un usuario.
+   * Opción seleccionada por defecto para cancelar.
+   * Contador de 5 segundos 
+   * @param id ID usuario a eliminar
+   */
+   public eliminar(id:number):void{    
+    let time_wait = 5000;
     swal.fire({
       toast:true,
       title: "¿Deseas eliminar al usuario?",
@@ -80,12 +91,47 @@ export class UsuariosComponent implements OnInit {
       reverseButtons: true,
       focusConfirm: false,
       focusCancel: true,
-      timer: 3000,
+      timer: time_wait,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', swal.stopTimer)
         toast.addEventListener('mouseleave', swal.resumeTimer)
       }
+    }).then((result) => {
+      if (result.isConfirmed){        
+        this.eliminarUsuario(id);
+      } 
     });
   }
+
+  /**
+   * Recibe un ID de un usuario para eliminarlo. Si el usuario a eliminar es 
+   * el mimso en ejecución o el 999999999 muestra un error.
+   * @param idUsuario ID del usuario a eliminar
+   */
+  private eliminarUsuario(idUsuario:number): void {
+    
+    //toDo: revisar si es el usuario 999999999
+    this.eliminarUsuarioSVC.deactivateUser(idUsuario).subscribe(
+      (response) => {
+        this.router.navigate(['/usuarios']);
+        swal.fire(
+          '¡Usuario Eliminado!',
+          `El usuario con ID ${idUsuario} se ha eliminado`,
+          'success' 
+        );
+        setTimeout(function(){
+          window.location.reload();
+        }, 1500);
+      },
+      (err) => {
+        swal.fire(`Error ${err.status}`, err.error.message, 'error')
+      }
+    )
+  }
+
+  
 }
+
+
+

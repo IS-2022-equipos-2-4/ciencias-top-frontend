@@ -36,7 +36,6 @@ export class UsuariosComponent implements OnInit {
   constructor(
     private router: Router,
     private activateRoute: ActivatedRoute,
-    private readonly usr: Usuario,
     private readonly usuarioService: UsuarioService, 
     private readonly pumaService: PumapuntosService, 
     private readonly eliminarUsuarioSVC: EliminarUsuarioService) {}
@@ -106,12 +105,15 @@ export class UsuariosComponent implements OnInit {
 
   /**
    * Recibe un ID de un usuario para eliminarlo. Si el usuario a eliminar es 
-   * el mimso en ejecución o el 999999999 muestra un error.
+   * el mismo en ejecución o el 999999999 muestra un error.
    * @param idUsuario ID del usuario a eliminar
    */
   private eliminarUsuario(idUsuario:number): void {
-    
-    //toDo: revisar si es el usuario 999999999
+    if(idUsuario == 999999999){
+      swal.fire("Usuario no modificable","No puedes editar al usuario 999999999", "error");
+      return;
+    }
+    //toDo: revisar si es el usuario en ejecución
     this.eliminarUsuarioSVC.deactivateUser(idUsuario).subscribe(
       (response) => {
         this.router.navigate(['/usuarios']);

@@ -92,8 +92,8 @@ export class UsuariosComponent implements OnInit {
       confirmButtonText: 'Sumar',
       denyButtonText: 'Restar',
       returnInputValueOnDeny:true,
-      confirmButtonColor: "#ff0055",
-      denyButtonColor: "#999999",
+      confirmButtonColor: "#033E3E",
+      denyButtonColor: "#ff0055",
       showDenyButton: true,      
       inputOptions: {
         min: -100,
@@ -120,7 +120,6 @@ export class UsuariosComponent implements OnInit {
    * @param puntos Positivo para suma, Negativo para resta
    */
   private editarPumaPuntos(idUsuario:number, puntos:number){
-    console.log("Result: " + puntos);
     this.pumaService.update(puntos, idUsuario).subscribe(
       (response) => {
         this.router.navigate(['/usuarios']);

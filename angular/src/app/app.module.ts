@@ -17,6 +17,7 @@ import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.compon
 import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HistoProdRentComponent } from './histo-prod-rent/histo-prod-rent.component';
 import { EditarProductoComponent } from './productos/editar-producto.component';
 
 const routes: Routes = [
@@ -76,6 +77,15 @@ const routes: Routes = [
     },
   },
   {
+    path: 'perfil/historial-rentas',
+    component: HistoProdRentComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin', 'provider', 'user'],
+      redirectionRoute: '/login',
+    },
+  },
+  {
     path: 'productos/editar/:id',
     component: EditarProductoComponent,
     canActivate: [AuthGuard],
@@ -107,6 +117,7 @@ const routes: Routes = [
     LoginComponent,
     EditarUsuarioComponent,
     CrearUsuarioComponent,
+    HistoProdRentComponent,
     EditarProductoComponent,
     EjemplaresComponent,
   ],

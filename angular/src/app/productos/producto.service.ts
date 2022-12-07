@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
@@ -16,10 +16,6 @@ import { ProductoDto } from './producto.dto';
 export class ProductoService {
   private readonly urlEndpoint = 'http://localhost:8080/api/productos';
 
-  private authorizationHeaders = new HttpHeaders({
-    Authorization: `Bearer ${this.authService.token}`,
-  });
-
   constructor(
     private httpClient: HttpClient,
     public authService: AuthService
@@ -27,7 +23,9 @@ export class ProductoService {
 
   public getProductos(): Observable<Producto[]> {
     return this.httpClient.get<Producto[]>(this.urlEndpoint, {
-      headers: this.authorizationHeaders,
+      headers: {
+        Authorization: `Bearer ${this.authService.token}`,
+      },
     });
   }
 
@@ -48,7 +46,9 @@ export class ProductoService {
     return this.httpClient.get<Producto[]>(
       `${this.urlEndpoint}/nombre/${busqueda}`,
       {
-        headers: this.authorizationHeaders,
+        headers: {
+          Authorization: `Bearer ${this.authService.token}`,
+        },
       }
     );
   }
@@ -57,7 +57,9 @@ export class ProductoService {
     return this.httpClient.get<Producto[]>(
       `${this.urlEndpoint}/codigo/${busqueda}`,
       {
-        headers: this.authorizationHeaders,
+        headers: {
+          Authorization: `Bearer ${this.authService.token}`,
+        },
       }
     );
   }
@@ -86,7 +88,6 @@ export class ProductoService {
     producto_id: number,
     producto: ProductoDto
   ): Observable<Producto> {
-    console.log(producto);
     return this.httpClient.post<Producto>(
       `${this.urlEndpoint}/editar/${producto_id}`,
       producto,
@@ -117,7 +118,9 @@ export class ProductoService {
   public rentar(producto: Producto): Observable<Ejemplar> {
     return this.httpClient
       .post<Ejemplar>(`${this.urlEndpoint}/${producto.id}/rentar`, undefined, {
-        headers: this.authorizationHeaders,
+        headers: {
+          Authorization: `Bearer ${this.authService.token}`,
+        },
       })
       .pipe(
         catchError((e) => {
@@ -131,7 +134,9 @@ export class ProductoService {
   public getEjemplares(idProducto: number): Observable<EjemplarDto[]> {
     return this.httpClient
       .get<EjemplarDto[]>(`${this.urlEndpoint}/${idProducto}/ejemplares`, {
-        headers: this.authorizationHeaders,
+        headers: {
+          Authorization: `Bearer ${this.authService.token}`,
+        },
       })
       .pipe(
         catchError((e) => {
@@ -148,7 +153,9 @@ export class ProductoService {
         `${this.urlEndpoint}/ejemplares/${idEjemplar}/devolver`,
         undefined,
         {
-          headers: this.authorizationHeaders,
+          headers: {
+            Authorization: `Bearer ${this.authService.token}`,
+          },
         }
       )
       .pipe(

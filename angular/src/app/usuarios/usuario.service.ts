@@ -19,7 +19,7 @@ export class UsuarioService {
   private authorizationHeaders = new HttpHeaders({
     Authorization: `Bearer ${this.authService.token}`,
   });
-  
+
   constructor(
     private httpClient: HttpClient,
     public authService: AuthService
@@ -108,6 +108,34 @@ export class UsuarioService {
   public deactivateUser(idUsuario: number): Observable<number>{
     return this.httpClient.post<number>(
       this.urlEndpoint + '/eliminar/' + idUsuario, {},
+      {
+        headers: this.authorizationHeaders
+      });
+  }
+
+  /**
+   * Regresa el saldo de puma puntos de un usuario
+   * @param idUsuario ID del usuario a buscar
+   * @returns 
+   */
+  public getPumapuntos(idUsuario: number):Observable<number>{
+    const urlEndpoint = 'http://localhost:8080/api/pumapuntos';
+    return this.httpClient.get<number>(
+      urlEndpoint + '/' + idUsuario,
+      {
+        headers: this.authorizationHeaders
+      });
+  }
+
+  /**
+   * Actualiza los puma puntos de un usuario
+   * @param idUsuario ID del usuario a editar
+   * @returns 
+   */
+  public update(pumapuntos: number, idUsuario: number): Observable<number>{
+    const urlEndpoint = 'http://localhost:8080/api/pumapuntos';
+    return this.httpClient.post<number>(
+      urlEndpoint + '/' + idUsuario + '/sumar/' + pumapuntos, {},
       {
         headers: this.authorizationHeaders
       });

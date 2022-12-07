@@ -10,7 +10,7 @@ import {
 
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
-import { PumapuntosService } from '../puma-puntos/puma-puntos.service';
+// import { PumapuntosService } from '../puma-puntos/puma-puntos.service';
 import swal, { SweetAlertOptions } from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -35,8 +35,7 @@ export class UsuariosComponent implements OnInit {
   constructor(
     private router: Router,
     private activateRoute: ActivatedRoute,
-    private readonly usuarioService: UsuarioService, 
-    private readonly pumaService: PumapuntosService) {}
+    private readonly usuarioService: UsuarioService) {}
 
   ngOnInit(): void {    
     this.usuarioService
@@ -45,7 +44,7 @@ export class UsuariosComponent implements OnInit {
         this.usuarios = usuarios;
 
         this.usuarios.forEach(u => {
-          this.pumaService
+          this.usuarioService
             .getPumapuntos(u.id)
             .subscribe((pumapuntos) => (u.pumapuntos = pumapuntos))
         });
@@ -118,7 +117,7 @@ export class UsuariosComponent implements OnInit {
    * @param puntos Positivo para suma, Negativo para resta
    */
   private editarPumaPuntos(idUsuario:number, puntos:number){
-    this.pumaService.update(puntos, idUsuario).subscribe(
+    this.usuarioService.update(puntos, idUsuario).subscribe(
       (response) => {
         this.router.navigate(['/usuarios']);
         swal.fire(

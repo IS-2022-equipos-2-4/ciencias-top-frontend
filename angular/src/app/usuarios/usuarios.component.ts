@@ -10,7 +10,6 @@ import {
 
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
-// import { PumapuntosService } from '../puma-puntos/puma-puntos.service';
 import swal, { SweetAlertOptions } from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -112,12 +111,12 @@ export class UsuariosComponent implements OnInit {
   }
 
   /**
-   * 
+   * Edita el saldo de puma puntos de un usuario.
    * @param idUsuario ID del usuario a modificar
    * @param puntos Positivo para suma, Negativo para resta
    */
   private editarPumaPuntos(idUsuario:number, puntos:number){
-    this.usuarioService.update(puntos, idUsuario).subscribe(
+    this.usuarioService.updatePP(puntos, idUsuario).subscribe(
       (response) => {
         this.router.navigate(['/usuarios']);
         swal.fire(

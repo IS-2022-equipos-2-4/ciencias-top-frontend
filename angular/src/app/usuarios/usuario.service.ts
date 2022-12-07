@@ -132,7 +132,7 @@ export class UsuarioService {
    * @param idUsuario ID del usuario a editar
    * @returns 
    */
-  public update(pumapuntos: number, idUsuario: number): Observable<number>{
+  public updatePP(pumapuntos: number, idUsuario: number): Observable<number>{
     const urlEndpoint = 'http://localhost:8080/api/pumapuntos';
     return this.httpClient.post<number>(
       urlEndpoint + '/' + idUsuario + '/sumar/' + pumapuntos, {},

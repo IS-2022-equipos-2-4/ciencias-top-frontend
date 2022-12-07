@@ -57,7 +57,7 @@
                 <th scope="row">{{producto.id}}</th>
                 <td>{{producto.codigo}}</td>
                 <td>{{producto.nombre}}</td>
-                <td width="32%" id="descripcion">{{producto.descripcion}}</td>
+                <td width="30%" id="descripcion">{{producto.descripcion}}</td>
                 <td>{{producto.proveedor.nombre}}</td>
                 <td>{{producto.costo}}</td>
                 <td>{{producto.stock}}</td>
@@ -66,8 +66,16 @@
                   <button  type="button" class="btn btn-primary btn-space"
                       data-bs-toggle="tooltip" 
                       data-bs-placement="top" 
-                      title="Rentar">
+                      title="Rentar"
+                      (click)="rentar(producto)">
                     <fa-icon [icon]="faShoppingCart"></fa-icon>
+                  </button>
+                  <button *ngIf="esAdmin()" type="button" class="btn btn-warning btn-space"
+                      data-bs-toggle="tooltip" 
+                      data-bs-placement="top" 
+                      title="Devolver"
+                      [routerLink]="[producto.id, 'ejemplares']">
+                    <fa-icon [icon]="faRepeat"></fa-icon>
                   </button>
                   <button *ngIf="tieneAcceso(producto)" type="button" class="btn btn-success btn-space" [routerLink]="['/productos/editar', producto.id]"
                       data-bs-toggle="tooltip" 

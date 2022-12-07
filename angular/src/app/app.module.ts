@@ -12,6 +12,7 @@ import { LoginComponent } from './auth/login.component';
 import { HeaderComponent } from './header/header.component';
 import { CrearProductosComponent } from './productos/crear-producto.component';
 import { ProductosComponent } from './productos/productos.component';
+import { EjemplaresComponent } from './productos/ejemplares.component';
 import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
@@ -83,7 +84,15 @@ const routes: Routes = [
       redirectionRoute: '/login',
     },
   },
-
+  {
+    path: 'productos/:id/ejemplares',
+    component: EjemplaresComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin'],
+      redirectionRoute: '/login',
+    },
+  },
   { path: 'login', component: LoginComponent },
 ];
 
@@ -98,7 +107,8 @@ const routes: Routes = [
     LoginComponent,
     EditarUsuarioComponent,
     CrearUsuarioComponent,
-    EditarProductoComponent
+    EditarProductoComponent,
+    EjemplaresComponent,
   ],
   imports: [
     FormsModule,

@@ -55,7 +55,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {
       allowedRoles: ['admin'],
-      redirectionRoute: '/usuarios',
+      redirectionRoute: '/login',
     },
   },
   {

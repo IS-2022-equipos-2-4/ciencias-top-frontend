@@ -11,7 +11,6 @@ import {
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
 import { PumapuntosService } from '../puma-puntos/puma-puntos.service';
-// import { EliminarUsuarioService } from '../eliminar-usuario/eliminar-usuario.service';
 import swal, { SweetAlertOptions } from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 

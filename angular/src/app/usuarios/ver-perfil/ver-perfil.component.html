@@ -1,0 +1,83 @@
+<div class="p-3 mb-2 bg-light rounded-3">
+    <div class="container-fluid py-4 text-center">
+      <h1 class="display-7 fw-bold ">Perfil</h1>
+    </div>
+  </div>
+  
+  <div class="album py-5">
+    <div class="container mb-4 mt-0">
+  
+      <div class="container" style="padding-top: 10px">
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Número Institucional</th>
+                  <th scope="col">Telefono</th>
+                  <th scope="col">Correo</th> 
+                  <th scope="col">Carrera</th>
+                  <th scope="col">Saldo</th>
+                  <th scope="col">Proveedor</th>
+                  <th scope="col">Admin</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let usuario ">
+                  <th scope="row">{{usuario.nombre}}</th>
+                  <td>{{usuario.numInstitucional}}</td>
+                  <td>{{usuario.telefono}}</td>
+                  <td>{{usuario.correo}}</td>
+                  <td>{{usuario.carrera}}</td>
+                  <td>{{usuario.pumapuntos}}</td>
+                  <ng-template [ngIf]="usuario.activo" [ngIfElse]="elseBlock">
+                    <td>
+                      <fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon>
+                    </td>
+                  </ng-template>
+                  <ng-template #elseBlock>
+                    <td>
+                      <fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon>
+                    </td>
+                  </ng-template>
+  
+                  <ng-template [ngIf]="usuario.esProveedor" [ngIfElse]="elseBlock">
+                    <td>
+                      <fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon>
+                    </td>
+                  </ng-template>
+                  <ng-template #elseBlock>
+                    <td>
+                      <fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon>
+                    </td>
+                  </ng-template>
+  
+                  <ng-template [ngIf]="usuario.esAdmin" [ngIfElse]="elseBlock">
+                    <td>
+                      <fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon>
+                    </td>
+                  </ng-template>
+                  <ng-template #elseBlock>
+                    <td>
+                      <fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon>
+                    </td>
+                  </ng-template>
+                  <td>
+                    <button type="button" class="btn btn-primary btn-space" [routerLink]="['productos/productos-rentados']" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Ver Historial Productos">
+                      <fa-icon [icon]="faDollar"></fa-icon>
+                   </button>
+                    
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

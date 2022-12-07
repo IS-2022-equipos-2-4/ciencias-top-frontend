@@ -19,6 +19,7 @@ import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HistoProdRentComponent } from './histo-prod-rent/histo-prod-rent.component';
 import { EditarProductoComponent } from './productos/editar-producto.component';
+import { VerPerfilComponent } from './usuarios/ver-perfil/ver-perfil.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -120,6 +121,7 @@ const routes: Routes = [
     HistoProdRentComponent,
     EditarProductoComponent,
     EjemplaresComponent,
+    VerPerfilComponent,
   ],
   imports: [
     FormsModule,

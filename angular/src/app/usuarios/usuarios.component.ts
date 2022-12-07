@@ -174,11 +174,8 @@ export class UsuariosComponent implements OnInit {
    * Envía el ID del solicitante de la transacción.
    * @param idUsuario ID del usuario a eliminar
    */
-  private eliminarUsuario(idUsuario:number): void { 
-    let usrString = sessionStorage.getItem('usuario');
-    let usrObj = JSON.parse(usrString);
-    let requester_ID = usrObj.id;   
-    this.eliminarUsuarioSVC.deactivateUser(idUsuario,requester_ID).subscribe(
+  private eliminarUsuario(idUsuario:number): void {     
+    this.eliminarUsuarioSVC.deactivateUser(idUsuario).subscribe(
       (response) => {
         this.router.navigate(['/usuarios']);
         swal.fire(

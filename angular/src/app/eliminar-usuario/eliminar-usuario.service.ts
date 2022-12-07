@@ -19,9 +19,9 @@ export class EliminarUsuarioService {
     private httpClient: HttpClient,
     public authService: AuthService) {}
 
-  deactivateUser(idUsuario: number,requester_ID: number): Observable<number>{
+  deactivateUser(idUsuario: number): Observable<number>{
     return this.httpClient.post<number>(
-      this.urlEndpoint + '/' + idUsuario + '+' + requester_ID, {},
+      this.urlEndpoint + '/' + idUsuario, {},
       {
         headers: this.authorizationHeaders
       });

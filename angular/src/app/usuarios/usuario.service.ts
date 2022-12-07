@@ -13,7 +13,13 @@ import { UsuarioDto } from './usuario.dto';
 })
 export class UsuarioService {
   private readonly urlEndpoint = 'http://localhost:8080/api/usuarios';
-
+  private readonly httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+  });
+  private authorizationHeaders = new HttpHeaders({
+    Authorization: `Bearer ${this.authService.token}`,
+  });
+  
   constructor(
     private httpClient: HttpClient,
     public authService: AuthService
@@ -92,5 +98,18 @@ export class UsuarioService {
           return throwError(() => e);
         })
       );
+  }
+
+  /**
+   * Marca un usuario como inactivo
+   * @param idUsuario ID del usuario a desactivar
+   * @returns 
+   */
+  public deactivateUser(idUsuario: number): Observable<number>{
+    return this.httpClient.post<number>(
+      this.urlEndpoint + '/eliminar/' + idUsuario, {},
+      {
+        headers: this.authorizationHeaders
+      });
   }
 }

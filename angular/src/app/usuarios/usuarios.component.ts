@@ -11,7 +11,7 @@ import {
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
 import { PumapuntosService } from '../puma-puntos/puma-puntos.service';
-import { EliminarUsuarioService } from '../eliminar-usuario/eliminar-usuario.service';
+// import { EliminarUsuarioService } from '../eliminar-usuario/eliminar-usuario.service';
 import swal, { SweetAlertOptions } from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -37,8 +37,7 @@ export class UsuariosComponent implements OnInit {
     private router: Router,
     private activateRoute: ActivatedRoute,
     private readonly usuarioService: UsuarioService, 
-    private readonly pumaService: PumapuntosService, 
-    private readonly eliminarUsuarioSVC: EliminarUsuarioService) {}
+    private readonly pumaService: PumapuntosService) {}
 
   ngOnInit(): void {    
     this.usuarioService
@@ -175,7 +174,7 @@ export class UsuariosComponent implements OnInit {
    * @param idUsuario ID del usuario a eliminar
    */
   private eliminarUsuario(idUsuario:number): void {     
-    this.eliminarUsuarioSVC.deactivateUser(idUsuario).subscribe(
+    this.usuarioService.deactivateUser(idUsuario).subscribe(
       (response) => {
         this.router.navigate(['/usuarios']);
         swal.fire(

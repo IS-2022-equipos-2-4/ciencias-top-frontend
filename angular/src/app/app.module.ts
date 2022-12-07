@@ -17,7 +17,7 @@ import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.compon
 import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
-import { EliminarUsuarioComponent } from './eliminar-usuario/eliminar-usuario.component';
+// import { EliminarUsuarioComponent } from './eliminar-usuario/eliminar-usuario.component';
 import { EditarProductoComponent } from './productos/editar-producto.component';
 
 const routes: Routes = [
@@ -49,15 +49,15 @@ const routes: Routes = [
       redirectionRoute: '/login',
     },
   },
-  {
-    path: 'usuarios/eliminar/:id',
-    component: EliminarUsuarioComponent,
-    canActivate: [AuthGuard],
-    data: {
-      allowedRoles: ['admin'],
-      redirectionRoute: '/login',
-    },
-  },
+  // {
+  //   path: 'usuarios/eliminar/:id',
+  //   component: EliminarUsuarioComponent,
+  //   canActivate: [AuthGuard],
+  //   data: {
+  //     allowedRoles: ['admin'],
+  //     redirectionRoute: '/login',
+  //   },
+  // },
   {
     path: 'usuarios/sumar-pumapuntos/:id',
     component: SumarPumaPuntosComponent,
@@ -117,7 +117,7 @@ const routes: Routes = [
     LoginComponent,
     EditarUsuarioComponent,
     CrearUsuarioComponent,
-    EliminarUsuarioComponent,
+    // EliminarUsuarioComponent,
     EditarProductoComponent,
     EjemplaresComponent,
   ],

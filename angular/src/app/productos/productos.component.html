@@ -77,7 +77,7 @@
                       [routerLink]="[producto.id, 'ejemplares']">
                     <fa-icon [icon]="faRepeat"></fa-icon>
                   </button>
-                  <button *ngIf="tieneAcceso(producto)" type="button" class="btn btn-success btn-space" 
+                  <button *ngIf="tieneAcceso(producto)" type="button" class="btn btn-success btn-space" [routerLink]="['/productos/editar', producto.id]"
                       data-bs-toggle="tooltip" 
                       data-bs-placement="top" 
                       title="Editar">

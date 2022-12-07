@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {
   faCheck,
-  faShoppingCart,
   faEdit,
+  faShoppingCart,
   faSquare,
   faTrashAlt,
   faXmark,
+  faRepeat,
 } from '@fortawesome/free-solid-svg-icons';
+import swal from 'sweetalert2';
 import { AuthService } from '../auth/auth.service';
 
 import { Producto } from './producto';
@@ -28,6 +30,7 @@ export class ProductosComponent implements OnInit {
   faCheck = faCheck;
   faXMark = faXmark;
   faSquare = faSquare;
+  faRepeat = faRepeat;
 
   constructor(
     private readonly productoService: ProductoService,
@@ -37,7 +40,9 @@ export class ProductosComponent implements OnInit {
   ngOnInit(): void {
     this.productoService
       .getProductos()
-      .subscribe((productos) => (this.productos = productos));
+      .subscribe(
+        (productos) => (this.productos = productos.sort((a, b) => a.id - b.id))
+      );
   }
 
   buscar(): void {
@@ -81,5 +86,20 @@ export class ProductosComponent implements OnInit {
 
   estaAutenticado(): boolean {
     return this.productoService.estaAutenticado();
+  }
+
+  esAdmin(): boolean {
+    return this.authService.esAdmin();
+  }
+
+  rentar(producto: Producto): void {
+    this.productoService.rentar(producto).subscribe((ejemplar) => {
+      this.ngOnInit();
+      swal.fire(
+        'Producto rentado',
+        `Has rentado el ejemplar ${ejemplar.idEjemplar}`,
+        'success'
+      );
+    });
   }
 }

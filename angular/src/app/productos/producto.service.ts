@@ -5,16 +5,17 @@ import { AuthService } from '../auth/auth.service';
 
 import { catchError, throwError } from 'rxjs';
 import swal from 'sweetalert2';
+import { Ejemplar } from './ejemplar';
+import { EjemplarDto } from './ejemplar.dto';
 import { Producto } from './producto';
+import { ProductoDto } from './producto.dto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductoService {
   private readonly urlEndpoint = 'http://localhost:8080/api/productos';
-  private readonly httpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json',
-  });
+
   private authorizationHeaders = new HttpHeaders({
     Authorization: `Bearer ${this.authService.token}`,
   });
@@ -28,6 +29,19 @@ export class ProductoService {
     return this.httpClient.get<Producto[]>(this.urlEndpoint, {
       headers: this.authorizationHeaders,
     });
+  }
+
+  public getProducto(id: string): Observable<Producto> {
+    const producto = this.httpClient.get<Producto>(
+      `${this.urlEndpoint}/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${this.authService.token}`,
+        },
+      }
+    );
+
+    return producto;
   }
 
   public buscar_nombre(busqueda: string): Observable<Producto[]> {
@@ -68,6 +82,23 @@ export class ProductoService {
       );
   }
 
+  public editarProducto(
+    producto_id: number,
+    producto: ProductoDto
+  ): Observable<Producto> {
+    console.log(producto);
+    return this.httpClient.post<Producto>(
+      `${this.urlEndpoint}/editar/${producto_id}`,
+      producto,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.authService.token}`,
+        },
+      }
+    );
+  }
+
   public tieneAcceso(producto: Producto): boolean {
     return (
       this.authService.esAdmin() ||
@@ -81,5 +112,51 @@ export class ProductoService {
 
   public estaAutenticado(): boolean {
     return this.authService.isAuthenticated();
+  }
+
+  public rentar(producto: Producto): Observable<Ejemplar> {
+    return this.httpClient
+      .post<Ejemplar>(`${this.urlEndpoint}/${producto.id}/rentar`, undefined, {
+        headers: this.authorizationHeaders,
+      })
+      .pipe(
+        catchError((e) => {
+          e = e.error?.status && e.error?.message ? e.error : e;
+          swal.fire(String(e.status), e.message, 'error');
+          return throwError(() => e);
+        })
+      );
+  }
+
+  public getEjemplares(idProducto: number): Observable<EjemplarDto[]> {
+    return this.httpClient
+      .get<EjemplarDto[]>(`${this.urlEndpoint}/${idProducto}/ejemplares`, {
+        headers: this.authorizationHeaders,
+      })
+      .pipe(
+        catchError((e) => {
+          e = e.error?.status && e.error?.message ? e.error : e;
+          swal.fire(String(e.status), e.message, 'error');
+          return throwError(() => e);
+        })
+      );
+  }
+
+  public devolverEjemplar(idEjemplar: number): Observable<any> {
+    return this.httpClient
+      .post<EjemplarDto[]>(
+        `${this.urlEndpoint}/ejemplares/${idEjemplar}/devolver`,
+        undefined,
+        {
+          headers: this.authorizationHeaders,
+        }
+      )
+      .pipe(
+        catchError((e) => {
+          e = e.error?.status && e.error?.message ? e.error : e;
+          swal.fire(String(e.status), e.message, 'error');
+          return throwError(() => e);
+        })
+      );
   }
 }

@@ -38,6 +38,16 @@ export class UsuarioService {
 
     return usuario;
   }
+  
+  public getPerfil(): Observable<Usuario> {
+    const usuario=this.httpClient.get<Usuario>(`${this.urlEndpoint}/perfil`, {
+      headers:{
+        Authorization: `Bearer ${this.authService.token}`,
+      },
+    });
+
+    return usuario;
+  }  
 
   public editarUsuario(
     usuario_id: number,

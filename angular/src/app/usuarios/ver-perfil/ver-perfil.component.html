@@ -25,24 +25,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let usuario ">
+                
+                <tr [ngModel]="usuario">
                   <th scope="row">{{usuario.nombre}}</th>
                   <td>{{usuario.numInstitucional}}</td>
                   <td>{{usuario.telefono}}</td>
                   <td>{{usuario.correo}}</td>
                   <td>{{usuario.carrera}}</td>
                   <td>{{usuario.pumapuntos}}</td>
-                  <ng-template [ngIf]="usuario.activo" [ngIfElse]="elseBlock">
-                    <td>
-                      <fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon>
-                    </td>
-                  </ng-template>
-                  <ng-template #elseBlock>
-                    <td>
-                      <fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon>
-                    </td>
-                  </ng-template>
-  
+                  
                   <ng-template [ngIf]="usuario.esProveedor" [ngIfElse]="elseBlock">
                     <td>
                       <fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon>
@@ -65,7 +56,7 @@
                     </td>
                   </ng-template>
                   <td>
-                    <button type="button" class="btn btn-primary btn-space" [routerLink]="['productos/productos-rentados']" 
+                    <button type="button" class="btn btn-primary btn-space" [routerLink]="['/perfil/historial-rentas']" 
                         data-bs-toggle="tooltip" 
                         data-bs-placement="top" 
                         title="Ver Historial Productos">

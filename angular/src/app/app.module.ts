@@ -59,6 +59,17 @@ const routes: Routes = [
       redirectionRoute: '/login',
     },
   },
+
+  {
+    path: 'perfil',
+    component: VerPerfilComponent,
+    canActivate: [AuthGuard],
+    data:{
+      allowedRoles: ['admin','provider','user'],
+      redirationROute: '/login',
+    },
+  },
+
   {
     path: 'productos',
     component: ProductosComponent,
@@ -104,6 +115,7 @@ const routes: Routes = [
       redirectionRoute: '/login',
     },
   },
+  
   { path: 'login', component: LoginComponent },
 ];
 

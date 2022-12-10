@@ -102,4 +102,26 @@ export class ProductosComponent implements OnInit {
       );
     });
   }
+  eliminarProducto(idProducto : any):void{
+    swal.fire({
+      title: '¿Estas seguro?',
+      text: `No podras deshacer este cambio`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Borrar Producto'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productoService.eliminarProducto(idProducto).subscribe((ejemplar) => {
+          this.productos = this.productos.filter(prod => prod != idProducto);
+        swal.fire(
+          `Producto ${ejemplar.idProducto} eliminado$ `,
+          'Exito'
+        )
+        })
+      } 
+    })
+  }
 }

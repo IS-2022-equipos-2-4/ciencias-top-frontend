@@ -128,4 +128,19 @@ export class ProductoService {
         })
       );
   }
+  public eliminarProducto(idProducto: number): Observable<any> {
+    return this.httpClient
+      .delete(`${this.urlEndpoint}/${idProducto}`,
+      {
+        headers: this.authorizationHeaders,
+      }
+      )
+      .pipe(
+        catchError((e) => {
+          e = e.error?.status && e.error?.message ? e.error : e;
+          swal.fire(String(e.status), e.message, 'error');
+          return throwError(() => e);
+        })
+      );
+  }
 }

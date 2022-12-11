@@ -28,8 +28,8 @@ export class VerReportesService {
   ) {}
 
   /**
-   * Metodo que busca usuarios en la base de datos por medio de un criterio y algo que buscar.
-   * @returns la lista de usuarios que cumplan con la busqueda con un criterio dado.
+   * Metodo que despliega una tabla para saber cuales productos han sido los mas rentados en el mes.
+   * @returns la lista de los productos mas rentados del mes.
    */
   public getProductosMes(): Observable<ProductosMes[]> {
     const httpHeaders = new HttpHeaders({
@@ -45,8 +45,8 @@ export class VerReportesService {
   }
 
   /**
-   * Metodo que busca usuarios en la base de datos por medio de un criterio y algo que buscar.
-   * @returns la lista de usuarios que cumplan con la busqueda con un criterio dado.
+   * Metodo que despliega una tabla para saber la cantidad de usuarios activos por carrera.
+   * @returns la lista de usuarios activos en cada carrera.
    */
    public getUsuariosPorCarrera(): Observable<UsuariosPorCarrera[]> {
     const httpHeaders = new HttpHeaders({
@@ -62,8 +62,8 @@ export class VerReportesService {
   }
 
   /**
-   * Metodo que busca usuarios en la base de datos por medio de un criterio y algo que buscar.
-   * @returns la lista de usuarios que cumplan con la busqueda con un criterio dado.
+   * Metodo que despliega una tabla para saber que usuarios tienen la mayor cantidad de rentas en la semana.
+   * @returns la lista de usuarios con mas rentas en la semana.
    */
    public getUsuariosRentasSemanal(): Observable<UsuariosRentasSemana[]> {
     const httpHeaders = new HttpHeaders({

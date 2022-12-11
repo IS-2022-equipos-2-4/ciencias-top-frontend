@@ -5,7 +5,10 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs';
 import Swal from 'sweetalert2';
 import { AuthService } from '../auth/auth.service';
+import { Producto } from '../productos/producto';
+import { Usuario } from '../usuarios/usuario';
 import { ProductosMes } from './productosMes';
+import { UsuarioDevolTardiasDTO } from './usuariosDevolTardias.dto';
 import { UsuariosPorCarrera } from './usuariosPorCarrera';
 import { UsuariosRentasSemana } from './usuariosRentasSemana';
 
@@ -74,6 +77,46 @@ export class VerReportesService {
       `${this.urlEndpointUsuarios}/rentas`,
       {
         headers: httpHeaders,
+      }
+    );
+  }
+
+  /**
+   * Metodo que realiza una llamada a la API para obtener los usuarios con
+   * mas devoluciones tardias
+   * @returns Usuarios con mas devoluciones tardías
+   */
+  public getUsuariosConMasDevolucionesTardias(): Observable<UsuarioDevolTardiasDTO[]>{
+    return this.httpClient.get<UsuarioDevolTardiasDTO[]>(
+      `${this.urlEndpointUsuarios}/reporte/devoluciones-tardias`,
+      {
+        headers: this.authorizationHeaders,
+      });
+  }
+
+  /**
+   * Metodo que realiza una llamada a la API para obtener la cantidad
+   * de cuenta inactivas
+   * @returns Cantidad de cuentas inactivas
+   */
+  public getNumInactivos(): Observable<number>{
+    return this.httpClient.get<number>(
+      `${this.urlEndpointUsuarios}/reporte/inactivos`,
+      {
+        headers: this.authorizationHeaders,
+      });
+  }
+
+  /**
+   * Metodo que realiza una llamada a la API para obtener 
+   * los productos con menor costo
+   * @returns Productos de menor costo
+   */
+  public getProductosMenorCosto(): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(
+      `${this.urlEndpointProductos}/reporte/menor-costo`,
+      {
+        headers: this.authorizationHeaders,
       }
     );
   }

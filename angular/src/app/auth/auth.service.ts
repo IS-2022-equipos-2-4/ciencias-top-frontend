@@ -108,4 +108,8 @@ export class AuthService {
   getId(): number {
     return this.usuario.id;
   }
+
+  getNumInstitucional(): string {
+    return this.usuario.numInstitucional;
+  }
 }

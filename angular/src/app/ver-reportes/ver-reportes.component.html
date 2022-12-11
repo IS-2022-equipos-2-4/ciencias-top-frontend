@@ -5,151 +5,142 @@
 </div>
 
 
-<div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <button data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#ProductosDelMes">
-            Ver los 5 productos con mas rentas en el mes</button>
-        </h4>
-      </div>
-      <div id="ProductosDelMes" class="panel-collapse collapse in" data-bs-parent="#accordion">
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-12">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Codigo</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Descripcion</th>
-                                <th scope="col">Unidades Rentadas</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let productosMes of productosMes">
-                                <td scope="row">{{ productosMes.id_Producto}}</td>
-                                <td>{{ productosMes.codigo }}</td>
-                                <td>{{ productosMes.nombre }}</td>
-                                <td>{{ productosMes.descripcion }}</td>
-                                <td>{{ productosMes.unidades_Rentadas }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <button data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#UsuariosPorCarrera">
-          Ver la cantidad de usuarios activos por carrera</button>
-        </h4>
-      </div>
-      <div id="UsuariosPorCarrera" class="panel-collapse collapse" data-bs-parent="#accordion">
-        <div class="panel-body">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-12">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Carrera</th>
-                                    <th scope="col">Estudiantes Activos</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let usuariosPorCarrera of usuariosPorCarrera">
-                                    <td scope="row">{{ usuariosPorCarrera.carrera}}</td>
-                                    <td>{{ usuariosPorCarrera.estudiantes_Activos }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <button data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#UsuariosSemana">
-            Ver los 5 usuarios con mas rentas en la semana</button>
-          </h4>
-        </div>
-        <div id="UsuariosSemana" class="panel-collapse collapse" data-bs-parent="#accordion">
-          <div class="panel-body">
-              <div class="panel-body">
+<div class="container" style="padding-top: 10px" id="accordion">
+    <div class="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#UsuariosPorCarrera">
+          <strong> Ver la cantidad de usuarios activos por carrera</strong></button>
+        </h2>
+        <div id="UsuariosPorCarrera" class="accordion-collapse collapse" data-bs-parent="#accordion">
+          <div class="accordion-body">
                   <div class="row">
                       <div class="col-12">
                           <table class="table table-bordered">
                               <thead>
                                   <tr>
-                                      <th scope="col">ID</th>
                                       <th scope="col">Carrera</th>
-                                      <th scope="col">Nombre</th>
-                                      <th scope="col">Numero Institucional</th>
-                                      <th scope="col">Numero de rentas</th>
+                                      <th scope="col">Estudiantes Activos</th>
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr *ngFor="let usuariosRentasSemana of usuariosRentasSemana">
-                                      <td scope="row">{{ usuariosRentasSemana.id_Usuario}}</td>
-                                      <td>{{ usuariosRentasSemana.carrera }}</td>
-                                      <td>{{ usuariosRentasSemana.nombre }}</td>
-                                      <td>{{ usuariosRentasSemana.num_Institucional }}</td>
-                                      <td>{{ usuariosRentasSemana.numero_Rentas }}</td>
+                                  <tr *ngFor="let usuariosPorCarrera of usuariosPorCarrera">
+                                      <td scope="row">{{ usuariosPorCarrera.carrera}}</td>
+                                      <td>{{ usuariosPorCarrera.estudiantes_Activos }}</td>
                                   </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
         </div>
     </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <button data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#Jasso1">
-          Caso de uso Jasso1</button>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#ProductosDelMes">
+            <strong>Ver los 5 productos con mas rentas en el mes</strong>
+            </button>
+        </h2>
+        <div id="ProductosDelMes" class="accordion-collapse collapse" data-bs-parent="#accordion">
+          <div class="accordion-body">
+              <div class="row">
+                  <div class="col-12">
+                      <table class="table table-bordered">
+                          <thead>
+                              <tr>
+                                  <th scope="col">ID</th>
+                                  <th scope="col">Codigo</th>
+                                  <th scope="col">Nombre</th>
+                                  <th scope="col">Descripcion</th>
+                                  <th scope="col">Unidades Rentadas</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let productosMes of productosMes">
+                                  <td scope="row">{{ productosMes.id_Producto}}</td>
+                                  <td>{{ productosMes.codigo }}</td>
+                                  <td>{{ productosMes.nombre }}</td>
+                                  <td>{{ productosMes.descripcion }}</td>
+                                  <td>{{ productosMes.unidades_Rentadas }}</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+        </div>
+  </div>
+    <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#Jasso1">
+        Caso de uso Jasso1</button>
+      </h4>
+    <div id="Jasso1" class="accordion-collapse collapse" data-bs-parent="#accordion">
+      <div class="accordion-body">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.</div>
+    </div>
+  </div>
+  <div class="accordion-item">
+      <h4 class="accordion-header">
+        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#Jasso2">
+        Caso de uso Jasso2</button>
+      </h4>
+    <div id="Jasso2" class="accordion-collapse collapse" data-bs-parent="#accordion">
+      <div class="accordion-body">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.</div>
+    </div>
+  </div>
+  <div class="accordion-item">
+        <h4 class="accordion-header">
+          <button class="accordion-button collapsed" data-bs-toggle="collapse"  data-bs-target="#Jasso3">
+          caso de uso Jasso3</button>
         </h4>
-      </div>
-      <div id="Jasso1" class="panel-collapse collapse" data-bs-parent="#accordion">
-        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      <div id="Jasso3" class="accordion-collapse collapse" data-bs-parent="#accordion"> 
+        <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
         minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
         commodo consequat.</div>
       </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <button data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#Jasso2">
-            caso de uso Jasso2</button>
-          </h4>
-        </div>
-        <div id="Jasso2" class="panel-collapse collapse" data-bs-parent="#accordion"> 
-          <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat.</div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <button data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#Jasso3">
-            caso de uso Jasso3</button>
-          </h4>
-        </div>
-        <div id="Jasso3" class="panel-collapse collapse" data-bs-parent="#accordion">
-          <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat.</div>
+  </div>
+  <div class="accordion-item">
+    <h4 class="accordion-header">
+      <button class="accordion-button collapsed" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#UsuariosSemana">
+      <strong> Ver los 5 usuarios con mas rentas en la semana</strong></button>
+    </h4>
+    <div id="UsuariosSemana" class="accordion-collapse collapse" data-bs-parent="#accordion">
+      <div class="accordion-body">
+              <div class="row">
+                  <div class="col-12">
+                      <table class="table table-bordered">
+                          <thead>
+                              <tr>
+                                  <th scope="col">ID</th>
+                                  <th scope="col">Carrera</th>
+                                  <th scope="col">Nombre</th>
+                                  <th scope="col">Numero Institucional</th>
+                                  <th scope="col">Numero de rentas</th>
+                              </tr>
+                         </thead>
+                         <tbody>
+                              <tr *ngFor="let usuariosRentasSemana of usuariosRentasSemana">
+                                  <td scope="row">{{ usuariosRentasSemana.id_Usuario}}</td>
+                                  <td>{{ usuariosRentasSemana.carrera }}</td>
+                                  <td>{{ usuariosRentasSemana.nombre }}</td>
+                                  <td>{{ usuariosRentasSemana.num_Institucional }}</td>
+                                  <td>{{ usuariosRentasSemana.numero_Rentas }}</td>
+                              </tr>
+                        </tbody>
+                   </table>
+                </div>
+              </div>
         </div>
     </div>
   </div> 
+  </div>
+</div>

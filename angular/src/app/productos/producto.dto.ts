@@ -3,6 +3,5 @@ export class ProductoDto {
     nombre: string;
     descripcion: string;
     costo: number;
-    stock: number;
     limitePrestamo: number;
 }

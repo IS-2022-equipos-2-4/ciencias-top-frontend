@@ -41,7 +41,6 @@ export class EditarProductoComponent implements OnInit {
     productoDto.nombre = this.producto.nombre;
     productoDto.descripcion = this.producto.descripcion;
     productoDto.costo = this.producto.costo;
-    productoDto.stock = this.producto.stock;
     productoDto.limitePrestamo = this.producto.limitePrestamo;
 
     console.log(productoDto);

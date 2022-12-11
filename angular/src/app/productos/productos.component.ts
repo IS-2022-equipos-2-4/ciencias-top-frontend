@@ -102,26 +102,55 @@ export class ProductosComponent implements OnInit {
       );
     });
   }
-  eliminarProducto(idProducto : any):void{
+
+  public eliminar(id:number):void{       
+    let time_wait = 5000;
     swal.fire({
-      title: '¿Estas seguro?',
-      text: `No podras deshacer este cambio`,
-      icon: 'warning',
+      toast:true,
+      title: "¿Deseas eliminar este producto",
+      icon: "warning",      
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Borrar Producto'
+      confirmButtonText: "Eliminar",
+      confirmButtonColor: "#ff0055",
+      cancelButtonColor: "#999999",
+      reverseButtons: true,
+      focusConfirm: false,
+      focusCancel: true,
+      timer: time_wait,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', swal.stopTimer)
+        toast.addEventListener('mouseleave', swal.resumeTimer)
+      }
     }).then((result) => {
-      if (result.isConfirmed) {
-        this.productoService.eliminarProducto(idProducto).subscribe((ejemplar) => {
-          this.productos = this.productos.filter(prod => prod != idProducto);
-        swal.fire(
-          `Producto ${ejemplar.idProducto} eliminado$ `,
-          'Exito'
-        )
-        })
+      if (result.isConfirmed){        
+        this.eliminarProducto(id);
       } 
-    })
+    });
   }
+
+  /**
+   * Recibe un ID de un producto para eliminarlo
+   * @param idUsuario ID del producto a eliminar
+   */
+  private eliminarProducto(idProducto:number): void {     
+    this.productoService.eliminarProducto(idProducto).subscribe(
+      (response) => {
+        swal.fire(
+          '¡Producto eliminado!',
+          `El producto con ID ${idProducto} se ha eliminado`,
+          'success' 
+        ).then(() => {
+          window.location.reload();
+        });
+        
+      },
+      (err) => {
+        swal.fire(`Error ${err.status}`, err.error.message, 'error')
+      }
+    )
+  }
+
+
+  
 }

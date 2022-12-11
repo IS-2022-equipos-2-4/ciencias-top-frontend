@@ -1,136 +1,155 @@
-<div class="p-3 mb-5 bg-light rounded-3">
+<div class="p-3 mb-2 bg-light rounded-3">
     <div class="container-fluid py-4 text-center">
-      <h1 class="display-7 fw-bold">Usuarios</h1>
+      <h1 class="display-7 fw-bold ">Reportes</h1>
     </div>
-  </div>
+</div>
 
-<section class="intro">
-    <div class="bg-image h-100">
-      <div class="mask d-flex align-items-center h-100">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <div class="table-responsive bg-white" data-mdb-perfect-scrollbar="true" style="position: relative; height: 445px;">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">EMPLOYEES</th>
-                      <th scope="col">POSITION</th>
-                      <th scope="col">START DATE</th>
-                      <th scope="col">LAST ACTIVITY</th>
-                      <th scope="col">CONTACTS</th>
-                      <th scope="col">AGE</th>
-                      <th scope="col">ADDRESS</th>
-                      <th scope="col">SALARY</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row" style="color: #666666;">Tiger Nixon</th>
-                      <td>System Architect</td>
-                      <td>2011/04/25</td>
-                      <td>2021/03/08</td>
-                      <td>tnixon12@example.com</td>
-                      <td>61</td>
-                      <td>Edinburgh</td>
-                      <td>$320,800</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" style="color: #666666;">Sonya Frost</th>
-                      <td>Software Engineer</td>
-                      <td>2008/12/13</td>
-                      <td>2021/03/08</td>
-                      <td>sfrost34@example.com</td>
-                      <td>23</td>
-                      <td>Edinburgh</td>
-                      <td>$103,600</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" style="color: #666666;">Jena Gaines</th>
-                      <td>Office Manager</td>
-                      <td>2008/12/19</td>
-                      <td>2021/03/08</td>
-                      <td>jgaines75@example.com</td>
-                      <td>30</td>
-                      <td>London</td>
-                      <td>$90,560</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" style="color: #666666;">Quinn Flynn</th>
-                      <td>Support Lead</td>
-                      <td>2013/03/03</td>
-                      <td>2021/03/08</td>
-                      <td>qflyn09@example.com</td>
-                      <td>22</td>
-                      <td>Edinburgh</td>
-                      <td>$342,000</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" style="color: #666666;">Charde Marshall</th>
-                      <td>Regional Director</td>
-                      <td>2008/10/16</td>
-                      <td>2021/03/08</td>
-                      <td>cmarshall28@example.com</td>
-                      <td>36</td>
-                      <td>San Francisco</td>
-                      <td>$470,600</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" style="color: #666666;">Haley Kennedy</th>
-                      <td>Senior Marketing Designer</td>
-                      <td>2012/12/18</td>
-                      <td>2021/03/08</td>
-                      <td>hkennedy63@example.com</td>
-                      <td>43</td>
-                      <td>London</td>
-                      <td>$313,500</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" style="color: #666666;">Tatyana Fitzpatrick</th>
-                      <td>Regional Director</td>
-                      <td>2010/03/17</td>
-                      <td>2021/03/08</td>
-                      <td>tfitzpatrick00@example.com</td>
-                      <td>19</td>
-                      <td>Warsaw</td>
-                      <td>$385,750</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" style="color: #666666;">Jason Cox</th>
-                      <td>Web Developer</td>
-                      <td>2017/10/16</td>
-                      <td>2021/03/08</td>
-                      <td>jcox96@example.com</td>
-                      <td>32</td>
-                      <td>New York</td>
-                      <td>$390,400</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" style="color: #666666;">Christian Perkins</th>
-                      <td>Sale Specialist</td>
-                      <td>2013/12/18</td>
-                      <td>2021/03/08</td>
-                      <td>cperkins10@example.com</td>
-                      <td>40</td>
-                      <td>Paris</td>
-                      <td>$240,800</td>
-                    </tr>
-                    <tr>
-                      <th scope="row" style="color: #666666;">Emily Wheeler</th>
-                      <td>Junior Marketing Analyst</td>
-                      <td>2020/03/17</td>
-                      <td>2021/03/08</td>
-                      <td>ewheeler07@example.com</td>
-                      <td>20</td>
-                      <td>New York</td>
-                      <td>$85,620</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <button data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#ProductosDelMes">
+            Ver los 5 productos con mas rentas en el mes</button>
+        </h4>
+      </div>
+      <div id="ProductosDelMes" class="panel-collapse collapse in" data-bs-parent="#accordion">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Unidades Rentadas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let productosMes of productosMes">
+                                <td scope="row">{{ productosMes.id_Producto}}</td>
+                                <td>{{ productosMes.codigo }}</td>
+                                <td>{{ productosMes.nombre }}</td>
+                                <td>{{ productosMes.descripcion }}</td>
+                                <td>{{ productosMes.unidades_Rentadas }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
-  </section>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <button data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#UsuariosPorCarrera">
+          Ver la cantidad de usuarios activos por carrera</button>
+        </h4>
+      </div>
+      <div id="UsuariosPorCarrera" class="panel-collapse collapse" data-bs-parent="#accordion">
+        <div class="panel-body">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Carrera</th>
+                                    <th scope="col">Estudiantes Activos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let usuariosPorCarrera of usuariosPorCarrera">
+                                    <td scope="row">{{ usuariosPorCarrera.carrera}}</td>
+                                    <td>{{ usuariosPorCarrera.estudiantes_Activos }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <button data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#UsuariosSemana">
+            Ver los 5 usuarios con mas rentas en la semana</button>
+          </h4>
+        </div>
+        <div id="UsuariosSemana" class="panel-collapse collapse" data-bs-parent="#accordion">
+          <div class="panel-body">
+              <div class="panel-body">
+                  <div class="row">
+                      <div class="col-12">
+                          <table class="table table-bordered">
+                              <thead>
+                                  <tr>
+                                      <th scope="col">ID</th>
+                                      <th scope="col">Carrera</th>
+                                      <th scope="col">Nombre</th>
+                                      <th scope="col">Numero Institucional</th>
+                                      <th scope="col">Numero de rentas</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let usuariosRentasSemana of usuariosRentasSemana">
+                                      <td scope="row">{{ usuariosRentasSemana.id_Usuario}}</td>
+                                      <td>{{ usuariosRentasSemana.carrera }}</td>
+                                      <td>{{ usuariosRentasSemana.nombre }}</td>
+                                      <td>{{ usuariosRentasSemana.num_Institucional }}</td>
+                                      <td>{{ usuariosRentasSemana.numero_Rentas }}</td>
+                                  </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <button data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#Jasso1">
+          Caso de uso Jasso1</button>
+        </h4>
+      </div>
+      <div id="Jasso1" class="panel-collapse collapse" data-bs-parent="#accordion">
+        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <button data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#Jasso2">
+            caso de uso Jasso2</button>
+          </h4>
+        </div>
+        <div id="Jasso2" class="panel-collapse collapse" data-bs-parent="#accordion"> 
+          <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <button data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#Jasso3">
+            caso de uso Jasso3</button>
+          </h4>
+        </div>
+        <div id="Jasso3" class="panel-collapse collapse" data-bs-parent="#accordion">
+          <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.</div>
+        </div>
+    </div>
+  </div> 

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../usuarios/usuario';
-import { ReportesService } from './reportes.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductosMes } from './productosMes';
+import { UsuariosPorCarrera } from './usuariosPorCarrera';
+import { UsuariosRentasSemana } from './usuariosRentasSemana';
+import { VerReportesService } from './ver-reportes.service';
 
 @Component({
   selector: 'app-ver-reportes',
@@ -8,17 +11,32 @@ import { ReportesService } from './reportes.service';
   styleUrls: ['./ver-reportes.component.css']
 })
 export class VerReportesComponent implements OnInit {
-  private usuariosCarrera: Usuario[]
-
+  productosMes: ProductosMes[];
+  usuariosPorCarrera: UsuariosPorCarrera[];
+  usuariosRentasSemana: UsuariosRentasSemana[];
+  
   constructor(
-    private readonly reportesService: ReportesService) 
-    { }
+    private router: Router,
+    private activateRoute: ActivatedRoute,
+    private readonly verReportesService: VerReportesService) {}
 
-  ngOnInit(): void {
-    this.reportesService.getUsuariosCarrera().subscribe(
-      (usuariosCarrera) => {
-        this.usuariosCarrera = usuariosCarrera
-      });
-  }
+    ngOnInit(): void {    
+      this.verReportesService
+        .getProductosMes()
+        .subscribe((productosMes) => {
+          this.productosMes = productosMes;
+        })
 
+      this.verReportesService
+        .getUsuariosPorCarrera()
+        .subscribe((usuariosCarrera) => {
+          this.usuariosPorCarrera = usuariosCarrera;
+        })
+
+      this.verReportesService
+        .getUsuariosRentasSemanal()
+        .subscribe((usuariosRentasSemana) => {
+          this.usuariosRentasSemana = usuariosRentasSemana;
+        })
+    }
 }

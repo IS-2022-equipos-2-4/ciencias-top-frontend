@@ -18,7 +18,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-usuarios',
-  templateUrl: './ver-perfil. component2.html',
+  templateUrl: './ver-perfil.component.html',
   styleUrls: ['./ver-perfil.component.css']
 })
 export class VerPerfilComponent implements OnInit {

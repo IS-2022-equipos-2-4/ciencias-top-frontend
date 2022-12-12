@@ -1,74 +1,57 @@
-<div class="p-3 mb-2 bg-light rounded-3">
-    <div class="container-fluid py-4 text-center">
-      <h1 class="display-7 fw-bold ">Perfil</h1>
-    </div>
-  </div>
-  
-  <div class="album py-5">
-    <div class="container mb-4 mt-0">
-  
-      <div class="container" style="padding-top: 10px">
-        <div class="row">
-          <div class="col-12">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Número Institucional</th>
-                  <th scope="col">Telefono</th>
-                  <th scope="col">Correo</th> 
-                  <th scope="col">Carrera</th>
-                  <th scope="col">Saldo</th>
-                  <th scope="col">Proveedor</th>
-                  <th scope="col">Admin</th>
-                  <th scope="col">Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                
-                <tr [ngModel]="usuario" name="usuario">
-                  <th scope="row">{{usuario.nombre}}</th>
-                  <td>{{usuario.numInstitucional}}</td>
-                  <td>{{usuario.telefono}}</td>
-                  <td>{{usuario.correo}}</td>
-                  <td>{{usuario.carrera}}</td>
-                  <td>{{usuario.pumapuntos}}</td>
-                  
-                  <ng-template [ngIf]="usuario.esProveedor" [ngIfElse]="elseBlock">
-                    <td>
-                      <fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon>
-                    </td>
-                  </ng-template>
-                  <ng-template #elseBlock>
-                    <td>
-                      <fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon>
-                    </td>
-                  </ng-template>
-  
-                  <ng-template [ngIf]="usuario.esAdmin" [ngIfElse]="elseBlock">
-                    <td>
-                      <fa-icon [icon]="faCheck" class="fa-xl" style="color:green"></fa-icon>
-                    </td>
-                  </ng-template>
-                  <ng-template #elseBlock>
-                    <td>
-                      <fa-icon [icon]="faXMark" class="fa-xl" style="color:red"></fa-icon>
-                    </td>
-                  </ng-template>
-                  <td>
-                    <button type="button" class="btn btn-primary btn-space" [routerLink]="['/perfil/historial-rentas']" 
-                        data-bs-toggle="tooltip" 
-                        data-bs-placement="top" 
-                        title="Ver Historial Productos">
-                      <fa-icon [icon]="faListUl"></fa-icon>
-                   </button>
-                    
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+<div class="container rounded bg-white mt-5">
+  <div class="row">
+      <div class="col-md-4 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="https://st1.uvnimg.com/7c/44/7fa505204853964f8df3cd00d8f2/8-logo-unam.png" width="270"><span class="font-weight-bold">{{usuario.nombre}}</span></div>
+      </div>
+      <div class="col-md-8">
+          <div class="p-3 py-5">
+            <div [ngModel]="usuario" name="usuario">
+              <div class="row mt-2">
+                <div class="col-md-6"> <FONT color="white"> Nombre<input type="text" class="form-control" placeholder="Nombre" value={{usuario.nombre}} disabled></FONT></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6"><FONT color="white"> Correo<input type="text" class="form-control" placeholder="Correo" value={{usuario.correo}} disabled></FONT></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6"><FONT color="white"> Numero institucional<input type="text" class="form-control" placeholder="Numero Institucional" value={{usuario.numInstitucional}} disabled></FONT></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6"><FONT color="white">Telefono<input type="text" class="form-control" placeholder="Telefono" value={{usuario.telefono}} disabled></FONT></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6"><FONT color="white">Carrera<input type="text" class="form-control" placeholder="Carrera" value={{usuario.carrera}} disabled></FONT></div>  
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6"><FONT color="white">Puma puntos<input type="text" class="form-control" placeholder="Pumapuntos" value={{usuario.pumapuntos}} disabled></FONT></div>
+              </div>
+              <ng-template [ngIf]="usuario.esAdmin">
+                <div class="col-md-6"><FONT color="white">Rol<input type="text" class="form-control" placeholder="Roles" value="Administrador" disabled></FONT></div>
+              </ng-template>
+              <ng-template [ngIf]="usuario.esProveedor">
+                <div class="col-md-6"><FONT color="white">Rol secundario<input type="text" class="form-control" placeholder="Roles" value="Proveedor" disabled></FONT></div>
+              </ng-template>
+             
+                <!--<div class="row mt-2">
+                  <div class="col-md-6">Nombre<input type="text" class="form-control" placeholder="Nombre" value={{usuario.nombre}}></div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-md-6">Correo<input type="text" class="form-control" placeholder="Correo" value={{usuario.correo}}> </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">Numero institucional<input type="text" class="form-control" placeholder="Numero Institucional" value={{usuario.numInstitucional}}></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">Telefono<input type="text" class="form-control" placeholder="Telefono" value={{usuario.telefono}}></div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">Carrera<input type="text" class="form-control" placeholder="Carrera" value={{usuario.carrera}}></div>  
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-6">Puma puntos<input type="text" class="form-control"  mod placeholder="Pumapuntos" value={{usuario.pumapuntos}}></div>
+              </div>-->
+              <div class="mt-5 text-right"><button class="btn btn-primary profile-button" type="button" [routerLink]="['/perfil/historial-rentas']" >Ver Historial de productos rentados</button></div>
           </div>
         </div>
       </div>
-    </div>
   </div>
+</div>

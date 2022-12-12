@@ -37,11 +37,13 @@ export class EjemplaresComponent implements OnInit {
     this.productoService
       .getProductos()
       .subscribe(
-        (productos) =>
-          (this.producto = productos.find(
-            (producto) => (producto.id = this.idProducto)
-          ))
+        (productos) => {
+          this.producto = productos.find(
+            (producto) => (producto.id == this.idProducto)
+          );
+        }
       );
+
 
     this.productoService
       .getEjemplares(this.idProducto)

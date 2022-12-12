@@ -1,10 +1,10 @@
-body {
-    background: #BA68C8;
+.row {
+    background: #110539;
   }
   
-  .form-control:focus {
+  .row mt-2 {
     box-shadow: none;
-    border-color: #BA68C8;
+    text-color: #BA68C8;
   }
   
   .profile-button {

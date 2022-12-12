@@ -170,7 +170,9 @@ export class ProductoService {
     return this.httpClient
       .delete(`${this.urlEndpoint}/${idProducto}`,
       {
-        headers: this.authorizationHeaders,
+        headers: {
+          Authorization: `Bearer ${this.authService.token}`
+        },
       }
       )
       .pipe(

@@ -1,0 +1,25 @@
+button {
+    align-self: center;
+    background-color: rgba(41, 79, 110, 0.941);
+    color:white
+}
+
+button:active{
+    background:rgb(207, 172, 83);
+}
+
+button:focus{
+    background:rgb(216, 174, 58);
+    color: white;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+th {
+    background-color: rgb(215, 231, 245);
+    text-align: center;
+    vertical-align: middle;
+}

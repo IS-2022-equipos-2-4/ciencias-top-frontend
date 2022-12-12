@@ -94,6 +94,15 @@ const routes: Routes = [
       redirectionRoute: '/login',
     },
   },
+  {
+    path: 'reportes',
+    component: VerReportesComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin'],
+      redirectionRoute: '/login',
+    },
+  },
   { path: 'login', component: LoginComponent },
 ];
 

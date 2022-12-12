@@ -137,7 +137,7 @@ export class ProductoService {
       )
       .pipe(
         catchError((e) => {
-          swal.fire(String(e.status), e.message, 'error');
+          swal.fire(String(e.status), e.error.message, 'error');
           return throwError(() => e);
         })
       );

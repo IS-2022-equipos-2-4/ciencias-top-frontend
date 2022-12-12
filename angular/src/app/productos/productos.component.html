@@ -86,7 +86,8 @@
                   <button *ngIf="tieneAcceso(producto)" type="button" class="btn-space btn btn-danger btn-space"
                       data-bs-toggle="tooltip" 
                       data-bs-placement="top" 
-                      title="Eliminar">
+                      title="Eliminar"
+                      (click)="eliminar(producto.id)">
                     <fa-icon [icon]="faTrashAlt"></fa-icon>
                   </button>
                 </td>

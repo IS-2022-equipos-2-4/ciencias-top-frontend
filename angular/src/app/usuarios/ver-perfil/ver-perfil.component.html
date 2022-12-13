@@ -1,3 +1,8 @@
+<div class="p-3 mb-2 bg-light rounded-3">
+  <div class="container-fluid py-4 text-center">
+    <h1 class="display-7 fw-bold ">Perfil</h1>
+  </div>
+</div>
 <div class="container rounded bg-white mt-5">
   <div class="row">
       <div class="col-md-4 border-right">
@@ -7,28 +12,28 @@
           <div class="p-3 py-5">
             <div [ngModel]="usuario" name="usuario">
               <div class="row mt-2">
-                <div class="col-md-6"> <FONT color="white"> Nombre<input type="text" class="form-control" placeholder="Nombre" value={{usuario.nombre}} disabled></FONT></div>
+                <div class="col-md-6"> Nombre<input type="text" class="form-control" placeholder="Nombre" value={{usuario.nombre}} disabled></div>
               </div>
               <div class="row mt-3">
-                <div class="col-md-6"><FONT color="white"> Correo<input type="text" class="form-control" placeholder="Correo" value={{usuario.correo}} disabled></FONT></div>
+                <div class="col-md-6"> Correo<input type="text" class="form-control" placeholder="Correo" value={{usuario.correo}} disabled></div>
               </div>
               <div class="row mt-3">
-                <div class="col-md-6"><FONT color="white"> Numero institucional<input type="text" class="form-control" placeholder="Numero Institucional" value={{usuario.numInstitucional}} disabled></FONT></div>
+                <div class="col-md-6"> Numero institucional<input type="text" class="form-control" placeholder="Numero Institucional" value={{usuario.numInstitucional}} disabled></div>
               </div>
               <div class="row mt-3">
-                <div class="col-md-6"><FONT color="white">Telefono<input type="text" class="form-control" placeholder="Telefono" value={{usuario.telefono}} disabled></FONT></div>
+                <div class="col-md-6"> Telefono<input type="text" class="form-control" placeholder="Telefono" value={{usuario.telefono}} disabled></div>
               </div>
               <div class="row mt-3">
-                <div class="col-md-6"><FONT color="white">Carrera<input type="text" class="form-control" placeholder="Carrera" value={{usuario.carrera}} disabled></FONT></div>  
+                <div class="col-md-6"> Carrera<input type="text" class="form-control" placeholder="Carrera" value={{usuario.carrera}} disabled></div>  
               </div>
               <div class="row mt-3">
-                <div class="col-md-6"><FONT color="white">Puma puntos<input type="text" class="form-control" placeholder="Pumapuntos" value={{usuario.pumapuntos}} disabled></FONT></div>
+                <div class="col-md-6"> Puma puntos<input type="text" class="form-control" placeholder="Pumapuntos" value={{usuario.pumapuntos}} disabled></div>
               </div>
               <ng-template [ngIf]="usuario.esAdmin">
-                <div class="col-md-6"><FONT color="white">Rol<input type="text" class="form-control" placeholder="Roles" value="Administrador" disabled></FONT></div>
+                <div class="col-md-6"> Rol<input type="text" class="form-control" placeholder="Roles" value="Administrador" disabled></div>
               </ng-template>
               <ng-template [ngIf]="usuario.esProveedor">
-                <div class="col-md-6"><FONT color="white">Rol secundario<input type="text" class="form-control" placeholder="Roles" value="Proveedor" disabled></FONT></div>
+                <div class="col-md-6"> Rol<input type="text" class="form-control" placeholder="Roles" value="Proveedor" disabled></div>
               </ng-template>
              
                 <!--<div class="row mt-2">

@@ -109,7 +109,7 @@ export class AuthService {
     return this.usuario.id;
   }
 
-  getNumInstitucional(): string {
+  getNumInst(): string {
     return this.usuario.numInstitucional;
   }
 }

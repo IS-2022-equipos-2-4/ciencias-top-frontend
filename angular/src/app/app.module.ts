@@ -18,6 +18,7 @@ import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HistoProdRentComponent } from './histo-prod-rent/histo-prod-rent.component';
 import { EditarProductoComponent } from './productos/editar-producto.component';
+import { VerPerfilComponent } from './usuarios/ver-perfil/ver-perfil.component';
 import { VerReportesComponent } from './ver-reportes/ver-reportes.component';
 
 const routes: Routes = [
@@ -48,7 +49,17 @@ const routes: Routes = [
       allowedRoles: ['admin'],
       redirectionRoute: '/login',
     },
-  },  
+  },
+
+  {
+    path: 'perfil',
+    component: VerPerfilComponent,
+    canActivate: [AuthGuard],
+    data:{
+      allowedRoles: ['admin','provider','user'],
+      redirationROute: '/login',
+    },
+  }, 
   {
     path: 'productos',
     component: ProductosComponent,
@@ -119,6 +130,7 @@ const routes: Routes = [
     HistoProdRentComponent,
     EditarProductoComponent,
     EjemplaresComponent,
+    VerPerfilComponent,
     VerReportesComponent,
   ],
   imports: [

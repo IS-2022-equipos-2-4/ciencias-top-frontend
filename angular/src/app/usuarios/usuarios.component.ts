@@ -6,7 +6,9 @@ import {
   faSquare,
   faTrashAlt,
   faXmark,
+  faListUl,
 } from '@fortawesome/free-solid-svg-icons';
+
 
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
@@ -30,6 +32,7 @@ export class UsuariosComponent implements OnInit {
   faCheck = faCheck;
   faXMark = faXmark;
   faSquare = faSquare;
+  faListUl = faListUl;
 
   constructor(
     private router: Router,

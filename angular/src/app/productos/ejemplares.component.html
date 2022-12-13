@@ -1,0 +1,55 @@
+<div class="p-3 mb-2 bg-light rounded-3">
+  <div class="container-fluid py-4 text-center">
+    <h1 class="display-7 fw-bold ">
+      <p>Ejemplares rentados del producto {{idProducto}}:</p> 
+      <p>"{{producto.nombre}}"</p>
+    </h1>
+  </div>
+</div>
+
+<div class="album py-5">
+  <div class="container mb-4 mt-0">
+
+
+    <div class="container" style="padding-top: 20px">
+      <div style="float:left">
+        <h4>Detalles Productos:</h4>
+      </div>
+
+      <div style="clear: both;"></div>
+    </div>
+
+    <div class="container" style="padding-top: 10px">
+      <div class="row">
+        <div class="col-12">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Fecha Renta</th>
+                <th scope="col">num. institucional arrendatario</th>
+                <th scope="col">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ejemplar of ejemplares">
+                <th scope="row">{{ejemplar.idEjemplar}}</th>
+                <td>{{ejemplar.rentado ? ejemplar.fecha_renta : '-'}}</td>
+                <td>{{ejemplar.rentado ? ejemplar.numInstitucionalUsuario : '-'}}</td>
+                <td>
+                  <button *ngIf="ejemplar.rentado" type="button" class="btn btn-warning btn-space" 
+                  data-bs-toggle="tooltip"
+                    data-bs-placement="top" 
+                    itle="Devolver"
+                    (click)="devolver(ejemplar.idEjemplar)">
+                    <fa-icon [icon]="faRepeat"></fa-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

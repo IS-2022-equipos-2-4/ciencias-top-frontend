@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AuthService } from '../auth/auth.service';
+import { UsuarioService } from '../usuarios/usuario.service';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +15,6 @@ export class HeaderComponent implements OnInit {
     public authService: AuthService) { }
 
   ngOnInit(): void {
-  }
 
+  }
 }

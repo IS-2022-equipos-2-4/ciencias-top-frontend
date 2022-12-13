@@ -11,9 +11,6 @@ import { UsuarioService } from '../usuarios/usuario.service';
 })
 export class HeaderComponent implements OnInit {
 
-  nuevaContrasena: string;
-  confirmacionContrasena: string;
-
   constructor(
     private router: Router,
     public authService: AuthService,
@@ -22,38 +19,4 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
-  public limpiar(){
-    this.nuevaContrasena = this.confirmacionContrasena = undefined
-  }
-
-  /**
-   * modificarContrasena
-   */
-  public modificarContrasena() {
-
-    if (this.nuevaContrasena == undefined || 
-      this.confirmacionContrasena == undefined) {
-      Swal.fire("Error","No ingresaste la nueva contraseña",'error')
-
-    } else {
-      const valid = this.nuevaContrasena == this.confirmacionContrasena;
-
-      if (valid){
-        this.usuarioService
-        .cambiarContrasena(this.nuevaContrasena)
-        .subscribe(() => {
-          // cerramos sesión
-          this.usuarioService.authService.logout();
-  
-          // redirigimos a la pantalla de iniciar sesion
-          this.router.navigate(['/login']);
-      });
-
-      } else
-        Swal.fire("Error","Las contraseñas no coinciden",'error')
-    }
-    this.limpiar();
-  }
-
 }

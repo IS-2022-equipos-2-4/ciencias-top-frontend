@@ -1,0 +1,37 @@
+<div class="p-3 mb-2 bg-light rounded-3">
+    <div class="container-fluid py-4 text-center">
+      <h1 class="display-7 fw-bold ">Productos Rentados</h1>
+    </div>
+</div>
+
+<div class="container" style="padding-top: 10px">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre del Producto</th>
+                        <th scope="col">Fecha En Que Se Rentó</th>
+                        <th scope="col">Fecha Limite de Devolucion</th>
+                        <th scope="col">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let h of historial">
+                        <td>{{h.itemProducto.producto.nombre}}</td>
+                        <td>{{h.fechaRenta}}</td>
+                        <td>{{h.fechaDevolucion}}</td>
+
+                        <td id="devueltoTrue" *ngIf="devueltoFalse(h)" style="color:rgb(231, 69, 24)">
+                            {{tieneAcceso(h)}}
+                        </td>
+                        <td id="devueltoFalse" *ngIf="devueltoTrue(h)" style="color:rgb(47, 168, 31)">
+                            {{tieneAcceso(h)}}
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

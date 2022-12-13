@@ -13,6 +13,12 @@ import { UsuarioDto } from './usuario.dto';
 })
 export class UsuarioService {
   private readonly urlEndpoint = 'http://localhost:8080/api/usuarios';
+  private readonly httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+  });
+  private authorizationHeaders = new HttpHeaders({
+    Authorization: `Bearer ${this.authService.token}`,
+  });
 
   constructor(
     private httpClient: HttpClient,
@@ -38,13 +44,22 @@ export class UsuarioService {
 
     return usuario;
   }
+  
+  public getPerfil(): Observable<Usuario> {
+    const usuario=this.httpClient.get<Usuario>(`${this.urlEndpoint}/perfil`, {
+      headers:{
+        Authorization: `Bearer ${this.authService.token}`,
+      },
+    });
+
+    return usuario;
+  }  
 
   public editarUsuario(
     usuario_id: number,
     usuario: UsuarioDto
   ): Observable<Usuario> {
     // hacer la llamada al endpoint para editar usuario con patch
-    console.log(usuario);
     return this.httpClient.post<Usuario>(
       `${this.urlEndpoint}/${usuario_id}`,
       usuario,
@@ -85,12 +100,74 @@ export class UsuarioService {
       Authorization: `Bearer ${this.authService.token}`,
     });
 
-    console.log(httpHeaders);
     return this.httpClient
       .post<Usuario>(this.urlEndpoint, usuario, { headers: httpHeaders })
       .pipe(
         catchError((e) => {
           Swal.fire('Error al crear el usuario', e.error.message, 'error');
+          return throwError(() => e);
+        })
+      );
+  }
+
+  /**
+   * Marca un usuario como inactivo
+   * @param idUsuario ID del usuario a desactivar
+   * @returns 
+   */
+  public deactivateUser(idUsuario: number): Observable<number>{
+    return this.httpClient.post<number>(
+      this.urlEndpoint + '/eliminar/' + idUsuario, {},
+      {
+        headers: this.authorizationHeaders
+      });
+  }
+
+  /**
+   * Regresa el saldo de puma puntos de un usuario
+   * @param idUsuario ID del usuario a buscar
+   * @returns 
+   */
+  public getPumapuntos(idUsuario: number):Observable<number>{
+    const urlEndpoint = 'http://localhost:8080/api/pumapuntos';
+    return this.httpClient.get<number>(
+      urlEndpoint + '/' + idUsuario,
+      {
+        headers: this.authorizationHeaders
+      });
+  }
+
+  /**
+   * Actualiza los puma puntos de un usuario
+   * @param idUsuario ID del usuario a editar
+   * @returns 
+   */
+  public updatePP(pumapuntos: number, idUsuario: number): Observable<number>{
+    const urlEndpoint = 'http://localhost:8080/api/pumapuntos';
+    return this.httpClient.post<number>(
+      urlEndpoint + '/' + idUsuario + '/sumar/' + pumapuntos, {},
+      {
+        headers: this.authorizationHeaders
+      });
+  }
+
+  /**
+   * Funcion que llama a la API para cambiar la contraseña
+   * @param contrasena nueva contrasena
+   * @returns any
+   */
+  public cambiarContrasena(contrasena: string): Observable<any>{
+    const httpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${this.authService.token}`,
+    });
+    return this.httpClient.put( 
+      this.urlEndpoint + '/cambiar-contrasena/' + contrasena,
+      '',
+      {
+        headers : httpHeaders
+      }).pipe(
+        catchError((e) => {
+          Swal.fire('Error al cambiar la contraseña', e.error.message, 'error');
           return throwError(() => e);
         })
       );

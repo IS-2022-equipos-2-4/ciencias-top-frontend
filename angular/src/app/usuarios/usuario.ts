@@ -9,4 +9,5 @@ export class Usuario {
   activo?: boolean;
   esProveedor: boolean =false;
   esAdmin: boolean = false;
+  pumapuntos: number;
 }

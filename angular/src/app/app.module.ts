@@ -12,10 +12,14 @@ import { LoginComponent } from './auth/login.component';
 import { HeaderComponent } from './header/header.component';
 import { CrearProductosComponent } from './productos/crear-producto.component';
 import { ProductosComponent } from './productos/productos.component';
-import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.component';
+import { EjemplaresComponent } from './productos/ejemplares.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HistoProdRentComponent } from './histo-prod-rent/histo-prod-rent.component';
+import { EditarProductoComponent } from './productos/editar-producto.component';
+import { VerPerfilComponent } from './usuarios/ver-perfil/ver-perfil.component';
+import { VerReportesComponent } from './ver-reportes/ver-reportes.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -46,15 +50,16 @@ const routes: Routes = [
       redirectionRoute: '/login',
     },
   },
+
   {
-    path: 'usuarios/sumar-pumapuntos/:id',
-    component: SumarPumaPuntosComponent,
+    path: 'perfil',
+    component: VerPerfilComponent,
     canActivate: [AuthGuard],
-    data: {
-      allowedRoles: ['admin'],
-      redirectionRoute: '/login',
+    data:{
+      allowedRoles: ['admin','provider','user'],
+      redirationROute: '/login',
     },
-  },
+  }, 
   {
     path: 'productos',
     component: ProductosComponent,
@@ -73,7 +78,42 @@ const routes: Routes = [
       redirectionRoute: '/login',
     },
   },
-
+  {
+    path: 'perfil/historial-rentas',
+    component: HistoProdRentComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin', 'provider', 'user'],
+      redirectionRoute: '/login',
+    },
+  },
+  {
+    path: 'productos/editar/:id',
+    component: EditarProductoComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin', 'provider'],
+      redirectionRoute: '/login',
+    },
+  },
+  {
+    path: 'productos/:id/ejemplares',
+    component: EjemplaresComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin'],
+      redirectionRoute: '/login',
+    },
+  },
+  {
+    path: 'reportes',
+    component: VerReportesComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin'],
+      redirectionRoute: '/login',
+    },
+  },
   { path: 'login', component: LoginComponent },
 ];
 
@@ -84,10 +124,14 @@ const routes: Routes = [
     ProductosComponent,
     UsuariosComponent,
     CrearProductosComponent,
-    SumarPumaPuntosComponent,
     LoginComponent,
     EditarUsuarioComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+    HistoProdRentComponent,
+    EditarProductoComponent,
+    EjemplaresComponent,
+    VerPerfilComponent,
+    VerReportesComponent,
   ],
   imports: [
     FormsModule,

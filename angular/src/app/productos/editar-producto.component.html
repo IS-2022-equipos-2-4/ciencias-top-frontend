@@ -1,0 +1,53 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">Modifique los datos que deseé</div>
+    <div class="card-body">
+      <form (ngSubmit)="editar()">
+        <div class="form-group">
+          <label for="" class="col-form-label col-sm-2">Nombre</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="producto.nombre" name="nombre">
+          </div>
+        </div>
+  
+  
+        <div class="form-group">
+          <label for="" class="col-form-label col-sm-2">Codigo</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="producto.codigo" name="codigo">
+            <span id="codigoHelp" class="col-form-label">
+                El código debe ser de exactamente 12 caracteres
+            </span>
+          </div>
+        </div>
+  
+  
+        <div class="form-group">
+          <label for="" class="col-form-label col-sm-2">Costo</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="producto.costo" name="costo">
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="col-form-label col-sm-2">Cantidad de días para rentar</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="producto.limitePrestamo" name="dias_renta">
+                <span id="diasHelp" class="col-form-label">
+                    Los días para rentar deben de ser de 3 a 7.
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="" class="col-form-label col-sm-2">Descripción</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" [(ngModel)]="producto.descripcion" name="descripcion">
+            </div>
+        </div>
+
+        <div class="form-group row">
+          <button class="btn btn-secondary btn-lg" role="button">Aplicar</button>
+        </div>
+      </form>
+    </div>
+  </div>

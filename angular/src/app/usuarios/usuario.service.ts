@@ -140,4 +140,26 @@ export class UsuarioService {
         headers: this.authorizationHeaders
       });
   }
+
+  /**
+   * Funcion que llama a la API para cambiar la contraseña
+   * @param contrasena nueva contrasena
+   * @returns any
+   */
+  public cambiarContrasena(contrasena: string): Observable<any>{
+    const httpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${this.authService.token}`,
+    });
+    return this.httpClient.put( 
+      this.urlEndpoint + '/cambiar-contrasena/' + contrasena,
+      '',
+      {
+        headers : httpHeaders
+      }).pipe(
+        catchError((e) => {
+          Swal.fire('Error al cambiar la contraseña', e.error.message, 'error');
+          return throwError(() => e);
+        })
+      );
+  }
 }

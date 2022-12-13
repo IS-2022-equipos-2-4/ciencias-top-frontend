@@ -187,7 +187,7 @@ export class UsuariosComponent implements OnInit {
         swal.fire(`Error ${err.status}`, err.error.message, 'error')
       }
     )
-  }  
+  }
 }
 
 

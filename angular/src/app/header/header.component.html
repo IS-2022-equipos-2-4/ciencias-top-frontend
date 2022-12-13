@@ -25,7 +25,48 @@
         <button *ngIf="(!authService.isAuthenticated())" (click)="authService.login()" class="btn btn-outline-success" type="submit" routerLink="/login">
           Iniciar sesión
         </button>
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+          Open modal
+        </button>
       </form>
     </div>
   </div>
 </nav>
+
+<!-- Modal modificar contraseña-->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3 class="modal-title">Cambio de contraseña</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="limpiar()"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Ingresa la nueva contraseña:</label>
+            <input type="password" class="form-control" id="input-nueva-contraseña" [(ngModel)]="nuevaContrasena" name="nuevaContrasena" >
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Ingresa de nuevo la nueva contraseña:</label>
+            <input type="password" class="form-control" id="input-confirmacion-contraseña" [(ngModel)]="confirmacionContrasena" name="confirmacionContrasena">
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="limpiar()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="modificarContrasena()">
+          Guardar cambios
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

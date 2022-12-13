@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       },
       err => {
         if(err.status == 400){
-          Swal.fire('Error Login', 'No. institcuional o clave incorrectas', 'error');
+          Swal.fire('Error Login', 'No. institucional o clave incorrectas', 'error');
         }
       }
       );

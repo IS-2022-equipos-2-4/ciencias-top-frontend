@@ -13,13 +13,13 @@ import { HeaderComponent } from './header/header.component';
 import { CrearProductosComponent } from './productos/crear-producto.component';
 import { ProductosComponent } from './productos/productos.component';
 import { EjemplaresComponent } from './productos/ejemplares.component';
-import { SumarPumaPuntosComponent } from './puma-puntos/sumar-puma-puntos.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HistoProdRentComponent } from './histo-prod-rent/histo-prod-rent.component';
 import { EditarProductoComponent } from './productos/editar-producto.component';
 import { VerPerfilComponent } from './usuarios/ver-perfil/ver-perfil.component';
+import { VerReportesComponent } from './ver-reportes/ver-reportes.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -50,15 +50,6 @@ const routes: Routes = [
       redirectionRoute: '/login',
     },
   },
-  {
-    path: 'usuarios/sumar-pumapuntos/:id',
-    component: SumarPumaPuntosComponent,
-    canActivate: [AuthGuard],
-    data: {
-      allowedRoles: ['admin'],
-      redirectionRoute: '/login',
-    },
-  },
 
   {
     path: 'perfil',
@@ -68,8 +59,7 @@ const routes: Routes = [
       allowedRoles: ['admin','provider','user'],
       redirationROute: '/login',
     },
-  },
-
+  }, 
   {
     path: 'productos',
     component: ProductosComponent,
@@ -115,7 +105,15 @@ const routes: Routes = [
       redirectionRoute: '/login',
     },
   },
-  
+  {
+    path: 'reportes',
+    component: VerReportesComponent,
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: ['admin'],
+      redirectionRoute: '/login',
+    },
+  },
   { path: 'login', component: LoginComponent },
 ];
 
@@ -126,7 +124,6 @@ const routes: Routes = [
     ProductosComponent,
     UsuariosComponent,
     CrearProductosComponent,
-    SumarPumaPuntosComponent,
     LoginComponent,
     EditarUsuarioComponent,
     CrearUsuarioComponent,
@@ -134,6 +131,7 @@ const routes: Routes = [
     EditarProductoComponent,
     EjemplaresComponent,
     VerPerfilComponent,
+    VerReportesComponent,
   ],
   imports: [
     FormsModule,
